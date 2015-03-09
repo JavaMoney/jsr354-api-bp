@@ -1,4 +1,4 @@
-javamoney-api-jdk7
+javamoney-api-bp
 ==================
 
-JSR 354 forward compatible backport to JDK 7.
+JSR 354 forward compatible backport to JDK 6/7 or other platforms (e.g. Android)
