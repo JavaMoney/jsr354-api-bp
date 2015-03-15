@@ -53,7 +53,11 @@ class DefaultServiceProvider implements ServiceProvider {
 
     @Override
     public <T> T getService(Class<T> serviceType) {
-        return getServices(serviceType).stream().findFirst().orElse(null);
+        List<T> servicesFound = getServices(serviceType);
+        if(servicesFound.isEmpty()){
+            return null;
+        }
+        return servicesFound.get(0);
     }
 
     /**

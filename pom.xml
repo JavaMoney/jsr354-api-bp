@@ -12,10 +12,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>javax.money</groupId>
-    <artifactId>money-api</artifactId>
+    <artifactId>money-api-bp</artifactId>
     <packaging>jar</packaging>
 
-    <version>1.0-RC3-java7</version>
+    <version>1.0-RC3</version>
 
     <name>JSR 354 (Money and Currency API) - Java 7 Compatible Backport</name>
     <url>http://java.net/projects/javamoney</url>

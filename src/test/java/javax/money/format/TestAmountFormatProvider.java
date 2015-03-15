@@ -34,7 +34,7 @@ public class TestAmountFormatProvider implements MonetaryAmountFormatProviderSpi
             return Collections.emptyList();
         }
         Locale loc = formatStyle.getLocale();
-        if (Objects.nonNull(loc) && "BAR".equals(loc.getCountry()) && "foo".equals(loc.getLanguage())) {
+        if (loc!=null && "BAR".equals(loc.getCountry()) && "foo".equals(loc.getLanguage())) {
             return Collections.emptySet();
         }
         List<MonetaryAmountFormat> result = new ArrayList<MonetaryAmountFormat>();

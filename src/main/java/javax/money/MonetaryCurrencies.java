@@ -123,7 +123,10 @@ public final class MonetaryCurrencies {
      * would return a result for the given code.
      */
     public static boolean isCurrencyAvailable(String code, String... providers) {
-        return Objects.nonNull(monetaryCurrenciesSpi) && monetaryCurrenciesSpi.isCurrencyAvailable(code, providers);
+        if(monetaryCurrenciesSpi==null){
+            throw new IllegalStateException("No MonetaryCurrencies Spi loaded.");
+        }
+        return monetaryCurrenciesSpi.isCurrencyAvailable(code, providers);
     }
 
     /**
@@ -136,7 +139,10 @@ public final class MonetaryCurrencies {
      * result containing a currency with the given code.
      */
     public static boolean isCurrencyAvailable(Locale locale, String... providers) {
-        return Objects.nonNull(monetaryCurrenciesSpi) && monetaryCurrenciesSpi.isCurrencyAvailable(locale, providers);
+        if(monetaryCurrenciesSpi==null){
+            throw new IllegalStateException("No MonetaryCurrencies Spi loaded.");
+        }
+        return monetaryCurrenciesSpi.isCurrencyAvailable(locale, providers);
     }
 
     /**
@@ -325,12 +331,12 @@ public final class MonetaryCurrencies {
 
         /**
          * Allows to check if a {@link javax.money.CurrencyUnit} instance is defined, i.e.
-         * accessible from {@link javax.money.spi.BaseMonetaryCurrenciesSingletonSpi#getCurrency(String, String...)}.
+         * accessible from {@link MonetaryCurrenciesSingletonSpi#getCurrency(String, String...)}.
          *
          * @param code      the currency code, not {@code null}.
          * @param providers the (optional) specification of providers to consider. If not set (empty) the providers
          *                  as defined by #getDefaultProviderChain() should be used.
-         * @return {@code true} if {@link javax.money.spi.BaseMonetaryCurrenciesSingletonSpi#getCurrency(String, String...)}
+         * @return {@code true} if {@link MonetaryCurrenciesSingletonSpi#getCurrency(String, String...)}
          * would return a result for the given code.
          */
         public boolean isCurrencyAvailable(String code, String... providers) {

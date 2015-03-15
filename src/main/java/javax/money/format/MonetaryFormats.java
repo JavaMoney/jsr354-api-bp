@@ -213,7 +213,7 @@ public final class MonetaryFormats {
             Collection<MonetaryAmountFormat> result = new ArrayList<MonetaryAmountFormat>();
             for (MonetaryAmountFormatProviderSpi spi : Bootstrap.getServices(MonetaryAmountFormatProviderSpi.class)) {
                 Collection<MonetaryAmountFormat> formats = spi.getAmountFormats(formatQuery);
-                if (Objects.nonNull(formats)) {
+                if (formats!=null) {
                     result.addAll(formats);
                 }
             }
@@ -276,7 +276,7 @@ public final class MonetaryFormats {
             } else {
                 for (String provName : providerNames) {
                     MonetaryAmountFormatProviderSpi spi = spis.get(provName);
-                    if (Objects.isNull(spi)) {
+                    if (spi==null) {
                         throw new IllegalArgumentException("MonetaryAmountFormatProviderSpi not found: " + provName);
                     }
                     providers.add(spi);

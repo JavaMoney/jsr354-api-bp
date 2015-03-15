@@ -42,7 +42,7 @@ public class DefaultMonetaryAmountsSingletonSpi extends BaseMonetaryAmountsSingl
 			Class<T> amountType) {
 		MonetaryAmountFactoryProviderSpi<T> f = MonetaryAmountFactoryProviderSpi.class
 				.cast(factories.get(amountType));
-		if (Objects.nonNull(f)) {
+		if (f!=null) {
 			return f.createMonetaryAmountFactory();
 		}
 		throw new MonetaryException(

@@ -8,10 +8,11 @@
  */
 package javax.money;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 
 /**
@@ -68,8 +69,11 @@ public final class CurrencyQueryBuilder extends AbstractQueryBuilder<CurrencyQue
      * @return the query for chaining.
      */
     public CurrencyQueryBuilder setNumericCodes(int... codes) {
-        return set(CurrencyQuery.KEY_QUERY_NUMERIC_CODES,
-                Arrays.stream(codes).boxed().collect(Collectors.toList()));
+        List<Integer> intList = new ArrayList<Integer>(codes.length);
+        for(int i=0;i<codes.length;i++){
+            intList.add(codes[i]);
+        }
+        return set(CurrencyQuery.KEY_QUERY_NUMERIC_CODES, intList);
     }
 
     /**

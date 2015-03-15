@@ -136,11 +136,11 @@ public class DefaultExchangeRate implements ExchangeRate, Serializable, Comparab
      */
     private void setExchangeRateChain(List<ExchangeRate> chain) {
         this.chain.clear();
-        if (Objects.isNull(chain) || chain.isEmpty()) {
+        if (chain==null || chain.isEmpty()) {
             this.chain.add(this);
         } else {
             for (ExchangeRate rate : chain) {
-                if (Objects.isNull(rate)) {
+                if (rate==null) {
                     throw new IllegalArgumentException("Chain element can not be null.");
                 }
             }
@@ -347,7 +347,7 @@ public class DefaultExchangeRate implements ExchangeRate, Serializable, Comparab
          */
         public Builder setRateChain(ExchangeRate... exchangeRates) {
             this.rateChain.clear();
-            if (Objects.nonNull(exchangeRates)) {
+            if (exchangeRates!=null) {
                 this.rateChain.addAll(Arrays.asList(exchangeRates.clone()));
             }
             return this;
@@ -361,7 +361,7 @@ public class DefaultExchangeRate implements ExchangeRate, Serializable, Comparab
          */
         public Builder setRateChain(List<ExchangeRate> exchangeRates) {
             this.rateChain.clear();
-            if (Objects.nonNull(exchangeRates)) {
+            if (exchangeRates!=null) {
                 this.rateChain.addAll(exchangeRates);
             }
             return this;

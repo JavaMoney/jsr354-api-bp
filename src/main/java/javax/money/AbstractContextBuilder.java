@@ -41,7 +41,10 @@ public abstract class AbstractContextBuilder<B extends AbstractContextBuilder, C
             if (overwriteDuplicates) {
                 this.data.put(en.getKey(), en.getValue());
             }else{
-                this.data.putIfAbsent(en.getKey(), en.getValue());
+                Object value = this.data.get(en.getKey());
+                if(value==null){
+                    this.data.put(en.getKey(), en.getValue());
+                }
             }
         }
         return (B) this;

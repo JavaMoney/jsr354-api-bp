@@ -44,7 +44,6 @@ package javax.money;
  * @author Werner Keil
  * @version 0.8
  */
-@FunctionalInterface
 public interface MonetaryQuery<R>{
 
 	/**

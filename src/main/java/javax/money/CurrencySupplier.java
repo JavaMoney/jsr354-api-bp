@@ -33,7 +33,7 @@ package javax.money;
  * @since 0.8
  * @see java.util.function.Supplier
  */
-@FunctionalInterface
+//@FunctionalInterface
 public interface CurrencySupplier {
 
 	/**

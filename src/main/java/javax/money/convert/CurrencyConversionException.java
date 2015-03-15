@@ -100,7 +100,7 @@ public class CurrencyConversionException extends MonetaryException {
 			ConversionContext conversionContext, String message, Throwable cause) {
 		super("Cannot convert " + String.valueOf(base) + " into "
 				+ String.valueOf(term)
-				+ (Objects.nonNull(message) ? ": " + message : ""), cause);
+				+ (message!=null ? ": " + message : ""), cause);
 		this.base = base;
 		this.term = term;
 		this.conversionContext = conversionContext;

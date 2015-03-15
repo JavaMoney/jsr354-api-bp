@@ -66,7 +66,7 @@ public final class Bootstrap {
     public static ServiceProvider init(ServiceProvider serviceProvider) {
         Objects.requireNonNull(serviceProvider);
         synchronized (LOCK) {
-            if (Objects.isNull(Bootstrap.serviceProviderDelegate)) {
+            if (Bootstrap.serviceProviderDelegate==null) {
                 Bootstrap.serviceProviderDelegate = serviceProvider;
                 Logger.getLogger(Bootstrap.class.getName())
                         .info("Money Bootstrap: new ServiceProvider set: " + serviceProvider.getClass().getName());
@@ -87,9 +87,9 @@ public final class Bootstrap {
      * @return the {@link ServiceProvider} used.
      */
     static ServiceProvider getServiceProvider() {
-        if (Objects.isNull(serviceProviderDelegate)) {
+        if (serviceProviderDelegate==null) {
             synchronized (LOCK) {
-                if (Objects.isNull(serviceProviderDelegate)) {
+                if (serviceProviderDelegate==null) {
                     serviceProviderDelegate = loadDefaultServiceProvider();
                 }
             }
