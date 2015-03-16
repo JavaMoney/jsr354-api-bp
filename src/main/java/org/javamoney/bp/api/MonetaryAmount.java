@@ -22,7 +22,7 @@ package org.javamoney.bp.api;
  * <p/>
  * Also a {@link org.javamoney.bp.api.MonetaryAmount} provides a {@link NumberValue}, which allows easily to extract the
  * numeric value, of the amount. And finally {@link #getFactory()} provides a
- * {@link MonetaryAmountFactory}, which allows to of instances of {@link org.javamoney.bp.MonetaryAmount} based
+ * {@link MonetaryAmountFactory}, which allows to of instances of {@link org.javamoney.bp.api.MonetaryAmount} based
  * on the same numeric implementation.
  * <p/>
  * This JSR additionally recommends to consider the following aspects:
@@ -34,7 +34,7 @@ package org.javamoney.bp.api;
  * representation of a monetary amount.
  * <li>Monetary amounts should allow numbers as argument for arithmetic operations like division and
  * multiplication. Adding or subtracting of amounts must only be possible by passing instances of
- * {@link org.javamoney.bp.MonetaryAmount}.</li>
+ * {@link org.javamoney.bp.api.MonetaryAmount}.</li>
  * <li>Nevertheless numeric truncation is also explicitly supported when calling
  * {@link NumberValue#numberValue(Class)}, whereas the <i>exact</i> counterpart,
  * {@link NumberValue#numberValueExact(Class)}, works similar to
@@ -180,13 +180,13 @@ public interface MonetaryAmount extends CurrencySupplier, NumberSupplier, Compar
      * This method is used for creating a new amount result after having done calculations that are
      * not directly mappable to themonetary arithmetics, e.g. currency conversion.
      *
-     * @return the new {@code MonetaryAmountFactory} with the given {@link org.javamoney.bp.MonetaryAmount} as its
+     * @return the new {@code MonetaryAmountFactory} with the given {@link org.javamoney.bp.api.MonetaryAmount} as its
      * values.
      */
     MonetaryAmountFactory<? extends MonetaryAmount> getFactory();
 
     /**
-     * Compares two instances of {@link org.javamoney.bp.MonetaryAmount}, hereby ignoring non significant trailing
+     * Compares two instances of {@link org.javamoney.bp.api.MonetaryAmount}, hereby ignoring non significant trailing
      * zeroes and different numeric capabilities.
      *
      * @param amount the {@code MonetaryAmount} to be compared with this instance.
@@ -196,40 +196,40 @@ public interface MonetaryAmount extends CurrencySupplier, NumberSupplier, Compar
     boolean isGreaterThan(MonetaryAmount amount);
 
     /**
-     * Compares two instances of {@link org.javamoney.bp.MonetaryAmount}, hereby ignoring non significant trailing
+     * Compares two instances of {@link org.javamoney.bp.api.MonetaryAmount}, hereby ignoring non significant trailing
      * zeroes and different numeric capabilities.
      *
-     * @param amount the {@link org.javamoney.bp.MonetaryAmount} to be compared with this instance.
+     * @param amount the {@link org.javamoney.bp.api.MonetaryAmount} to be compared with this instance.
      * @return {@code true} if {@code amount >= this}.
      * @throws MonetaryException if the amount's currency is not equals to the currency of this instance.
      */
     boolean isGreaterThanOrEqualTo(MonetaryAmount amount);
 
     /**
-     * Compares two instances of {@link org.javamoney.bp.MonetaryAmount}, hereby ignoring non significant trailing
+     * Compares two instances of {@link org.javamoney.bp.api.MonetaryAmount}, hereby ignoring non significant trailing
      * zeroes and different numeric capabilities.
      *
-     * @param amount the {@link org.javamoney.bp.MonetaryAmount} to be compared with this instance.
+     * @param amount the {@link org.javamoney.bp.api.MonetaryAmount} to be compared with this instance.
      * @return {@code true} if {@code amount < this}.
      * @throws MonetaryException if the amount's currency is not equals to the currency of this instance.
      */
     boolean isLessThan(MonetaryAmount amount);
 
     /**
-     * Compares two instances of {@link org.javamoney.bp.MonetaryAmount}, hereby ignoring non significant trailing
+     * Compares two instances of {@link org.javamoney.bp.api.MonetaryAmount}, hereby ignoring non significant trailing
      * zeroes and different numeric capabilities.
      *
-     * @param amt the {@link org.javamoney.bp.MonetaryAmount} to be compared with this instance.
+     * @param amt the {@link org.javamoney.bp.api.MonetaryAmount} to be compared with this instance.
      * @return {@code true} if {@code amount <= this}.
      * @throws MonetaryException if the amount's currency is not equals to the currency of this instance.
      */
     boolean isLessThanOrEqualTo(MonetaryAmount amt);
 
     /**
-     * Compares two instances of {@link org.javamoney.bp.MonetaryAmount}, hereby ignoring non significant trailing
+     * Compares two instances of {@link org.javamoney.bp.api.MonetaryAmount}, hereby ignoring non significant trailing
      * zeroes and different numeric capabilities.
      *
-     * @param amount the {@link org.javamoney.bp.MonetaryAmount} to be compared with this instance.
+     * @param amount the {@link org.javamoney.bp.api.MonetaryAmount} to be compared with this instance.
      * @return {@code true} if {@code amount == this}.
      * @throws MonetaryException if the amount's currency is not equals to the currency of this instance.
      */

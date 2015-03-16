@@ -22,7 +22,7 @@ package org.javamoney.bp.api;
  * <p>
  * There are two equivalent ways of using a {@code MonetaryQuery}. The first is
  * to invoke the method on this interface. The second is to use
- * {@link MonetaryAmount#query(org.javamoney.bp.MonetaryQuery)}:
+ * {@link MonetaryAmount#query(org.javamoney.bp.api.MonetaryQuery)}:
  * 
  * <pre>
  * // these two lines are equivalent, but the second approach is recommended
@@ -56,7 +56,7 @@ public interface MonetaryQuery<R>{
 	 * <p>
 	 * There are two equivalent ways of using a {@code MonetaryQuery}. The first
 	 * is to invoke the method on this interface. The second is to use
-	 * {@link MonetaryAmount#query(org.javamoney.bp.MonetaryQuery)}:
+	 * {@link MonetaryAmount#query(org.javamoney.bp.api.MonetaryQuery)}:
 	 * 
 	 * <pre>
 	 * // these two lines are equivalent, but the second approach is recommended

@@ -19,7 +19,7 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * Default implementation of {@link org.javamoney.bp.NumberValue} based on {@link java.math.BigDecimal}.
+ * Default implementation of {@link org.javamoney.bp.api.NumberValue} based on {@link java.math.BigDecimal}.
  *
  * @author Anatole Tresch
  * @author Werner Keil
@@ -47,11 +47,11 @@ public class TestNumberValue extends NumberValue {
 	}
 
 	/**
-	 * Creates a new instance of {@link org.javamoney.bp.NumberValue}, using the given number.
+	 * Creates a new instance of {@link org.javamoney.bp.api.NumberValue}, using the given number.
 	 *
 	 * @param number
 	 *            The numeric part, not null.
-	 * @return A new instance of {@link org.javamoney.bp.NumberValue}.
+	 * @return A new instance of {@link org.javamoney.bp.api.NumberValue}.
 	 */
 	public static NumberValue of(Number number) {
 		return new TestNumberValue(number);
@@ -59,7 +59,7 @@ public class TestNumberValue extends NumberValue {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.javamoney.bp.NumberValue#getNumberType()
+	 * @see org.javamoney.bp.api.NumberValue#getNumberType()
 	 */
 	@Override
 	public Class<?> getNumberType() {
@@ -68,7 +68,7 @@ public class TestNumberValue extends NumberValue {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.javamoney.bp.NumberValue#getPrecision()
+	 * @see org.javamoney.bp.api.NumberValue#getPrecision()
 	 */
 	@Override
 	public int getPrecision() {
@@ -77,7 +77,7 @@ public class TestNumberValue extends NumberValue {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.javamoney.bp.NumberValue#getScale()
+	 * @see org.javamoney.bp.api.NumberValue#getScale()
 	 */
 	@Override
 	public int getScale() {
@@ -86,7 +86,7 @@ public class TestNumberValue extends NumberValue {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.javamoney.bp.NumberBinding#getIntValue()
+	 * @see org.javamoney.bp.api.NumberBinding#getIntValue()
 	 */
 	@Override
 	public int intValue() {
@@ -95,7 +95,7 @@ public class TestNumberValue extends NumberValue {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.javamoney.bp.NumberBinding#getIntValueExact()
+	 * @see org.javamoney.bp.api.NumberBinding#getIntValueExact()
 	 */
 	@Override
 	public int intValueExact() {
@@ -104,7 +104,7 @@ public class TestNumberValue extends NumberValue {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.javamoney.bp.NumberBinding#getLongValue()
+	 * @see org.javamoney.bp.api.NumberBinding#getLongValue()
 	 */
 	@Override
 	public long longValue() {
@@ -113,7 +113,7 @@ public class TestNumberValue extends NumberValue {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.javamoney.bp.NumberBinding#getLongValueExact()
+	 * @see org.javamoney.bp.api.NumberBinding#getLongValueExact()
 	 */
 	@Override
 	public long longValueExact() {
@@ -122,7 +122,7 @@ public class TestNumberValue extends NumberValue {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.javamoney.bp.NumberBinding#getFloatValue()
+	 * @see org.javamoney.bp.api.NumberBinding#getFloatValue()
 	 */
 	@Override
 	public float floatValue() {
@@ -131,7 +131,7 @@ public class TestNumberValue extends NumberValue {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.javamoney.bp.NumberBinding#getDoubleValue()
+	 * @see org.javamoney.bp.api.NumberBinding#getDoubleValue()
 	 */
 	@Override
 	public double doubleValue() {
@@ -150,7 +150,7 @@ public class TestNumberValue extends NumberValue {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.javamoney.bp.NumberBinding#getDoubleValueExact()
+	 * @see org.javamoney.bp.api.NumberBinding#getDoubleValueExact()
 	 */
 	@Override
 	public double doubleValueExact() {
@@ -164,7 +164,7 @@ public class TestNumberValue extends NumberValue {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.javamoney.bp.NumberBinding#getNumberValue(java.lang.Class)
+	 * @see org.javamoney.bp.api.NumberBinding#getNumberValue(java.lang.Class)
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
@@ -204,7 +204,7 @@ public class TestNumberValue extends NumberValue {
 
     /*
      * (non-Javadoc)
-     * @see org.javamoney.bp.NumberValue#numberValueExact(java.lang.Class)
+     * @see org.javamoney.bp.api.NumberValue#numberValueExact(java.lang.Class)
      */
     @SuppressWarnings("unchecked")
 	@Override

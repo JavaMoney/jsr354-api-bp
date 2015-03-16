@@ -11,7 +11,7 @@ package org.javamoney.bp.api;
 import java.io.Serializable;
 
 /**
- * This class models the spec/configuration for a rounding, modeled as {@link org.javamoney.bp.MonetaryRounding} in a
+ * This class models the spec/configuration for a rounding, modeled as {@link org.javamoney.bp.api.MonetaryRounding} in a
  * platform independent way. Each RoundingContext instance hereby has a <code>roundingId</code>, which links
  * to the {@link org.javamoney.bp.api.spi.RoundingProviderSpi} that must of the according rounding instance. The
  * <i>default</i> </i><code>roundingId</code> is <code>default</code>.
@@ -55,7 +55,7 @@ public final class RoundingContext extends AbstractContext implements Serializab
     }
 
     /**
-     * Get the basic {@link org.javamoney.bp.CurrencyUnit}, which is based for this rounding type.
+     * Get the basic {@link org.javamoney.bp.api.CurrencyUnit}, which is based for this rounding type.
      *
      * @return the target CurrencyUnit, or null.
      */
@@ -64,8 +64,8 @@ public final class RoundingContext extends AbstractContext implements Serializab
     }
 
     /**
-     * Allows to convert a instance into the corresponding {@link org.javamoney.bp.CurrencyContextBuilder}, which allows
-     * to change the values and of another {@link org.javamoney.bp.CurrencyContext} instance.
+     * Allows to convert a instance into the corresponding {@link org.javamoney.bp.api.CurrencyContextBuilder}, which allows
+     * to change the values and of another {@link org.javamoney.bp.api.CurrencyContext} instance.
      *
      * @return a new Builder instance, preinitialized with the values from this instance.
      */

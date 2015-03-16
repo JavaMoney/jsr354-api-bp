@@ -60,7 +60,7 @@ public interface MonetaryFormatsSingletonSpi {
      *
      * @param formatQuery The format query defining the requirements of the formatter.
      * @return the corresponding {@link org.javamoney.bp.api.format.MonetaryAmountFormat}
-     * @throws org.javamoney.bp.MonetaryException if no registered {@link org.javamoney.bp.api.spi
+     * @throws org.javamoney.bp.api.MonetaryException if no registered {@link org.javamoney.bp.api.spi
      *                                       .MonetaryAmountFormatProviderSpi} can provide a
      *                                       corresponding {@link org.javamoney.bp.api.format.MonetaryAmountFormat} instance.
      */

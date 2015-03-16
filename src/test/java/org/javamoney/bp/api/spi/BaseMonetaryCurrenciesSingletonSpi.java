@@ -23,7 +23,7 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * Factory singleton backing interface for {@link org.javamoney.bp.MonetaryCurrencies} that provides access to
+ * Factory singleton backing interface for {@link org.javamoney.bp.api.MonetaryCurrencies} that provides access to
  * different registered {@link CurrencyProviderSpi} instances.
  * <p>
  * Implementations of this interface must be thread safe.
@@ -41,8 +41,8 @@ public abstract class BaseMonetaryCurrenciesSingletonSpi implements MonetaryCurr
      * @param currencyCode the ISO currency code, not {@code null}.
      * @param providers    the (optional) specification of providers to consider. If not set (empty) the providers
      *                     as defined by #getDefaultProviderChain() should be used.
-     * @return the corresponding {@link org.javamoney.bp.CurrencyUnit} instance.
-     * @throws org.javamoney.bp.UnknownCurrencyException if no such currency exists.
+     * @return the corresponding {@link org.javamoney.bp.api.CurrencyUnit} instance.
+     * @throws org.javamoney.bp.api.UnknownCurrencyException if no such currency exists.
      */
     public CurrencyUnit getCurrency(String currencyCode, String... providers) {
         Objects.requireNonNull(currencyCode, "Currency Code may not be null");
@@ -65,8 +65,8 @@ public abstract class BaseMonetaryCurrenciesSingletonSpi implements MonetaryCurr
      * @param country   the ISO currency's country, not {@code null}.
      * @param providers the (optional) specification of providers to consider. If not set (empty) the providers
      *                  as defined by #getDefaultProviderChain() should be used.
-     * @return the corresponding {@link org.javamoney.bp.CurrencyUnit} instance.
-     * @throws org.javamoney.bp.UnknownCurrencyException if no such currency exists.
+     * @return the corresponding {@link org.javamoney.bp.api.CurrencyUnit} instance.
+     * @throws org.javamoney.bp.api.UnknownCurrencyException if no such currency exists.
      */
     public CurrencyUnit getCurrency(Locale country, String... providers) {
         Collection<CurrencyUnit> found =
@@ -94,7 +94,7 @@ public abstract class BaseMonetaryCurrenciesSingletonSpi implements MonetaryCurr
     }
 
     /**
-     * Allows to check if a {@link org.javamoney.bp.CurrencyUnit} instance is defined, i.e.
+     * Allows to check if a {@link org.javamoney.bp.api.CurrencyUnit} instance is defined, i.e.
      * accessible from {@link org.javamoney.bp.api.spi.BaseMonetaryCurrenciesSingletonSpi#getCurrency(String, String...)}.
      *
      * @param code      the currency code, not {@code null}.
@@ -109,7 +109,7 @@ public abstract class BaseMonetaryCurrenciesSingletonSpi implements MonetaryCurr
     }
 
     /**
-     * Allows to check if a {@link org.javamoney.bp.CurrencyUnit} instance is
+     * Allows to check if a {@link org.javamoney.bp.api.CurrencyUnit} instance is
      * defined, i.e. accessible from {@link #getCurrency(String, String...)}.
      *
      * @param locale    the target {@link java.util.Locale}, not {@code null}.
@@ -137,8 +137,8 @@ public abstract class BaseMonetaryCurrenciesSingletonSpi implements MonetaryCurr
      * Access a single currency by query.
      *
      * @param query The currency query, not null.
-     * @return the {@link org.javamoney.bp.CurrencyUnit} found, never null.
-     * @throws org.javamoney.bp.MonetaryException if multiple currencies match the query.
+     * @return the {@link org.javamoney.bp.api.CurrencyUnit} found, never null.
+     * @throws org.javamoney.bp.api.MonetaryException if multiple currencies match the query.
      */
     public CurrencyUnit getCurrency(CurrencyQuery query) {
         Set<CurrencyUnit> currencies = getCurrencies(query);

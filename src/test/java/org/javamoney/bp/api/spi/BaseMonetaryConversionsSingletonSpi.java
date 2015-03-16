@@ -76,7 +76,7 @@ public abstract class BaseMonetaryConversionsSingletonSpi implements MonetaryCon
      * {@link org.javamoney.bp.api.convert.CurrencyConversion} can be
      * accessed.
      * @see #getConversion(org.javamoney.bp.api.convert.ConversionQuery)
-     * @see #getConversion(org.javamoney.bp.CurrencyUnit, String...)}
+     * @see #getConversion(org.javamoney.bp.api.CurrencyUnit, String...)}
      */
     public boolean isConversionAvailable(ConversionQuery conversionQuery) {
         try {
@@ -99,7 +99,7 @@ public abstract class BaseMonetaryConversionsSingletonSpi implements MonetaryCon
      * {@link org.javamoney.bp.api.convert.CurrencyConversion} can be
      * accessed.
      * @see #getConversion(org.javamoney.bp.api.convert.ConversionQuery)
-     * @see #getConversion(org.javamoney.bp.CurrencyUnit, String...)}
+     * @see #getConversion(org.javamoney.bp.api.CurrencyUnit, String...)}
      */
     public boolean isConversionAvailable(CurrencyUnit termCurrency, String... providers) {
         return isConversionAvailable(
@@ -112,7 +112,7 @@ public abstract class BaseMonetaryConversionsSingletonSpi implements MonetaryCon
      *
      * @param providers the provider names of hte providers to be accessed
      * @return the list of providers, in the same order as requested.
-     * @throws org.javamoney.bp.MonetaryException if a provider could not be resolved.
+     * @throws org.javamoney.bp.api.MonetaryException if a provider could not be resolved.
      */
     public List<ExchangeRateProvider> getExchangeRateProviders(String... providers) {
         List<ExchangeRateProvider> provInstances = new ArrayList<ExchangeRateProvider>();
@@ -140,7 +140,7 @@ public abstract class BaseMonetaryConversionsSingletonSpi implements MonetaryCon
      *                  provider changes as defined in #getDefaultProviderChain will be used.
      * @return an {@link org.javamoney.bp.api.convert.ExchangeRateProvider} built up with the given sub
      * providers, never {@code null}.
-     * @throws org.javamoney.bp.MonetaryException if a provider listed could not be found.
+     * @throws org.javamoney.bp.api.MonetaryException if a provider listed could not be found.
      * @see #getProviderNames()
      * @see #isExchangeRateProviderAvailable(org.javamoney.bp.api.convert.ConversionQuery)
      */
@@ -154,7 +154,7 @@ public abstract class BaseMonetaryConversionsSingletonSpi implements MonetaryCon
      * @param conversionQuery the {@link org.javamoney.bp.api.convert.ConversionQuery} determining the type of conversion
      *                        required, not null.
      * @return the corresponding conversion, not null.
-     * @throws org.javamoney.bp.MonetaryException if no matching conversion could be found.
+     * @throws org.javamoney.bp.api.MonetaryException if no matching conversion could be found.
      * @see #isConversionAvailable(org.javamoney.bp.api.convert.ConversionQuery)
      */
     public CurrencyConversion getConversion(ConversionQuery conversionQuery) {
@@ -172,7 +172,7 @@ public abstract class BaseMonetaryConversionsSingletonSpi implements MonetaryCon
      *                     .money.convert.CurrencyConversion}. By default the default
      *                     provider chain as defined by #getDefaultProviderChain will be used.
      * @return the corresponding conversion, not null.
-     * @throws org.javamoney.bp.MonetaryException if no matching conversion could be found.
+     * @throws org.javamoney.bp.api.MonetaryException if no matching conversion could be found.
      * @see #isConversionAvailable(org.javamoney.bp.api.convert.ConversionQuery)
      */
     public CurrencyConversion getConversion(CurrencyUnit termCurrency, String... providers) {

@@ -15,7 +15,7 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Adapter that implements the new {@link org.javamoney.bp.CurrencyUnit} interface using the
+ * Adapter that implements the new {@link org.javamoney.bp.api.CurrencyUnit} interface using the
  * JDK's {@link java.util.Currency}.
  *
  * @author Anatole Tresch
@@ -198,7 +198,7 @@ public final class TestCurrency implements CurrencyUnit, Serializable, Comparabl
     }
 
     /**
-     * Adapter that implements the new {@link org.javamoney.bp.CurrencyUnit} interface using the
+     * Adapter that implements the new {@link org.javamoney.bp.api.CurrencyUnit} interface using the
      * JDK's {@link java.util.Currency}.
      * <p>
      * This adapter will be removed in the final platform implementation.

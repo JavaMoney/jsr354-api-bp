@@ -15,20 +15,20 @@ import org.javamoney.bp.api.MonetaryException;
 import java.util.Collection;
 
 /**
- * SPI (core) for the backing implementation of the {@link org.javamoney.bp.MonetaryAmounts} singleton. It
+ * SPI (core) for the backing implementation of the {@link org.javamoney.bp.api.MonetaryAmounts} singleton. It
  * should load and manage (including contextual behavior), if needed) the different registered
- * {@link org.javamoney.bp.MonetaryAmountFactory} instances.
+ * {@link org.javamoney.bp.api.MonetaryAmountFactory} instances.
  *
  * @author Anatole Tresch
  */
 public interface MonetaryAmountsSingletonSpi{
 
     /**
-     * Access the {@link org.javamoney.bp.MonetaryAmountFactory} for the given {@code amountType} .
+     * Access the {@link org.javamoney.bp.api.MonetaryAmountFactory} for the given {@code amountType} .
      *
      * @param amountType the {@link MonetaryAmount} implementation type, targeted by the factory.
-     * @return the {@link org.javamoney.bp.MonetaryAmountFactory}, or {@code null}, if no such
-     * {@link org.javamoney.bp.MonetaryAmountFactory} is available in the current context.
+     * @return the {@link org.javamoney.bp.api.MonetaryAmountFactory}, or {@code null}, if no such
+     * {@link org.javamoney.bp.api.MonetaryAmountFactory} is available in the current context.
      */
     <T extends MonetaryAmount> MonetaryAmountFactory<T> getAmountFactory(Class<T> amountType);
 
@@ -53,7 +53,7 @@ public interface MonetaryAmountsSingletonSpi{
 
 
     /**
-     * Access the default {@link org.javamoney.bp.MonetaryAmountFactory}.
+     * Access the default {@link org.javamoney.bp.api.MonetaryAmountFactory}.
      *
      * @return a the default {@link MonetaryAmount} type corresponding, never {@code null}.
      * @throws MonetaryException if no {@link MonetaryAmountFactoryProviderSpi} is available, or no

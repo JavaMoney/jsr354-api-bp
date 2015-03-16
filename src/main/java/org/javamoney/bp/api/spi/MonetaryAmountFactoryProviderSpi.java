@@ -15,7 +15,7 @@ import org.javamoney.bp.api.MonetaryContext;
 
 /**
  * SPI (core): Implementations of this interface are used by the {@link MonetaryAmountsSingletonSpi} to evaluate the
- * correct {@link org.javamoney.bp.MonetaryAmountFactory} instances.
+ * correct {@link org.javamoney.bp.api.MonetaryAmountFactory} instances.
  *
  * @param <T> the concrete amount type.
  * @author Anatole Tresch
@@ -24,9 +24,9 @@ public interface MonetaryAmountFactoryProviderSpi<T extends MonetaryAmount>{
 
     /**
      * Determines how the factory should be considered when querying for matching implementation
-     * types calling {@link MonetaryAmounts#getAmountFactory(org.javamoney.bp.MonetaryAmountFactoryQuery)} .
+     * types calling {@link MonetaryAmounts#getAmountFactory(org.javamoney.bp.api.MonetaryAmountFactoryQuery)} .
      *
-     * @see MonetaryAmounts#getAmountFactory(org.javamoney.bp.MonetaryAmountFactoryQuery)
+     * @see MonetaryAmounts#getAmountFactory(org.javamoney.bp.api.MonetaryAmountFactoryQuery)
      */
     enum QueryInclusionPolicy{
         /**
@@ -50,24 +50,24 @@ public interface MonetaryAmountFactoryProviderSpi<T extends MonetaryAmount>{
     /**
      * Method that determines if this factory should be considered for general evaluation of
      * matching {@link MonetaryAmount} implementation types when calling
-     * {@link MonetaryAmounts#getAmountFactory(org.javamoney.bp.MonetaryAmountFactoryQuery)}.
+     * {@link MonetaryAmounts#getAmountFactory(org.javamoney.bp.api.MonetaryAmountFactoryQuery)}.
      *
      * @return {@code true} to include this factory into the evaluation.
-     * @see MonetaryAmounts#getAmountFactory(org.javamoney.bp.MonetaryAmountFactoryQuery)
+     * @see MonetaryAmounts#getAmountFactory(org.javamoney.bp.api.MonetaryAmountFactoryQuery)
      */
     QueryInclusionPolicy getQueryInclusionPolicy();
 
     /**
-     * Get the concrete amount type created by {@link org.javamoney.bp.MonetaryAmountFactory} instances provided.
+     * Get the concrete amount type created by {@link org.javamoney.bp.api.MonetaryAmountFactory} instances provided.
      *
      * @return the concrete amount type created, never null.
      */
     Class<T> getAmountType();
 
     /**
-     * Access a {@link org.javamoney.bp.MonetaryAmountFactory} given the required context.
+     * Access a {@link org.javamoney.bp.api.MonetaryAmountFactory} given the required context.
      *
-     * @return the corresponding {@link org.javamoney.bp.MonetaryAmountFactory}, or {@code null}.
+     * @return the corresponding {@link org.javamoney.bp.api.MonetaryAmountFactory}, or {@code null}.
      */
     MonetaryAmountFactory<T> createMonetaryAmountFactory();
 

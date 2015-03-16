@@ -22,7 +22,7 @@ import java.util.Set;
 import static org.testng.Assert.*;
 
 /**
- * Tests for {@link org.javamoney.bp.MonetaryContext}.
+ * Tests for {@link org.javamoney.bp.api.MonetaryContext}.
  */
 public class MonetaryContextTest {
 

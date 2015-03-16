@@ -45,7 +45,7 @@ public interface CurrencyUnit extends Comparable<CurrencyUnit>{
 	 * currency.
 	 * <p>
 	 * Since each currency is identified by this code, the currency code is
-	 * required to be defined for every {@link org.javamoney.bp.CurrencyUnit} and not
+	 * required to be defined for every {@link org.javamoney.bp.api.CurrencyUnit} and not
 	 * {@code null} or empty.
 	 * <p>
 	 * For ISO codes the 3-letter ISO code should be returned. For non ISO
@@ -91,7 +91,7 @@ public interface CurrencyUnit extends Comparable<CurrencyUnit>{
 
 
     /**
-     * Returns the {@link org.javamoney.bp.CurrencyContext} of a a currency. This context contains additional information
+     * Returns the {@link org.javamoney.bp.api.CurrencyContext} of a a currency. This context contains additional information
      * on the type and capabilities of a CurrencyUnit, e.g. its provider and more.
      * @return the currency's context, never null.
      */

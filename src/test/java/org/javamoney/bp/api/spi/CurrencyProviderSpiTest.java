@@ -38,10 +38,10 @@ public class CurrencyProviderSpiTest {
         }
 
         /**
-         * CHecks if a {@link org.javamoney.bp.CurrencyUnit} instances matching the given
-         * {@link org.javamoney.bp.CurrencyContext} is available from this provider.
+         * CHecks if a {@link org.javamoney.bp.api.CurrencyUnit} instances matching the given
+         * {@link org.javamoney.bp.api.CurrencyContext} is available from this provider.
          *
-         * @param query the {@link org.javamoney.bp.CurrencyQuery} containing the parameters determining the query. not null.
+         * @param query the {@link org.javamoney.bp.api.CurrencyQuery} containing the parameters determining the query. not null.
          * @return false, if no such unit is provided by this provider.
          */
         public boolean isCurrencyAvailable(CurrencyQuery query){

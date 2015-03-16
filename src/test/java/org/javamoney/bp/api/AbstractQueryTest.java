@@ -15,7 +15,7 @@ import java.util.List;
 import static org.testng.Assert.*;
 
 /**
- * Test class for {@link org.javamoney.bp.AbstractQuery} and  {@link org.javamoney.bp.AbstractQueryBuilder}.
+ * Test class for {@link org.javamoney.bp.api.AbstractQuery} and  {@link org.javamoney.bp.api.AbstractQueryBuilder}.
  */
 @SuppressWarnings("unchecked")
 public class AbstractQueryTest {

@@ -45,7 +45,7 @@ import java.util.Objects;
 public abstract class BaseExchangeRateProvider implements ExchangeRateProvider{
 
     /**
-     * Checks if an {@link org.javamoney.bp.api.convert.ExchangeRate} between two {@link org.javamoney.bp.CurrencyUnit} is
+     * Checks if an {@link org.javamoney.bp.api.convert.ExchangeRate} between two {@link org.javamoney.bp.api.CurrencyUnit} is
      * available from this provider. This method should check, if a given rate
      * is <i>currently</i> defined.
      *
@@ -71,8 +71,8 @@ public abstract class BaseExchangeRateProvider implements ExchangeRateProvider{
      * deferred. This method should return the rate that is <i>currently</i>
      * valid.
      *
-     * @param base base {@link org.javamoney.bp.CurrencyUnit}, not {@code null}
-     * @param term term {@link org.javamoney.bp.CurrencyUnit}, not {@code null}
+     * @param base base {@link org.javamoney.bp.api.CurrencyUnit}, not {@code null}
+     * @param term term {@link org.javamoney.bp.api.CurrencyUnit}, not {@code null}
      * @throws org.javamoney.bp.api.convert.CurrencyConversionException If no such rate is available.
      */
     public ExchangeRate getExchangeRate(CurrencyUnit base, CurrencyUnit term){
@@ -83,9 +83,9 @@ public abstract class BaseExchangeRateProvider implements ExchangeRateProvider{
 
     /**
      * Access a {@link org.javamoney.bp.api.convert.CurrencyConversion} that can be applied as a
-     * {@link org.javamoney.bp.MonetaryOperator} to an amount.
+     * {@link org.javamoney.bp.api.MonetaryOperator} to an amount.
      *
-     * @param term term {@link org.javamoney.bp.CurrencyUnit}, not {@code null}
+     * @param term term {@link org.javamoney.bp.api.CurrencyUnit}, not {@code null}
      * @return a new instance of a corresponding {@link org.javamoney.bp.api.convert.CurrencyConversion},
      * never {@code null}.
      */
@@ -94,12 +94,12 @@ public abstract class BaseExchangeRateProvider implements ExchangeRateProvider{
     }
 
     /**
-     * Checks if an {@link org.javamoney.bp.api.convert.ExchangeRate} between two {@link org.javamoney.bp.CurrencyUnit} is
+     * Checks if an {@link org.javamoney.bp.api.convert.ExchangeRate} between two {@link org.javamoney.bp.api.CurrencyUnit} is
      * available from this provider. This method should check, if a given rate
      * is <i>currently</i> defined.
      *
-     * @param base the base {@link org.javamoney.bp.CurrencyUnit}
-     * @param term the term {@link org.javamoney.bp.CurrencyUnit}
+     * @param base the base {@link org.javamoney.bp.api.CurrencyUnit}
+     * @param term the term {@link org.javamoney.bp.api.CurrencyUnit}
      * @return {@code true}, if such an {@link org.javamoney.bp.api.convert.ExchangeRate} is currently
      * defined.
      */
@@ -109,7 +109,7 @@ public abstract class BaseExchangeRateProvider implements ExchangeRateProvider{
 
 
     /**
-     * Checks if an {@link org.javamoney.bp.api.convert.ExchangeRate} between two {@link org.javamoney.bp.CurrencyUnit} is
+     * Checks if an {@link org.javamoney.bp.api.convert.ExchangeRate} between two {@link org.javamoney.bp.api.CurrencyUnit} is
      * available from this provider. This method should check, if a given rate
      * is <i>currently</i> defined.
      *
@@ -117,7 +117,7 @@ public abstract class BaseExchangeRateProvider implements ExchangeRateProvider{
      * @param termCode the terminal/target currency code
      * @return {@code true}, if such an {@link org.javamoney.bp.api.convert.ExchangeRate} is currently
      * defined.
-     * @throws org.javamoney.bp.MonetaryException if one of the currency codes passed is not valid.
+     * @throws org.javamoney.bp.api.MonetaryException if one of the currency codes passed is not valid.
      */
     public boolean isAvailable(String baseCode, String termCode){
         return isAvailable(MonetaryCurrencies.getCurrency(baseCode), MonetaryCurrencies.getCurrency(termCode));
@@ -134,7 +134,7 @@ public abstract class BaseExchangeRateProvider implements ExchangeRateProvider{
      * @param termCode term/target currency code, not {@code null}
      * @return the matching {@link org.javamoney.bp.api.convert.ExchangeRate}.
      * @throws org.javamoney.bp.api.convert.CurrencyConversionException If no such rate is available.
-     * @throws org.javamoney.bp.MonetaryException           if one of the currency codes passed is not valid.
+     * @throws org.javamoney.bp.api.MonetaryException           if one of the currency codes passed is not valid.
      */
     public ExchangeRate getExchangeRate(String baseCode, String termCode){
         return getExchangeRate(MonetaryCurrencies.getCurrency(baseCode), MonetaryCurrencies.getCurrency(termCode));
@@ -143,7 +143,7 @@ public abstract class BaseExchangeRateProvider implements ExchangeRateProvider{
 
     /**
      * The method reverses the {@link org.javamoney.bp.api.convert.ExchangeRate} to a rate mapping from term
-     * to base {@link org.javamoney.bp.CurrencyUnit}. Hereby the factor must <b>not</b> be
+     * to base {@link org.javamoney.bp.api.CurrencyUnit}. Hereby the factor must <b>not</b> be
      * recalculated as {@code 1/oldFactor}, since typically reverse rates are
      * not symmetric in most cases.
      *
@@ -162,12 +162,12 @@ public abstract class BaseExchangeRateProvider implements ExchangeRateProvider{
 
     /**
      * Access a {@link org.javamoney.bp.api.convert.CurrencyConversion} that can be applied as a
-     * {@link org.javamoney.bp.MonetaryOperator} to an amount.
+     * {@link org.javamoney.bp.api.MonetaryOperator} to an amount.
      *
      * @param termCode terminal/target currency code, not {@code null}
      * @return a new instance of a corresponding {@link org.javamoney.bp.api.convert.CurrencyConversion},
      * never {@code null}.
-     * @throws org.javamoney.bp.MonetaryException if one of the currency codes passed is not valid.
+     * @throws org.javamoney.bp.api.MonetaryException if one of the currency codes passed is not valid.
      */
     public CurrencyConversion getCurrencyConversion(String termCode){
         return getCurrencyConversion(MonetaryCurrencies.getCurrency(termCode));

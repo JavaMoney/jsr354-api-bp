@@ -16,7 +16,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * SPI (core) for the backing implementation of the {@link org.javamoney.bp.MonetaryAmounts} singleton, implementing
+ * SPI (core) for the backing implementation of the {@link org.javamoney.bp.api.MonetaryAmounts} singleton, implementing
  * the query functionality for amounts.
  *
  * @author Anatole Tresch
@@ -24,17 +24,17 @@ import java.util.Set;
 public abstract class BaseMonetaryAmountsSingletonQuerySpi implements MonetaryAmountsSingletonQuerySpi{
 
     /**
-     * Checks if an {@link org.javamoney.bp.MonetaryAmountFactory} is matching the given query.
+     * Checks if an {@link org.javamoney.bp.api.MonetaryAmountFactory} is matching the given query.
      *
      * @param query the factory query, not null.
-     * @return true, if at least one {@link org.javamoney.bp.MonetaryAmountFactory} matches the query.
+     * @return true, if at least one {@link org.javamoney.bp.api.MonetaryAmountFactory} matches the query.
      */
     public boolean isAvailable(MonetaryAmountFactoryQuery query) {
         return !getAmountFactories(query).isEmpty();
     }
 
     /**
-     * Executes the query and returns the {@link org.javamoney.bp.MonetaryAmount} implementation type found,
+     * Executes the query and returns the {@link org.javamoney.bp.api.MonetaryAmount} implementation type found,
      * if there is only one type.
      * If multiple types match the query, the first one is selected.
      *
@@ -50,7 +50,7 @@ public abstract class BaseMonetaryAmountsSingletonQuerySpi implements MonetaryAm
     }
 
     /**
-     * Executes the query and returns the {@link org.javamoney.bp.MonetaryAmount} implementation types found.
+     * Executes the query and returns the {@link org.javamoney.bp.api.MonetaryAmount} implementation types found.
      *
      * @param query the factory query, not null.
      * @return the type found, or null.
@@ -66,7 +66,7 @@ public abstract class BaseMonetaryAmountsSingletonQuerySpi implements MonetaryAm
     }
 
     /**
-     * Executes the query and returns the {@link org.javamoney.bp.MonetaryAmountFactory} implementation type found,
+     * Executes the query and returns the {@link org.javamoney.bp.api.MonetaryAmountFactory} implementation type found,
      * if there is only one type. If multiple types match the query, the first one is selected.
      *
      * @param query the factory query, not null.

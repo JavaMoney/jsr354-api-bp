@@ -348,7 +348,7 @@ public final class DummyAmount implements MonetaryAmount {
      * Returns an operated object <b>of the same type</b> as this object with the operation made.
      * Hereby returning an instannce <b>of the same type</b> is very important to prevent
      * uncontrolled mixup of implementations. Switching between implementations is still easily
-     * possible, e.g. by using according {@link org.javamoney.bp.MonetaryAmountFactory} instances: <blockquote>
+     * possible, e.g. by using according {@link org.javamoney.bp.api.MonetaryAmountFactory} instances: <blockquote>
      * <p>
      * <pre>
      * // converting from Money to MyMoney

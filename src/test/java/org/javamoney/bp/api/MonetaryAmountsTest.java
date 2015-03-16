@@ -25,7 +25,7 @@ public class MonetaryAmountsTest {
 
     /**
      * Test method for
-     * {@link org.javamoney.bp.MonetaryAmounts#getAmountFactory(Class)}.
+     * {@link org.javamoney.bp.api.MonetaryAmounts#getAmountFactory(Class)}.
      */
     @Test
     public void testGetFactory() {
@@ -36,7 +36,7 @@ public class MonetaryAmountsTest {
     }
 
     /**
-     * Test method for {@link org.javamoney.bp.MonetaryAmounts#getAmountTypes()}.
+     * Test method for {@link org.javamoney.bp.api.MonetaryAmounts#getAmountTypes()}.
      */
     @Test
     public void testGetTypes() {
@@ -47,7 +47,7 @@ public class MonetaryAmountsTest {
 
     /**
      * Test method for
-     * {@link org.javamoney.bp.MonetaryAmounts#getDefaultAmountType()}.
+     * {@link org.javamoney.bp.api.MonetaryAmounts#getDefaultAmountType()}.
      */
     @Test
     public void testGetDefaultAmountFactory() {

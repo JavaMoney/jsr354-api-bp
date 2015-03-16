@@ -33,9 +33,9 @@ public final class CurrencyQueryBuilder extends AbstractQueryBuilder<CurrencyQue
     }
 
     /**
-     * Creates a new instance of {@link org.javamoney.bp.CurrencyQueryBuilder}.
+     * Creates a new instance of {@link org.javamoney.bp.api.CurrencyQueryBuilder}.
      *
-     * @param currencyQuery {@link org.javamoney.bp.CurrencyQuery} used for initializing this builder.
+     * @param currencyQuery {@link org.javamoney.bp.api.CurrencyQuery} used for initializing this builder.
      */
     private CurrencyQueryBuilder(CurrencyQuery currencyQuery) {
         Objects.requireNonNull(currencyQuery);
@@ -77,28 +77,28 @@ public final class CurrencyQueryBuilder extends AbstractQueryBuilder<CurrencyQue
     }
 
     /**
-     * Creates a new instance of {@link org.javamoney.bp.CurrencyQuery}.
+     * Creates a new instance of {@link org.javamoney.bp.api.CurrencyQuery}.
      *
-     * @return a new {@link org.javamoney.bp.CurrencyQuery} instance, never null.
+     * @return a new {@link org.javamoney.bp.api.CurrencyQuery} instance, never null.
      */
     public CurrencyQuery build() {
         return new CurrencyQuery(this);
     }
 
     /**
-     * Creates a new instance of {@link org.javamoney.bp.CurrencyQueryBuilder}.
+     * Creates a new instance of {@link org.javamoney.bp.api.CurrencyQueryBuilder}.
      *
-     * @return a new {@link org.javamoney.bp.CurrencyQueryBuilder} instance, never null.
+     * @return a new {@link org.javamoney.bp.api.CurrencyQueryBuilder} instance, never null.
      */
     public static CurrencyQueryBuilder of() {
         return new CurrencyQueryBuilder();
     }
 
     /**
-     * Creates a new instance of {@link org.javamoney.bp.CurrencyQueryBuilder}.
+     * Creates a new instance of {@link org.javamoney.bp.api.CurrencyQueryBuilder}.
      *
-     * @param currencyQuery {@link org.javamoney.bp.CurrencyQuery} used for initializing this builder.
-     * @return a new {@link org.javamoney.bp.CurrencyQueryBuilder} instance, never null.
+     * @param currencyQuery {@link org.javamoney.bp.api.CurrencyQuery} used for initializing this builder.
+     * @return a new {@link org.javamoney.bp.api.CurrencyQueryBuilder} instance, never null.
      */
     public static CurrencyQueryBuilder of(CurrencyQuery currencyQuery) {
         return new CurrencyQueryBuilder(currencyQuery);

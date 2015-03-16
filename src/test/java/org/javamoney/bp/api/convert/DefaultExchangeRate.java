@@ -26,7 +26,7 @@ import java.util.Objects;
  * to get the corresponding amount in the terminating currency 'B'. Hereby
  * <ul>
  * <li>an exchange rate always models one rate from a baseCurrency (source) to a termCurrency
- * (target) {@link org.javamoney.bp.CurrencyUnit}.</li>
+ * (target) {@link org.javamoney.bp.api.CurrencyUnit}.</li>
  * <li>an exchange rate is always bound to a rate type, which typically matches
  * the data source of the conversion data, e.g. different credit card providers
  * may use different rates for the same conversion.</li>
@@ -68,8 +68,8 @@ import java.util.Objects;
  * exchange rates are {@link java.io.Serializable}, hereby serializing in the following
  * form and order:
  * <ul>
- * <li>The baseCurrency {@link org.javamoney.bp.CurrencyUnit}
- * <li>The target {@link org.javamoney.bp.CurrencyUnit}
+ * <li>The baseCurrency {@link org.javamoney.bp.api.CurrencyUnit}
+ * <li>The target {@link org.javamoney.bp.api.CurrencyUnit}
  * <li>The factor (NumberValue)
  * <li>The {@link ConversionContext}
  * <li>The rate chain
@@ -158,18 +158,18 @@ public class DefaultExchangeRate implements ExchangeRate, Serializable, Comparab
     }
 
     /**
-     * Get the baseCurrency (source) {@link org.javamoney.bp.CurrencyUnit}.
+     * Get the baseCurrency (source) {@link org.javamoney.bp.api.CurrencyUnit}.
      *
-     * @return the baseCurrency {@link org.javamoney.bp.CurrencyUnit}.
+     * @return the baseCurrency {@link org.javamoney.bp.api.CurrencyUnit}.
      */
     public final CurrencyUnit getBaseCurrency() {
         return this.baseCurrency;
     }
 
     /**
-     * Get the termCurrency (target) {@link org.javamoney.bp.CurrencyUnit}.
+     * Get the termCurrency (target) {@link org.javamoney.bp.api.CurrencyUnit}.
      *
-     * @return the termCurrency {@link org.javamoney.bp.CurrencyUnit}.
+     * @return the termCurrency {@link org.javamoney.bp.api.CurrencyUnit}.
      */
     public final CurrencyUnit getCurrency() {
         return this.termCurrency;
@@ -319,9 +319,9 @@ public class DefaultExchangeRate implements ExchangeRate, Serializable, Comparab
         }
 
         /**
-         * Sets the baseCurrency {@link org.javamoney.bp.CurrencyUnit}
+         * Sets the baseCurrency {@link org.javamoney.bp.api.CurrencyUnit}
          *
-         * @param base to baseCurrency (source) {@link org.javamoney.bp.CurrencyUnit} to be applied
+         * @param base to baseCurrency (source) {@link org.javamoney.bp.api.CurrencyUnit} to be applied
          * @return the builder instance
          */
         public Builder setBaseCurrency(CurrencyUnit base) {
@@ -330,9 +330,9 @@ public class DefaultExchangeRate implements ExchangeRate, Serializable, Comparab
         }
 
         /**
-         * Sets the terminating (target) {@link org.javamoney.bp.CurrencyUnit}
+         * Sets the terminating (target) {@link org.javamoney.bp.api.CurrencyUnit}
          *
-         * @param term to terminating {@link org.javamoney.bp.CurrencyUnit} to be applied
+         * @param term to terminating {@link org.javamoney.bp.api.CurrencyUnit} to be applied
          * @return the builder instance
          */
         public Builder setTermCurrency(CurrencyUnit term) {

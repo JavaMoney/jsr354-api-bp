@@ -24,7 +24,7 @@ import java.util.Set;
 import org.testng.annotations.Test;
 
 /**
- * Tests for {@link org.javamoney.bp.AbstractContext}.
+ * Tests for {@link org.javamoney.bp.api.AbstractContext}.
  */
 public class AbstractContextTest {
     @Test

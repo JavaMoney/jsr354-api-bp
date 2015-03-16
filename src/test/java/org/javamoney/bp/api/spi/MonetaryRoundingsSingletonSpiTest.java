@@ -79,16 +79,16 @@ public class MonetaryRoundingsSingletonSpiTest {
         }
 
         /**
-         * Access a {@link org.javamoney.bp.MonetaryRounding} for rounding {@link org.javamoney.bp.MonetaryAmount}
+         * Access a {@link org.javamoney.bp.api.MonetaryRounding} for rounding {@link org.javamoney.bp.api.MonetaryAmount}
          * instances given a currency.
          *
          * @param currencyUnit The currency, which determines the required precision. As
          *                     {@link java.math.RoundingMode}, by default, {@link java.math.RoundingMode#HALF_UP}
          *                     is sued.
          * @param providers    the optional provider list and ordering to be used
-         * @return a new instance {@link org.javamoney.bp.MonetaryOperator} implementing the
+         * @return a new instance {@link org.javamoney.bp.api.MonetaryOperator} implementing the
          * rounding, never {@code null}.
-         * @throws org.javamoney.bp.MonetaryException if no such rounding could be provided.
+         * @throws org.javamoney.bp.api.MonetaryException if no such rounding could be provided.
          */
         public MonetaryRounding getRounding(CurrencyUnit currencyUnit, String... providers) {
             MonetaryRounding op =

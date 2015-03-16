@@ -114,7 +114,7 @@ public class MonetaryAmountTest {
 
     /**
      * Test method for
-     * {@link org.javamoney.bp.MonetaryAmount#isNegativeOrZero()}}.
+     * {@link org.javamoney.bp.api.MonetaryAmount#isNegativeOrZero()}}.
      */
     @Test
     public void testIsNegativeOrZeroWithNegativeSignumReturnsTrue() throws Exception {
@@ -130,7 +130,7 @@ public class MonetaryAmountTest {
 
     /**
      * Test method for
-     * {@link org.javamoney.bp.MonetaryAmount#isNegativeOrZero()}}.
+     * {@link org.javamoney.bp.api.MonetaryAmount#isNegativeOrZero()}}.
      */
     @Test
     public void testIsNegativeOrZeroWithZeroSignumReturnsTrue() throws Exception {
@@ -146,7 +146,7 @@ public class MonetaryAmountTest {
 
     /**
      * Test method for
-     * {@link org.javamoney.bp.MonetaryAmount#isNegativeOrZero()}}.
+     * {@link org.javamoney.bp.api.MonetaryAmount#isNegativeOrZero()}}.
      */
     @Test
     public void testIsNegativeOrZeroWithPositiveSignumReturnsFalse() throws Exception {
@@ -211,7 +211,7 @@ public class MonetaryAmountTest {
 
     /**
      * Test method for
-     * {@link org.javamoney.bp.MonetaryAmount#isPositiveOrZero()}.
+     * {@link org.javamoney.bp.api.MonetaryAmount#isPositiveOrZero()}.
      */
     @Test
     public void testIsPositiveOrZeroWithPositiveSignumReturnsTrue() throws Exception {
@@ -227,7 +227,7 @@ public class MonetaryAmountTest {
 
     /**
      * Test method for
-     * {@link org.javamoney.bp.MonetaryAmount#isPositiveOrZero()}.
+     * {@link org.javamoney.bp.api.MonetaryAmount#isPositiveOrZero()}.
      */
     @Test
     public void testIsPositiveOrZeroWithZeroSignumReturnsTrue() throws Exception {
@@ -243,7 +243,7 @@ public class MonetaryAmountTest {
 
     /**
      * Test method for
-     * {@link org.javamoney.bp.MonetaryAmount#isPositiveOrZero()}.
+     * {@link org.javamoney.bp.api.MonetaryAmount#isPositiveOrZero()}.
      */
     @Test
     public void testIsPositiveOrZeroWithNegativeSignumReturnsFalse() throws Exception {
@@ -259,7 +259,7 @@ public class MonetaryAmountTest {
 
     /**
      * Test method for
-     * {@link org.javamoney.bp.MonetaryAmount#isZero()}.
+     * {@link org.javamoney.bp.api.MonetaryAmount#isZero()}.
      */
     @Test
     public void testIsZeroWithPositiveSignumReturnsFalse() throws Exception {
@@ -275,7 +275,7 @@ public class MonetaryAmountTest {
 
     /**
      * Test method for
-     * {@link org.javamoney.bp.MonetaryAmount#isZero()}.
+     * {@link org.javamoney.bp.api.MonetaryAmount#isZero()}.
      */
     @Test
     public void testIsZeroWithZeroSignumReturnsTrue() throws Exception {
@@ -291,7 +291,7 @@ public class MonetaryAmountTest {
 
     /**
      * Test method for
-     * {@link org.javamoney.bp.MonetaryAmount#isZero()}.
+     * {@link org.javamoney.bp.api.MonetaryAmount#isZero()}.
      */
     @Test
     public void testIsZeroWithNegativeSignumReturnsFalse() throws Exception {

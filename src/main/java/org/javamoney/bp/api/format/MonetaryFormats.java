@@ -205,7 +205,7 @@ public final class MonetaryFormats {
          *
          * @param formatQuery The format query defining the requirements of the formatter.
          * @return the corresponding {@link org.javamoney.bp.api.format.MonetaryAmountFormat}
-         * @throws org.javamoney.bp.MonetaryException if no registered {@link org.javamoney.bp.api.spi
+         * @throws org.javamoney.bp.api.MonetaryException if no registered {@link org.javamoney.bp.api.spi
          *                                       .MonetaryAmountFormatProviderSpi} can provide a
          *                                       corresponding {@link org.javamoney.bp.api.format.MonetaryAmountFormat} instance.
          */
@@ -291,7 +291,7 @@ public final class MonetaryFormats {
          *
          * @param formatQuery The format query defining the requirements of the formatter.
          * @return the corresponding {@link org.javamoney.bp.api.format.MonetaryAmountFormat}
-         * @throws org.javamoney.bp.MonetaryException if no registered {@link org.javamoney.bp.api.spi
+         * @throws org.javamoney.bp.api.MonetaryException if no registered {@link org.javamoney.bp.api.spi
          *                                       .MonetaryAmountFormatProviderSpi} can provide a
          *                                       corresponding {@link org.javamoney.bp.api.format.MonetaryAmountFormat} instance.
          */
@@ -332,7 +332,7 @@ public final class MonetaryFormats {
          * @param locale    the target {@link java.util.Locale}, not {@code null}.
          * @param providers The (optional) providers to be used, oredered correspondingly.
          * @return the matching {@link org.javamoney.bp.api.format.MonetaryAmountFormat}
-         * @throws org.javamoney.bp.MonetaryException if no registered {@link org.javamoney.bp.api.spi.MonetaryAmountFormatProviderSpi} can provide a
+         * @throws org.javamoney.bp.api.MonetaryException if no registered {@link org.javamoney.bp.api.spi.MonetaryAmountFormatProviderSpi} can provide a
          *                           corresponding {@link org.javamoney.bp.api.format.MonetaryAmountFormat} instance.
          */
         public MonetaryAmountFormat getAmountFormat(Locale locale, String... providers) {
@@ -345,7 +345,7 @@ public final class MonetaryFormats {
          * @param formatName the target format name, not {@code null}.
          * @param providers  The (optional) providers to be used, oredered correspondingly.
          * @return the matching {@link org.javamoney.bp.api.format.MonetaryAmountFormat}
-         * @throws org.javamoney.bp.MonetaryException if no registered {@link org.javamoney.bp.api.spi.MonetaryAmountFormatProviderSpi} can provide a
+         * @throws org.javamoney.bp.api.MonetaryException if no registered {@link org.javamoney.bp.api.spi.MonetaryAmountFormatProviderSpi} can provide a
          *                           corresponding {@link org.javamoney.bp.api.format.MonetaryAmountFormat} instance.
          */
         public MonetaryAmountFormat getAmountFormat(String formatName, String... providers) {

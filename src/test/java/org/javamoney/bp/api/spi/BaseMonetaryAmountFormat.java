@@ -87,7 +87,7 @@ import java.io.IOException;
 public abstract class BaseMonetaryAmountFormat implements MonetaryAmountFormat{
 
     /**
-     * Formats the given {@link org.javamoney.bp.MonetaryAmount} to a String.
+     * Formats the given {@link org.javamoney.bp.api.MonetaryAmount} to a String.
      *
      * @param amount the amount to format, not {@code null}
      * @return the string printed using the settings of this formatter

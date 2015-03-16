@@ -23,7 +23,7 @@ public final class MonetaryAmountFactoryQueryBuilder
         extends AbstractQueryBuilder<MonetaryAmountFactoryQueryBuilder,MonetaryAmountFactoryQuery>{
 
     /**
-     * Creates a new instance of {@link org.javamoney.bp.CurrencyQueryBuilder}.
+     * Creates a new instance of {@link org.javamoney.bp.api.CurrencyQueryBuilder}.
      *
      * @param monetaryAmountFactoryQuery {@link MonetaryAmountFactoryQuery} used for initializing this
      */
@@ -81,20 +81,20 @@ public final class MonetaryAmountFactoryQueryBuilder
     }
 
     /**
-     * Creates a new instance of {@link org.javamoney.bp.CurrencyQueryBuilder}.
+     * Creates a new instance of {@link org.javamoney.bp.api.CurrencyQueryBuilder}.
      *
-     * @return a new {@link org.javamoney.bp.CurrencyQueryBuilder} instance, never null.
+     * @return a new {@link org.javamoney.bp.api.CurrencyQueryBuilder} instance, never null.
      */
     public static MonetaryAmountFactoryQueryBuilder of(){
         return new MonetaryAmountFactoryQueryBuilder();
     }
 
     /**
-     * Creates a new instance of {@link org.javamoney.bp.CurrencyQueryBuilder}.
+     * Creates a new instance of {@link org.javamoney.bp.api.CurrencyQueryBuilder}.
      *
      * @param monetaryAmountFactoryQuery {@link MonetaryAmountFactoryQuery} used for initializing this
      *                                   builder.
-     * @return a new {@link org.javamoney.bp.MonetaryAmountFactoryQueryBuilder} instance, never null.
+     * @return a new {@link org.javamoney.bp.api.MonetaryAmountFactoryQueryBuilder} instance, never null.
      */
 
     public static MonetaryAmountFactoryQueryBuilder of(MonetaryAmountFactoryQuery monetaryAmountFactoryQuery){

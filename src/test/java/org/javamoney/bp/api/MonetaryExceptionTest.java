@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Tests for {@link org.javamoney.bp.MonetaryException}.
+ * Tests for {@link org.javamoney.bp.api.MonetaryException}.
  */
 public class MonetaryExceptionTest{
     @Test

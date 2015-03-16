@@ -76,7 +76,7 @@ public class TestMonetaryConversionsSingletonSpi implements MonetaryConversionsS
      * {@link org.javamoney.bp.api.convert.CurrencyConversion} can be
      * accessed.
      * @see #getConversion(org.javamoney.bp.api.convert.ConversionQuery)
-     * @see #getConversion(org.javamoney.bp.CurrencyUnit, String...)}
+     * @see #getConversion(org.javamoney.bp.api.CurrencyUnit, String...)}
      */
     public boolean isConversionAvailable(CurrencyUnit termCurrency, String... providers) {
         return isConversionAvailable(
@@ -89,7 +89,7 @@ public class TestMonetaryConversionsSingletonSpi implements MonetaryConversionsS
      *
      * @param providers the provider names of hte providers to be accessed
      * @return the list of providers, in the same order as requested.
-     * @throws org.javamoney.bp.MonetaryException if a provider could not be resolved.
+     * @throws org.javamoney.bp.api.MonetaryException if a provider could not be resolved.
      */
     public List<ExchangeRateProvider> getExchangeRateProviders(String... providers) {
         List<ExchangeRateProvider> provInstances = new ArrayList<ExchangeRateProvider>();
@@ -117,7 +117,7 @@ public class TestMonetaryConversionsSingletonSpi implements MonetaryConversionsS
      *                  provider changes as defined in #getDefaultProviderChain will be used.
      * @return an {@link org.javamoney.bp.api.convert.ExchangeRateProvider} built up with the given sub
      * providers, never {@code null}.
-     * @throws org.javamoney.bp.MonetaryException if a provider listed could not be found.
+     * @throws org.javamoney.bp.api.MonetaryException if a provider listed could not be found.
      * @see #getProviderNames()
      * @see #isExchangeRateProviderAvailable(org.javamoney.bp.api.convert.ConversionQuery)
      */
@@ -131,7 +131,7 @@ public class TestMonetaryConversionsSingletonSpi implements MonetaryConversionsS
      * @param conversionQuery the {@link org.javamoney.bp.api.convert.ConversionQuery} determining the type of conversion
      *                        required, not null.
      * @return the corresponding conversion, not null.
-     * @throws org.javamoney.bp.MonetaryException if no matching conversion could be found.
+     * @throws org.javamoney.bp.api.MonetaryException if no matching conversion could be found.
      * @see #isConversionAvailable(org.javamoney.bp.api.convert.ConversionQuery)
      */
     public CurrencyConversion getConversion(ConversionQuery conversionQuery) {
@@ -149,7 +149,7 @@ public class TestMonetaryConversionsSingletonSpi implements MonetaryConversionsS
      *                     .money.convert.CurrencyConversion}. By default the default
      *                     provider chain as defined by #getDefaultProviderChain will be used.
      * @return the corresponding conversion, not null.
-     * @throws org.javamoney.bp.MonetaryException if no matching conversion could be found.
+     * @throws org.javamoney.bp.api.MonetaryException if no matching conversion could be found.
      * @see #isConversionAvailable(org.javamoney.bp.api.convert.ConversionQuery)
      */
     public CurrencyConversion getConversion(CurrencyUnit termCurrency, String... providers) {
@@ -246,8 +246,8 @@ public class TestMonetaryConversionsSingletonSpi implements MonetaryConversionsS
          * deferred. This method should return the rate that is <i>currently</i>
          * valid.
          *
-         * @param base base {@link org.javamoney.bp.CurrencyUnit}, not {@code null}
-         * @param term term {@link org.javamoney.bp.CurrencyUnit}, not {@code null}
+         * @param base base {@link org.javamoney.bp.api.CurrencyUnit}, not {@code null}
+         * @param term term {@link org.javamoney.bp.api.CurrencyUnit}, not {@code null}
          * @throws org.javamoney.bp.api.convert.CurrencyConversionException If no such rate is available.
          */
         public ExchangeRate getExchangeRate(CurrencyUnit base, CurrencyUnit term){
@@ -258,9 +258,9 @@ public class TestMonetaryConversionsSingletonSpi implements MonetaryConversionsS
 
         /**
          * Access a {@link org.javamoney.bp.api.convert.CurrencyConversion} that can be applied as a
-         * {@link org.javamoney.bp.MonetaryOperator} to an amount.
+         * {@link org.javamoney.bp.api.MonetaryOperator} to an amount.
          *
-         * @param term term {@link org.javamoney.bp.CurrencyUnit}, not {@code null}
+         * @param term term {@link org.javamoney.bp.api.CurrencyUnit}, not {@code null}
          * @return a new instance of a corresponding {@link org.javamoney.bp.api.convert.CurrencyConversion},
          * never {@code null}.
          */
@@ -269,7 +269,7 @@ public class TestMonetaryConversionsSingletonSpi implements MonetaryConversionsS
         }
 
         /**
-         * Checks if an {@link org.javamoney.bp.api.convert.ExchangeRate} between two {@link org.javamoney.bp.CurrencyUnit} is
+         * Checks if an {@link org.javamoney.bp.api.convert.ExchangeRate} between two {@link org.javamoney.bp.api.CurrencyUnit} is
          * available from this provider. This method should check, if a given rate
          * is <i>currently</i> defined.
          *
@@ -277,7 +277,7 @@ public class TestMonetaryConversionsSingletonSpi implements MonetaryConversionsS
          * @param termCode the terminal/target currency code
          * @return {@code true}, if such an {@link org.javamoney.bp.api.convert.ExchangeRate} is currently
          * defined.
-         * @throws org.javamoney.bp.MonetaryException if one of the currency codes passed is not valid.
+         * @throws org.javamoney.bp.api.MonetaryException if one of the currency codes passed is not valid.
          */
         public boolean isAvailable(String baseCode, String termCode){
             return isAvailable(MonetaryCurrencies.getCurrency(baseCode), MonetaryCurrencies.getCurrency(termCode));
@@ -294,7 +294,7 @@ public class TestMonetaryConversionsSingletonSpi implements MonetaryConversionsS
          * @param termCode term/target currency code, not {@code null}
          * @return the matching {@link org.javamoney.bp.api.convert.ExchangeRate}.
          * @throws org.javamoney.bp.api.convert.CurrencyConversionException If no such rate is available.
-         * @throws org.javamoney.bp.MonetaryException           if one of the currency codes passed is not valid.
+         * @throws org.javamoney.bp.api.MonetaryException           if one of the currency codes passed is not valid.
          */
         public ExchangeRate getExchangeRate(String baseCode, String termCode){
             return getExchangeRate(MonetaryCurrencies.getCurrency(baseCode), MonetaryCurrencies.getCurrency(termCode));
@@ -302,12 +302,12 @@ public class TestMonetaryConversionsSingletonSpi implements MonetaryConversionsS
 
         /**
          * Access a {@link org.javamoney.bp.api.convert.CurrencyConversion} that can be applied as a
-         * {@link org.javamoney.bp.MonetaryOperator} to an amount.
+         * {@link org.javamoney.bp.api.MonetaryOperator} to an amount.
          *
          * @param termCode terminal/target currency code, not {@code null}
          * @return a new instance of a corresponding {@link org.javamoney.bp.api.convert.CurrencyConversion},
          * never {@code null}.
-         * @throws org.javamoney.bp.MonetaryException if one of the currency codes passed is not valid.
+         * @throws org.javamoney.bp.api.MonetaryException if one of the currency codes passed is not valid.
          */
         public CurrencyConversion getCurrencyConversion(String termCode){
             return getCurrencyConversion(MonetaryCurrencies.getCurrency(termCode));

@@ -17,7 +17,7 @@ import java.util.Set;
 
 /**
  * This SPI allows to extends/override the roundings available for
- * {@link org.javamoney.bp.CurrencyUnit}. The JSRs implementation already provides default
+ * {@link org.javamoney.bp.api.CurrencyUnit}. The JSRs implementation already provides default
  * roundings. By registering instances of this interface using the
  * {@link org.javamoney.bp.api.spi.Bootstrap}, the default behaviour can be
  * overridden and extended, e.g. for supporting also special roundings.

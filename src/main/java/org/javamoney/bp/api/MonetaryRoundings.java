@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 
 /**
  * This class models the accessor for rounding instances, modeled as
- * {@link org.javamoney.bp.MonetaryOperator}.
+ * {@link org.javamoney.bp.api.MonetaryOperator}.
  * <p>
  * This class is thread-safe.
  *
@@ -70,7 +70,7 @@ public final class MonetaryRoundings {
     /**
      * Creates a rounding that can be added as {@link MonetaryOperator} to
      * chained calculations. The instance will lookup the concrete
-     * {@link MonetaryOperator} instance from the {@link org.javamoney.bp.MonetaryRoundings}
+     * {@link MonetaryOperator} instance from the {@link org.javamoney.bp.api.MonetaryRoundings}
      * based on the input {@link MonetaryAmount}'s {@link CurrencyUnit}.
      *
      * @return the (shared) default rounding instance.
@@ -126,7 +126,7 @@ public final class MonetaryRoundings {
      *
      * @param roundingQuery The {@link RoundingQuery} that may contains arbitrary parameters to be
      *                      evaluated.
-     * @return the corresponding {@link org.javamoney.bp.MonetaryRounding}, never {@code null}.
+     * @return the corresponding {@link org.javamoney.bp.api.MonetaryRounding}, never {@code null}.
      * @throws IllegalArgumentException if no such rounding is registered using a
      *                                  {@link RoundingProviderSpi} instance.
      */
@@ -143,7 +143,7 @@ public final class MonetaryRoundings {
      * @param roundingName The rounding identifier.
      * @param providers    the providers and ordering to be used. By default providers and ordering as defined in
      *                     #getDefaultProviders is used.
-     * @return true, if a corresponding {@link org.javamoney.bp.MonetaryRounding} is available.
+     * @return true, if a corresponding {@link org.javamoney.bp.api.MonetaryRounding} is available.
      * @throws IllegalArgumentException if no such rounding is registered using a
      *                                  {@link RoundingProviderSpi} instance.
      */
@@ -161,7 +161,7 @@ public final class MonetaryRoundings {
      *                     by default, {@link java.math.RoundingMode#HALF_UP} is used.
      * @param providers    the providers and ordering to be used. By default providers and ordering as defined in
      *                     #getDefaultProviders is used.
-     * @return true, if a corresponding {@link org.javamoney.bp.MonetaryRounding} is available.
+     * @return true, if a corresponding {@link org.javamoney.bp.api.MonetaryRounding} is available.
      * @throws IllegalArgumentException if no such rounding is registered using a
      *                                  {@link RoundingProviderSpi} instance.
      */
@@ -177,7 +177,7 @@ public final class MonetaryRoundings {
      *
      * @param roundingQuery The {@link RoundingQuery} that may contains arbitrary parameters to be
      *                      evaluated.
-     * @return true, if a corresponding {@link org.javamoney.bp.MonetaryRounding} is available.
+     * @return true, if a corresponding {@link org.javamoney.bp.api.MonetaryRounding} is available.
      * @throws IllegalArgumentException if no such rounding is registered using a
      *                                  {@link RoundingProviderSpi} instance.
      */
@@ -194,7 +194,7 @@ public final class MonetaryRoundings {
      *
      * @param roundingQuery The {@link RoundingQuery} that may contains arbitrary parameters to be
      *                      evaluated.
-     * @return all {@link org.javamoney.bp.MonetaryRounding} instances macthing the query, never {@code null}.
+     * @return all {@link org.javamoney.bp.api.MonetaryRounding} instances macthing the query, never {@code null}.
      */
     public static Collection<MonetaryRounding> getRoundings(RoundingQuery roundingQuery) {
         if(monetaryRoundingsSpi==null){
@@ -279,9 +279,9 @@ public final class MonetaryRoundings {
         /**
          * Creates an rounding instance using {@link java.math.RoundingMode#UP} rounding.
          *
-         * @return the corresponding {@link org.javamoney.bp.MonetaryOperator} implementing the
+         * @return the corresponding {@link org.javamoney.bp.api.MonetaryOperator} implementing the
          * rounding.
-         * @throws org.javamoney.bp.MonetaryException if no such rounding could be evaluated.
+         * @throws org.javamoney.bp.api.MonetaryException if no such rounding could be evaluated.
          */
         public RoundingQueryBuilder createRoundingQueryBuilder() {
             throw new IllegalStateException("No MonetaryRoundingsSingletonSpi registered.");
@@ -391,16 +391,16 @@ public final class MonetaryRoundings {
         }
 
         /**
-         * Access a {@link org.javamoney.bp.MonetaryRounding} for rounding {@link org.javamoney.bp.MonetaryAmount}
+         * Access a {@link org.javamoney.bp.api.MonetaryRounding} for rounding {@link org.javamoney.bp.api.MonetaryAmount}
          * instances given a currency.
          *
          * @param currencyUnit The currency, which determines the required precision. As
          *                     {@link java.math.RoundingMode}, by default, {@link java.math.RoundingMode#HALF_UP}
          *                     is sued.
          * @param providers    the optional provider list and ordering to be used
-         * @return a new instance {@link org.javamoney.bp.MonetaryOperator} implementing the
+         * @return a new instance {@link org.javamoney.bp.api.MonetaryOperator} implementing the
          * rounding, never {@code null}.
-         * @throws org.javamoney.bp.MonetaryException if no such rounding could be provided.
+         * @throws org.javamoney.bp.api.MonetaryException if no such rounding could be provided.
          */
         public MonetaryRounding getRounding(CurrencyUnit currencyUnit, String... providers) {
             MonetaryRounding op =
@@ -414,11 +414,11 @@ public final class MonetaryRoundings {
 
 
         /**
-         * Access a {@link org.javamoney.bp.MonetaryRounding} using the rounding name.
+         * Access a {@link org.javamoney.bp.api.MonetaryRounding} using the rounding name.
          *
          * @param roundingName The rounding name, not null.
          * @param providers    the optional provider list and ordering to be used
-         * @return the corresponding {@link org.javamoney.bp.MonetaryOperator} implementing the
+         * @return the corresponding {@link org.javamoney.bp.api.MonetaryOperator} implementing the
          * rounding, never {@code null}.
          * @throws IllegalArgumentException if no such rounding is registered using a
          *                                  {@link RoundingProviderSpi} instance.
@@ -450,7 +450,7 @@ public final class MonetaryRoundings {
         }
 
         /**
-         * Checks if any {@link org.javamoney.bp.MonetaryRounding} is matching the given query.
+         * Checks if any {@link org.javamoney.bp.api.MonetaryRounding} is matching the given query.
          *
          * @param query the rounding query, not null.
          * @return true, if at least one rounding matches the query.
@@ -460,12 +460,12 @@ public final class MonetaryRoundings {
         }
 
         /**
-         * Checks if a {@link org.javamoney.bp.MonetaryRounding} is available given a roundingId.
+         * Checks if a {@link org.javamoney.bp.api.MonetaryRounding} is available given a roundingId.
          *
          * @param roundingId The rounding identifier.
          * @param providers  the providers and ordering to be used. By default providers and ordering as defined in
          *                   #getDefaultProviders is used.
-         * @return true, if a corresponding {@link org.javamoney.bp.MonetaryRounding} is available.
+         * @return true, if a corresponding {@link org.javamoney.bp.api.MonetaryRounding} is available.
          * @throws IllegalArgumentException if no such rounding is registered using a
          *                                  {@link org.javamoney.bp.api.spi.RoundingProviderSpi} instance.
          */
@@ -475,13 +475,13 @@ public final class MonetaryRoundings {
         }
 
         /**
-         * Checks if a {@link org.javamoney.bp.MonetaryRounding} is available given a {@link org.javamoney.bp.CurrencyUnit}.
+         * Checks if a {@link org.javamoney.bp.api.MonetaryRounding} is available given a {@link org.javamoney.bp.api.CurrencyUnit}.
          *
          * @param currencyUnit The currency, which determines the required precision. As {@link java.math.RoundingMode},
          *                     by default, {@link java.math.RoundingMode#HALF_UP} is used.
          * @param providers    the providers and ordering to be used. By default providers and ordering as defined in
          *                     #getDefaultProviders is used.
-         * @return true, if a corresponding {@link org.javamoney.bp.MonetaryRounding} is available.
+         * @return true, if a corresponding {@link org.javamoney.bp.api.MonetaryRounding} is available.
          * @throws IllegalArgumentException if no such rounding is registered using a
          *                                  {@link org.javamoney.bp.api.spi.RoundingProviderSpi} instance.
          */
