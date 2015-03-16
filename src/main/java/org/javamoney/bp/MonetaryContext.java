@@ -111,8 +111,7 @@ public final class MonetaryContext extends AbstractContext implements Serializab
     }
 
     /**
-     * This method allows to easily of a new MonetaryContext instance from a given {@link javax.money
-     * .MonetaryAmountFactoryQuery}.
+     * This method allows to easily of a new MonetaryContext instance from a given {@link MonetaryAmountFactoryQuery}.
      *
      * @param monetaryAmountFactoryQuery the monetary amount factory query, not null.
      * @param amountClass                the targeted implementation type.

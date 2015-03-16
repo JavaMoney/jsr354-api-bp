@@ -21,6 +21,7 @@ import static org.testng.AssertJUnit.*;
 /**
  * Tests the default methods on MonetaryAmountsSingletonSpi.
  */
+@SuppressWarnings("unchecked")
 public class MonetaryCurrenciesSingletonSpiTest {
 
     private MonetaryCurrenciesSingletonSpi testSpi = new BaseMonetaryCurrenciesSingletonSpi() {

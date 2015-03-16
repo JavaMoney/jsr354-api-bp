@@ -48,7 +48,7 @@ public abstract class AbstractQuery extends AbstractContext {
 
     /**
      * Returns the providers and their ordering to be considered. This information typically must be interpreted by the
-     * singleton SPI implementations, which are backing the singleton accessors.
+     * singleton SPI implementations, which are backing the singleton accessor.
      * If the list returned is empty, the default provider list,
      * determined by methods like {@code getDefaultProviderNames()} should be used.
      *
@@ -56,6 +56,7 @@ public abstract class AbstractQuery extends AbstractContext {
      */
     public List<String> getProviderNames() {
 
+        //noinspection unchecked
         List<String> result = get(KEY_QUERY_PROVIDERS, List.class);
         if (result == null) {
             return Collections.emptyList();

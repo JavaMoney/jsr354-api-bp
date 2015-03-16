@@ -40,7 +40,7 @@ public final class CurrencyContext extends AbstractContext implements Serializab
 
     /**
      * Allows to convert a instance into the corresponding {@link CurrencyContextBuilder}, which allows
-     * to change the values and of another {@link javax.money.CurrencyContext} instance.
+     * to change the values and of another {@link CurrencyContext} instance.
      *
      * @return a new Builder instance, preinitialized with the values from this instance.
      */

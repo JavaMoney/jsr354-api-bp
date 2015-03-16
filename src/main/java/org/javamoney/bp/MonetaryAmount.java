@@ -20,9 +20,9 @@ package org.javamoney.bp;
  * This context contains detailed information on the numeric capabilities, e.g. the supported
  * precision and maximal scale, as well as the common implementation flavor.
  * <p/>
- * Also a {@link javax.money.MonetaryAmount} provides a {@link NumberValue}, which allows easily to extract the
+ * Also a {@link org.javamoney.bp.MonetaryAmount} provides a {@link NumberValue}, which allows easily to extract the
  * numeric value, of the amount. And finally {@link #getFactory()} provides a
- * {@link MonetaryAmountFactory}, which allows to of instances of {@link javax.money.MonetaryAmount} based
+ * {@link MonetaryAmountFactory}, which allows to of instances of {@link org.javamoney.bp.MonetaryAmount} based
  * on the same numeric implementation.
  * <p/>
  * This JSR additionally recommends to consider the following aspects:
@@ -34,7 +34,7 @@ package org.javamoney.bp;
  * representation of a monetary amount.
  * <li>Monetary amounts should allow numbers as argument for arithmetic operations like division and
  * multiplication. Adding or subtracting of amounts must only be possible by passing instances of
- * {@link javax.money.MonetaryAmount}.</li>
+ * {@link org.javamoney.bp.MonetaryAmount}.</li>
  * <li>Nevertheless numeric truncation is also explicitly supported when calling
  * {@link NumberValue#numberValue(Class)}, whereas the <i>exact</i> counterpart,
  * {@link NumberValue#numberValueExact(Class)}, works similar to
@@ -180,13 +180,13 @@ public interface MonetaryAmount extends CurrencySupplier, NumberSupplier, Compar
      * This method is used for creating a new amount result after having done calculations that are
      * not directly mappable to themonetary arithmetics, e.g. currency conversion.
      *
-     * @return the new {@code MonetaryAmountFactory} with the given {@link javax.money.MonetaryAmount} as its
+     * @return the new {@code MonetaryAmountFactory} with the given {@link org.javamoney.bp.MonetaryAmount} as its
      * values.
      */
     MonetaryAmountFactory<? extends MonetaryAmount> getFactory();
 
     /**
-     * Compares two instances of {@link javax.money.MonetaryAmount}, hereby ignoring non significant trailing
+     * Compares two instances of {@link org.javamoney.bp.MonetaryAmount}, hereby ignoring non significant trailing
      * zeroes and different numeric capabilities.
      *
      * @param amount the {@code MonetaryAmount} to be compared with this instance.
@@ -196,40 +196,40 @@ public interface MonetaryAmount extends CurrencySupplier, NumberSupplier, Compar
     boolean isGreaterThan(MonetaryAmount amount);
 
     /**
-     * Compares two instances of {@link javax.money.MonetaryAmount}, hereby ignoring non significant trailing
+     * Compares two instances of {@link org.javamoney.bp.MonetaryAmount}, hereby ignoring non significant trailing
      * zeroes and different numeric capabilities.
      *
-     * @param amount the {@link javax.money.MonetaryAmount} to be compared with this instance.
+     * @param amount the {@link org.javamoney.bp.MonetaryAmount} to be compared with this instance.
      * @return {@code true} if {@code amount >= this}.
      * @throws MonetaryException if the amount's currency is not equals to the currency of this instance.
      */
     boolean isGreaterThanOrEqualTo(MonetaryAmount amount);
 
     /**
-     * Compares two instances of {@link javax.money.MonetaryAmount}, hereby ignoring non significant trailing
+     * Compares two instances of {@link org.javamoney.bp.MonetaryAmount}, hereby ignoring non significant trailing
      * zeroes and different numeric capabilities.
      *
-     * @param amount the {@link javax.money.MonetaryAmount} to be compared with this instance.
+     * @param amount the {@link org.javamoney.bp.MonetaryAmount} to be compared with this instance.
      * @return {@code true} if {@code amount < this}.
      * @throws MonetaryException if the amount's currency is not equals to the currency of this instance.
      */
     boolean isLessThan(MonetaryAmount amount);
 
     /**
-     * Compares two instances of {@link javax.money.MonetaryAmount}, hereby ignoring non significant trailing
+     * Compares two instances of {@link org.javamoney.bp.MonetaryAmount}, hereby ignoring non significant trailing
      * zeroes and different numeric capabilities.
      *
-     * @param amt the {@link javax.money.MonetaryAmount} to be compared with this instance.
+     * @param amt the {@link org.javamoney.bp.MonetaryAmount} to be compared with this instance.
      * @return {@code true} if {@code amount <= this}.
      * @throws MonetaryException if the amount's currency is not equals to the currency of this instance.
      */
     boolean isLessThanOrEqualTo(MonetaryAmount amt);
 
     /**
-     * Compares two instances of {@link javax.money.MonetaryAmount}, hereby ignoring non significant trailing
+     * Compares two instances of {@link org.javamoney.bp.MonetaryAmount}, hereby ignoring non significant trailing
      * zeroes and different numeric capabilities.
      *
-     * @param amount the {@link javax.money.MonetaryAmount} to be compared with this instance.
+     * @param amount the {@link org.javamoney.bp.MonetaryAmount} to be compared with this instance.
      * @return {@code true} if {@code amount == this}.
      * @throws MonetaryException if the amount's currency is not equals to the currency of this instance.
      */
@@ -279,9 +279,8 @@ public interface MonetaryAmount extends CurrencySupplier, NumberSupplier, Compar
     int signum();
 
     /**
-     * Returns a {@code MonetaryAmount} whose value is {@code (this +
-     * amount)}, and whose scale is {@code max(this.scale(),
-     * amount.scale())}.
+     * Returns a {@code MonetaryAmount} whose value is <code></code>this + amount</code>, and whose scale is {@code max(this.scale,
+     * amount.scale)}.
      *
      * @param amount value to be added to this {@code MonetaryAmount}.
      * @return {@code this + amount}
@@ -291,9 +290,8 @@ public interface MonetaryAmount extends CurrencySupplier, NumberSupplier, Compar
     MonetaryAmount add(MonetaryAmount amount);
 
     /**
-     * Returns a {@code MonetaryAmount} whose value is {@code (this -
-     * amount)}, and whose scale is {@code max(this.scale(),
-     * subtrahend.scale())}.
+     * Returns a {@code MonetaryAmount} whose value is <code>this - amount</code>, and whose scale is <code>max(this.scale(),
+     * subtrahend.scale())</code>.
      *
      * @param amount value to be subtracted from this {@code MonetaryAmount}.
      * @return {@code this - amount}
@@ -304,8 +302,8 @@ public interface MonetaryAmount extends CurrencySupplier, NumberSupplier, Compar
 
     /**
      * Returns a {@code MonetaryAmount} whose value is <tt>(this &times;
-     * multiplicand)</tt>, and whose scale is {@code (this.scale() +
-     * multiplicand.scale())}.
+     * multiplicand)</tt>, and whose scale is <code>this.scale() +
+     * multiplicand.scale()</code>.
      *
      * @param multiplicand value to be multiplied by this {@code MonetaryAmount}.
      * @return {@code this * multiplicand}
@@ -316,8 +314,8 @@ public interface MonetaryAmount extends CurrencySupplier, NumberSupplier, Compar
 
     /**
      * Returns a {@code MonetaryAmount} whose value is <tt>(this &times;
-     * multiplicand)</tt>, and whose scale is {@code (this.scale() +
-     * multiplicand.scale())}.
+     * multiplicand)</tt>, and whose scale is <code>this.scale() +
+     * multiplicand.scale()</code>.
      * Bythe input value's scale will be rounded to
      * accommodate the internal capabilities, and no {@link ArithmeticException}
      * is thrown if the input number's scale exceeds the capabilities.
@@ -334,8 +332,8 @@ public interface MonetaryAmount extends CurrencySupplier, NumberSupplier, Compar
 
     /**
      * Returns a {@code MonetaryAmount} whose value is <tt>(this &times;
-     * multiplicand)</tt>, and whose scale is {@code (this.scale() +
-     * multiplicand.scale())}.
+     * multiplicand)</tt>, and whose scale is <code>this.scale() +
+     * multiplicand.scale()</code>.
      *
      * @param multiplicand value to be multiplied by this {@code MonetaryAmount}. If the multiplicand's scale exceeds
      *                     the
@@ -347,9 +345,9 @@ public interface MonetaryAmount extends CurrencySupplier, NumberSupplier, Compar
     MonetaryAmount multiply(Number multiplicand);
 
     /**
-     * Returns a {@code MonetaryAmount} whose value is {@code (this /
-     * divisor)}, and whose preferred scale is {@code (this.scale() -
-     * divisor.scale())}; if the exact quotient cannot be represented an {@code ArithmeticException}
+     * Returns a {@code MonetaryAmount} whose value is <code>this /
+     * divisor</code>, and whose preferred scale is <code>this.scale() -
+     * divisor.scale()</code> if the exact quotient cannot be represented an {@code ArithmeticException}
      * is thrown.
      *
      * @param divisor value by which this {@code MonetaryAmount} is to be divided.
@@ -361,9 +359,9 @@ public interface MonetaryAmount extends CurrencySupplier, NumberSupplier, Compar
     MonetaryAmount divide(long divisor);
 
     /**
-     * Returns a {@code MonetaryAmount} whose value is {@code (this /
-     * divisor)}, and whose preferred scale is {@code (this.scale() -
-     * divisor.scale())}; if the exact quotient cannot be represented an {@code ArithmeticException}
+     * Returns a {@code MonetaryAmount} whose value is <code>this /
+     * divisor</code>, and whose preferred scale is <code>this.scale() -
+     * divisor.scale()</code> if the exact quotient cannot be represented an {@code ArithmeticException}
      * is thrown.
      *
      * @param divisor value by which this {@code MonetaryAmount} is to be divided.
@@ -375,9 +373,9 @@ public interface MonetaryAmount extends CurrencySupplier, NumberSupplier, Compar
     MonetaryAmount divide(double divisor);
 
     /**
-     * Returns a {@code MonetaryAmount} whose value is {@code (this /
-     * divisor)}, and whose preferred scale is {@code (this.scale() -
-     * divisor.scale())}; if the exact quotient cannot be represented an {@code ArithmeticException}
+     * Returns a {@code MonetaryAmount} whose value is <code>this /
+     * divisor</code>, and whose preferred scale is <code>this.scale() -
+     * divisor.scale()</code> if the exact quotient cannot be represented an {@code ArithmeticException}
      * is thrown.
      *
      * @param divisor value by which this {@code MonetaryAmount} is to be divided.
@@ -389,11 +387,11 @@ public interface MonetaryAmount extends CurrencySupplier, NumberSupplier, Compar
     MonetaryAmount divide(Number divisor);
 
     /**
-     * Returns a {@code MonetaryAmount} whose value is {@code (this % divisor)}.
+     * Returns a {@code MonetaryAmount} whose value is <code>this % divisor</code>.
      * <p/>
      * <p/>
      * The remainder is given by
-     * {@code this.subtract(this.divideToIntegralValue(divisor).multiply(divisor))} . Note that this
+     * <code>this.subtract(this.divideToIntegralValue(divisor).multiply(divisor))</code> . Note that this
      * is not the modulo operation (the result can be negative).
      *
      * @param divisor value by which this {@code MonetaryAmount} is to be divided.
@@ -405,11 +403,11 @@ public interface MonetaryAmount extends CurrencySupplier, NumberSupplier, Compar
     MonetaryAmount remainder(long divisor);
 
     /**
-     * Returns a {@code MonetaryAmount} whose value is {@code (this % divisor)}.
+     * Returns a {@code MonetaryAmount} whose value is <code>this % divisor</code>.
      * <p/>
      * <p/>
      * The remainder is given by
-     * {@code this.subtract(this.divideToIntegralValue(divisor).multiply(divisor))} . Note that this
+     * <code>this.subtract(this.divideToIntegralValue(divisor).multiply(divisor)</code> . Note that this
      * is not the modulo operation (the result can be negative).
      *
      * @param divisor value by which this {@code MonetaryAmount} is to be divided.
@@ -421,11 +419,11 @@ public interface MonetaryAmount extends CurrencySupplier, NumberSupplier, Compar
     MonetaryAmount remainder(double divisor);
 
     /**
-     * Returns a {@code MonetaryAmount} whose value is {@code (this % divisor)}.
+     * Returns a {@code MonetaryAmount} whose value is <code>this % divisor</code>.
      * <p/>
      * <p/>
      * The remainder is given by
-     * {@code this.subtract(this.divideToIntegralValue(divisor).multiply(divisor))} . Note that this
+     * <code>this.subtract(this.divideToIntegralValue(divisor).multiply(divisor))</code> . Note that this
      * is not the modulo operation (the result can be negative).
      *
      * @param divisor value by which this {@code MonetaryAmount} is to be divided.
@@ -507,9 +505,9 @@ public interface MonetaryAmount extends CurrencySupplier, NumberSupplier, Compar
 
     /**
      * Returns a {@code MonetaryAmount} whose value is the integer part of the quotient
-     * {@code (this / divisor)} rounded down. The preferred scale of the result is
-     * {@code (this.scale() -
-     * divisor.scale())}.
+     * <code>this / divisor</code> rounded down. The preferred scale of the result is
+     * <code>this.scale() -
+     * divisor.scale()</code>.
      *
      * @param divisor value by which this {@code BigDecimal} is to be divided.
      * @return The integer part of {@code this / divisor}.
@@ -520,9 +518,8 @@ public interface MonetaryAmount extends CurrencySupplier, NumberSupplier, Compar
 
     /**
      * Returns a {@code MonetaryAmount} whose value is the integer part of the quotient
-     * {@code (this / divisor)} rounded down. The preferred scale of the result is
-     * {@code (this.scale() -
-     * divisor.scale())}.
+     * <code>this / divisor</code> rounded down. The preferred scale of the result is
+     * <code>this.scale() - divisor.scale()</code>.
      *
      * @param divisor value by which this {@code BigDecimal} is to be divided.
      * @return The integer part of {@code this / divisor}.
@@ -533,9 +530,8 @@ public interface MonetaryAmount extends CurrencySupplier, NumberSupplier, Compar
 
     /**
      * Returns a {@code MonetaryAmount} whose value is the integer part of the quotient
-     * {@code (this / divisor)} rounded down. The preferred scale of the result is
-     * {@code (this.scale() -
-     * divisor.scale())}.
+     * <code>this / divisor</code> rounded down. The preferred scale of the result is
+     * <code>this.scale() - divisor.scale()</code>.
      *
      * @param divisor value by which this {@code BigDecimal} is to be divided.
      * @return The integer part of {@code this / divisor}.
@@ -546,7 +542,7 @@ public interface MonetaryAmount extends CurrencySupplier, NumberSupplier, Compar
 
     /**
      * Returns a {@code MonetaryAmount} whose numerical value is equal to ( {@code this} *
-     * 10<sup>n</sup>). The scale of the result is {@code (this.scale() - n)}.
+     * 10<sup>n</sup>). The scale of the result is <code>this.scale() - n</code>.
      *
      * @param power the power.
      * @return the calculated amount value.
@@ -565,7 +561,7 @@ public interface MonetaryAmount extends CurrencySupplier, NumberSupplier, Compar
     MonetaryAmount abs();
 
     /**
-     * Returns a {@code MonetaryAmount} whose value is {@code (-this)}, and whose scale is
+     * Returns a {@code MonetaryAmount} whose value is <code> -this</code>, and whose scale is
      * {@code this.scale()}.
      *
      * @return {@code -this}.
@@ -573,7 +569,7 @@ public interface MonetaryAmount extends CurrencySupplier, NumberSupplier, Compar
     MonetaryAmount negate();
 
     /**
-     * Returns a {@code MonetaryAmount} whose value is {@code (+this)}, with rounding according to
+     * Returns a {@code MonetaryAmount} whose value is <code>+this</code>, with rounding according to
      * the context settings.
      *
      * @return {@code this}, rounded as necessary. A zero result will have a scale of 0.

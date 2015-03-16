@@ -115,11 +115,11 @@ public final class MonetaryCurrencies {
 
     /**
      * Allows to check if a {@link CurrencyUnit} instance is defined, i.e.
-     * accessible from {@link javax.money.MonetaryCurrencies#getCurrency(String, String...)}.
+     * accessible from {@link org.javamoney.bp.MonetaryCurrencies#getCurrency(String, String...)}.
      *
      * @param code      the currency code, not {@code null}.
      * @param providers the (optional) specification of providers to consider.
-     * @return {@code true} if {@link javax.money.MonetaryCurrencies#getCurrency(String, String...)}
+     * @return {@code true} if {@link org.javamoney.bp.MonetaryCurrencies#getCurrency(String, String...)}
      * would return a result for the given code.
      */
     public static boolean isCurrencyAvailable(String code, String... providers) {
@@ -130,7 +130,7 @@ public final class MonetaryCurrencies {
     }
 
     /**
-     * Allows to check if a {@link javax.money.CurrencyUnit} instance is
+     * Allows to check if a {@link org.javamoney.bp.CurrencyUnit} instance is
      * defined, i.e. accessible from {@link #getCurrency(String, String...)}.
      *
      * @param locale    the target {@link java.util.Locale}, not {@code null}.
@@ -161,7 +161,7 @@ public final class MonetaryCurrencies {
     /**
      * Query all currencies matching the given query.
      *
-     * @param query The {@link javax.money.CurrencyQuery}, not null.
+     * @param query The {@link org.javamoney.bp.CurrencyQuery}, not null.
      * @return the list of known currencies, never null.
      */
     public static CurrencyUnit getCurrency(CurrencyQuery query) {
@@ -175,7 +175,7 @@ public final class MonetaryCurrencies {
     /**
      * Query all currencies matching the given query.
      *
-     * @param query The {@link javax.money.CurrencyQuery}, not null.
+     * @param query The {@link org.javamoney.bp.CurrencyQuery}, not null.
      * @return the list of known currencies, never null.
      */
     public static Collection<CurrencyUnit> getCurrencies(CurrencyQuery query) {
@@ -211,7 +211,7 @@ public final class MonetaryCurrencies {
     }
 
     /**
-     * Factory singleton for {@link javax.money.CurrencyUnit} instances as provided by the
+     * Factory singleton for {@link org.javamoney.bp.CurrencyUnit} instances as provided by the
      * different registered {@link org.javamoney.bp.spi.CurrencyProviderSpi} instances.
      * <p>
      * This class is thread safe.
@@ -277,7 +277,7 @@ public final class MonetaryCurrencies {
          * @param currencyCode the ISO currency code, not {@code null}.
          * @param providers    the (optional) specification of providers to consider. If not set (empty) the providers
          *                     as defined by #getDefaultProviderChain() should be used.
-         * @return the corresponding {@link javax.money.CurrencyUnit} instance.
+         * @return the corresponding {@link org.javamoney.bp.CurrencyUnit} instance.
          * @throws UnknownCurrencyException if no such currency exists.
          */
         public CurrencyUnit getCurrency(String currencyCode, String... providers) {
@@ -301,7 +301,7 @@ public final class MonetaryCurrencies {
          * @param country   the ISO currency's country, not {@code null}.
          * @param providers the (optional) specification of providers to consider. If not set (empty) the providers
          *                  as defined by #getDefaultProviderChain() should be used.
-         * @return the corresponding {@link javax.money.CurrencyUnit} instance.
+         * @return the corresponding {@link org.javamoney.bp.CurrencyUnit} instance.
          * @throws UnknownCurrencyException if no such currency exists.
          */
         public CurrencyUnit getCurrency(Locale country, String... providers) {
@@ -330,7 +330,7 @@ public final class MonetaryCurrencies {
         }
 
         /**
-         * Allows to check if a {@link javax.money.CurrencyUnit} instance is defined, i.e.
+         * Allows to check if a {@link org.javamoney.bp.CurrencyUnit} instance is defined, i.e.
          * accessible from {@link MonetaryCurrenciesSingletonSpi#getCurrency(String, String...)}.
          *
          * @param code      the currency code, not {@code null}.
@@ -345,7 +345,7 @@ public final class MonetaryCurrencies {
         }
 
         /**
-         * Allows to check if a {@link javax.money.CurrencyUnit} instance is
+         * Allows to check if a {@link org.javamoney.bp.CurrencyUnit} instance is
          * defined, i.e. accessible from {@link #getCurrency(String, String...)}.
          *
          * @param locale    the target {@link java.util.Locale}, not {@code null}.
@@ -373,7 +373,7 @@ public final class MonetaryCurrencies {
          * Access a single currency by query.
          *
          * @param query The currency query, not null.
-         * @return the {@link javax.money.CurrencyUnit} found, never null.
+         * @return the {@link org.javamoney.bp.CurrencyUnit} found, never null.
          * @throws MonetaryException if multiple currencies match the query.
          */
         public CurrencyUnit getCurrency(CurrencyQuery query) {

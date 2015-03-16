@@ -84,7 +84,7 @@ public final class DummyAmountBuilder implements MonetaryAmountFactory<DummyAmou
     /**
      * Sets the signum for the DummyAmount to becreated.
      *
-     * @param signum
+     * @param signum the signum to set
      */
     public DummyAmountBuilder setSignum(final int signum) {
         this.signum = signum;

@@ -13,6 +13,7 @@ package org.javamoney.bp.convert;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -204,9 +205,7 @@ public final class MonetaryConversions{
 
 		List<ExchangeRateProviderSupplier> suppliers = new ArrayList<ExchangeRateProviderSupplier>();
         suppliers.add(Objects.requireNonNull(provider));
-		for(ExchangeRateProviderSupplier supp: providers){
-            suppliers.add(supp);
-        }
+        Collections.addAll(suppliers, providers);
 
 		String[] array = new String[suppliers.size()];
         for(int i=0;i<array.length;i++){

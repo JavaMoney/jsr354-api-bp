@@ -63,8 +63,7 @@ public final class ConversionQueryBuilder extends AbstractQueryBuilder<Conversio
     /**
      * Sets the base currency.
      *
-     * @param currencyCode the currency code, resolvable through {@link javax.money
-     *                     .MonetaryCurrencies#getCurrency(String, String...)}, not null.
+     * @param currencyCode the currency code, resolvable through {@link MonetaryCurrencies#getCurrency(String, String...)}, not null.
      * @return the query for chaining.
      */
     public ConversionQueryBuilder setBaseCurrency(String currencyCode) {
@@ -84,8 +83,7 @@ public final class ConversionQueryBuilder extends AbstractQueryBuilder<Conversio
     /**
      * Sets the term currency.
      *
-     * @param currencyCode the currency code, resolvable through {@link javax.money
-     *                     .MonetaryCurrencies#getCurrency(String, String...)}, not null.
+     * @param currencyCode the currency code, resolvable through {@link MonetaryCurrencies#getCurrency(String, String...)}, not null.
      * @return the query for chaining.
      */
     public ConversionQueryBuilder setTermCurrency(String currencyCode) {

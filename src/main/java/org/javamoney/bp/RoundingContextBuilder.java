@@ -16,7 +16,7 @@ import java.util.Objects;
  * <p>
  * Note this class is NOT thread-safe.
  *
- * @see javax.money.MonetaryRounding#getRoundingContext() ()
+ * @see org.javamoney.bp.MonetaryRounding#getRoundingContext() ()
  */
 public final class RoundingContextBuilder extends AbstractContextBuilder<RoundingContextBuilder, RoundingContext> {
 
@@ -55,9 +55,9 @@ public final class RoundingContextBuilder extends AbstractContextBuilder<Roundin
     }
 
     /**
-     * Creates a new instance of {@link javax.money.RoundingContext}.
+     * Creates a new instance of {@link org.javamoney.bp.RoundingContext}.
      *
-     * @return a new {@link javax.money.RoundingContext} instance.
+     * @return a new {@link org.javamoney.bp.RoundingContext} instance.
      */
     @Override
     public RoundingContext build() {
@@ -71,7 +71,7 @@ public final class RoundingContextBuilder extends AbstractContextBuilder<Roundin
      *                   containing, not null.
      *                   the final {@link RoundingContext} created by this builder, not null.
      * @param roundingId The name of the rounding, not null.
-     * @return a new {@link javax.money.MonetaryContextBuilder} instance, never null.
+     * @return a new {@link org.javamoney.bp.MonetaryContextBuilder} instance, never null.
      */
     public static RoundingContextBuilder of(String provider, String roundingId) {
         return new RoundingContextBuilder(provider, roundingId);
@@ -81,7 +81,7 @@ public final class RoundingContextBuilder extends AbstractContextBuilder<Roundin
      * Creates a new RoundingContextBuilder.
      *
      * @param roundingContext the roundong context, used as a template, not null.
-     * @return a new {@link javax.money.MonetaryContextBuilder} instance, never null.
+     * @return a new {@link org.javamoney.bp.MonetaryContextBuilder} instance, never null.
      */
     public static RoundingContextBuilder of(RoundingContext roundingContext) {
         return new RoundingContextBuilder(roundingContext);

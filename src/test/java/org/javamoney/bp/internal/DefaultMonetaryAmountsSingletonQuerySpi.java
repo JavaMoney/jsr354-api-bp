@@ -26,6 +26,7 @@ public class DefaultMonetaryAmountsSingletonQuerySpi extends BaseMonetaryAmounts
         factories = Collections.unmodifiableList(factories);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public Collection<MonetaryAmountFactory<?>> getAmountFactories(MonetaryAmountFactoryQuery query) {
         if (query.getProviderNames().contains("gigigig2")) {

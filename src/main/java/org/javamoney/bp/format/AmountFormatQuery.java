@@ -61,8 +61,7 @@ public final class AmountFormatQuery extends AbstractQuery {
     }
 
     /**
-     * Gets the {@link org.javamoney.bp.MonetaryAmountFactoryQuery} to be used for accessing {@link  javax.money
-     * .MonetaryAmountFactory}, when amount's are parsed.
+     * Gets the {@link org.javamoney.bp.MonetaryAmountFactoryQuery} to be used for accessing {@link  MonetaryAmountFactory}, when amount's are parsed.
      *
      * @return the monetary context, or {@code null}.
      */

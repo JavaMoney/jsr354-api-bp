@@ -33,9 +33,9 @@ public final class CurrencyQueryBuilder extends AbstractQueryBuilder<CurrencyQue
     }
 
     /**
-     * Creates a new instance of {@link javax.money.CurrencyQueryBuilder}.
+     * Creates a new instance of {@link org.javamoney.bp.CurrencyQueryBuilder}.
      *
-     * @param currencyQuery {@link javax.money.CurrencyQuery} used for initializing this builder.
+     * @param currencyQuery {@link org.javamoney.bp.CurrencyQuery} used for initializing this builder.
      */
     private CurrencyQueryBuilder(CurrencyQuery currencyQuery) {
         Objects.requireNonNull(currencyQuery);
@@ -70,35 +70,35 @@ public final class CurrencyQueryBuilder extends AbstractQueryBuilder<CurrencyQue
      */
     public CurrencyQueryBuilder setNumericCodes(int... codes) {
         List<Integer> intList = new ArrayList<Integer>(codes.length);
-        for(int i=0;i<codes.length;i++){
-            intList.add(codes[i]);
+        for(Integer code:codes){
+            intList.add(code);
         }
         return set(CurrencyQuery.KEY_QUERY_NUMERIC_CODES, intList);
     }
 
     /**
-     * Creates a new instance of {@link javax.money.CurrencyQuery}.
+     * Creates a new instance of {@link org.javamoney.bp.CurrencyQuery}.
      *
-     * @return a new {@link javax.money.CurrencyQuery} instance, never null.
+     * @return a new {@link org.javamoney.bp.CurrencyQuery} instance, never null.
      */
     public CurrencyQuery build() {
         return new CurrencyQuery(this);
     }
 
     /**
-     * Creates a new instance of {@link javax.money.CurrencyQueryBuilder}.
+     * Creates a new instance of {@link org.javamoney.bp.CurrencyQueryBuilder}.
      *
-     * @return a new {@link javax.money.CurrencyQueryBuilder} instance, never null.
+     * @return a new {@link org.javamoney.bp.CurrencyQueryBuilder} instance, never null.
      */
     public static CurrencyQueryBuilder of() {
         return new CurrencyQueryBuilder();
     }
 
     /**
-     * Creates a new instance of {@link javax.money.CurrencyQueryBuilder}.
+     * Creates a new instance of {@link org.javamoney.bp.CurrencyQueryBuilder}.
      *
-     * @param currencyQuery {@link javax.money.CurrencyQuery} used for initializing this builder.
-     * @return a new {@link javax.money.CurrencyQueryBuilder} instance, never null.
+     * @param currencyQuery {@link org.javamoney.bp.CurrencyQuery} used for initializing this builder.
+     * @return a new {@link org.javamoney.bp.CurrencyQueryBuilder} instance, never null.
      */
     public static CurrencyQueryBuilder of(CurrencyQuery currencyQuery) {
         return new CurrencyQueryBuilder(currencyQuery);

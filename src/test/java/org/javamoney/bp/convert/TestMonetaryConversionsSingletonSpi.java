@@ -69,7 +69,7 @@ public class TestMonetaryConversionsSingletonSpi implements MonetaryConversionsS
      *
      * @param termCurrency the terminating/target currency unit, not null.
      * @param providers    the provider names defines a corresponding
-     *                     prpovider chain that must be encapsulated by the resulting {@link javax
+     *                     provider chain that must be encapsulated by the resulting {@link javax
      *                     .money.convert.CurrencyConversion}. By default the provider
      *                     chain as defined by #getDefaultProviderChain will be used.
      * @return {@code true}, if such a conversion is supported, meaning an according
@@ -128,7 +128,7 @@ public class TestMonetaryConversionsSingletonSpi implements MonetaryConversionsS
     /**
      * Access an instance of {@link org.javamoney.bp.convert.CurrencyConversion}.
      *
-     * @param conversionQuery the {@link org.javamoney.bp.convert.ConversionQuery} determining the tpye of conversion
+     * @param conversionQuery the {@link org.javamoney.bp.convert.ConversionQuery} determining the type of conversion
      *                        required, not null.
      * @return the corresponding conversion, not null.
      * @throws org.javamoney.bp.MonetaryException if no matching conversion could be found.
@@ -148,7 +148,7 @@ public class TestMonetaryConversionsSingletonSpi implements MonetaryConversionsS
      *                     prpovider chain that must be encapsulated by the resulting {@link javax
      *                     .money.convert.CurrencyConversion}. By default the default
      *                     provider chain as defined by #getDefaultProviderChain will be used.
-     * @return the correspöonding conversion, not null.
+     * @return the corresponding conversion, not null.
      * @throws org.javamoney.bp.MonetaryException if no matching conversion could be found.
      * @see #isConversionAvailable(org.javamoney.bp.convert.ConversionQuery)
      */

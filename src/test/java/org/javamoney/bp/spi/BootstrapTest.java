@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Created by Anatole on 04.03.14.
+ * Tests for {@link org.javamoney.bp.spi.Bootstrap}.
  */
 @SuppressWarnings("unchecked")
 @Test

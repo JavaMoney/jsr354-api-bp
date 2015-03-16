@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * SPI (conversoin) that implements the functionalities provided by the
+ * SPI (conversion) that implements the functionality provided by the
  * {@code MonetaryConversions} singleton accessor. It should be registered as a
  * service using the JDK {@code ServiceLoader}. Hereby only one instance can be
  * registered at a time.
@@ -50,7 +50,7 @@ public abstract class BaseMonetaryConversionsSingletonSpi implements MonetaryCon
      * Allows to quickly check, if a {@link org.javamoney.bp.convert.ExchangeRateProvider} is accessible for the given
      * {@link org.javamoney.bp.convert.ConversionQuery}.
      *
-     * @param conversionQuery the {@link org.javamoney.bp.convert.ConversionQuery} determining the tpye of conversion
+     * @param conversionQuery the {@link org.javamoney.bp.convert.ConversionQuery} determining the type of conversion
      *                        required, not null.
      * @return {@code true}, if such a conversion is supported, meaning an according
      * {@link org.javamoney.bp.convert.ExchangeRateProvider} can be
@@ -70,7 +70,7 @@ public abstract class BaseMonetaryConversionsSingletonSpi implements MonetaryCon
      * Allows to quickly check, if a {@link org.javamoney.bp.convert.CurrencyConversion} is accessible for the given
      * {@link org.javamoney.bp.convert.ConversionQuery}.
      *
-     * @param conversionQuery the {@link org.javamoney.bp.convert.ConversionQuery} determining the tpye of conversion
+     * @param conversionQuery the {@link org.javamoney.bp.convert.ConversionQuery} determining the type of conversion
      *                        required, not null.
      * @return {@code true}, if such a conversion is supported, meaning an according
      * {@link org.javamoney.bp.convert.CurrencyConversion} can be
@@ -92,7 +92,7 @@ public abstract class BaseMonetaryConversionsSingletonSpi implements MonetaryCon
      *
      * @param termCurrency the terminating/target currency unit, not null.
      * @param providers    the provider names defines a corresponding
-     *                     prpovider chain that must be encapsulated by the resulting {@link javax
+     *                     provider chain that must be encapsulated by the resulting {@link javax
      *                     .money.convert.CurrencyConversion}. By default the provider
      *                     chain as defined by #getDefaultProviderChain will be used.
      * @return {@code true}, if such a conversion is supported, meaning an according
@@ -134,7 +134,7 @@ public abstract class BaseMonetaryConversionsSingletonSpi implements MonetaryCon
      * Access a compound instance of an {@link org.javamoney.bp.convert.ExchangeRateProvider} based on the given provider chain.
      *
      * @param providers the {@link org.javamoney.bp.convert.ConversionQuery} provider names defines a corresponding
-     *                  prpovider chain that must be
+     *                  provider chain that must be
      *                  encapsulated by the resulting {@link org.javamoney.bp.convert.ExchangeRateProvider}. By default
      *                  the default
      *                  provider changes as defined in #getDefaultProviderChain will be used.
@@ -151,7 +151,7 @@ public abstract class BaseMonetaryConversionsSingletonSpi implements MonetaryCon
     /**
      * Access an instance of {@link org.javamoney.bp.convert.CurrencyConversion}.
      *
-     * @param conversionQuery the {@link org.javamoney.bp.convert.ConversionQuery} determining the tpye of conversion
+     * @param conversionQuery the {@link org.javamoney.bp.convert.ConversionQuery} determining the type of conversion
      *                        required, not null.
      * @return the corresponding conversion, not null.
      * @throws org.javamoney.bp.MonetaryException if no matching conversion could be found.
@@ -168,10 +168,10 @@ public abstract class BaseMonetaryConversionsSingletonSpi implements MonetaryCon
      *
      * @param termCurrency the terminating/target currency unit, not null.
      * @param providers    the {@link org.javamoney.bp.convert.ConversionQuery} provider names defines a corresponding
-     *                     prpovider chain that must be encapsulated by the resulting {@link javax
+     *                     provider chain that must be encapsulated by the resulting {@link javax
      *                     .money.convert.CurrencyConversion}. By default the default
      *                     provider chain as defined by #getDefaultProviderChain will be used.
-     * @return the correspöonding conversion, not null.
+     * @return the corresponding conversion, not null.
      * @throws org.javamoney.bp.MonetaryException if no matching conversion could be found.
      * @see #isConversionAvailable(org.javamoney.bp.convert.ConversionQuery)
      */

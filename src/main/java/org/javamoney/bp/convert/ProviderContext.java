@@ -55,6 +55,7 @@ public final class ProviderContext extends AbstractContext {
      *
      * @return the deferred flag, or {code null}.
      */
+    @SuppressWarnings("unchecked")
     public Set<RateType> getRateTypes() {
         Set<RateType> rateSet = get(KEY_RATE_TYPES, Set.class);
         if (rateSet == null) {

@@ -215,6 +215,7 @@ public class DefaultExchangeRate implements ExchangeRate, Serializable, Comparab
      *
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
+    @SuppressWarnings("NullableProblems")
     @Override
     public int compareTo(ExchangeRate o) {
         Objects.requireNonNull(o);

@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 
 /**
  * This singleton provides access to the services available in the current runtime environment and context. The
- * behaviour can be adapted, by calling {@link org.javamoney.bp.spi.Bootstrap#init(ServiceProvider)} before accessing any moneteray
+ * behaviour can be adapted, by calling {@link org.javamoney.bp.spi.Bootstrap#init(ServiceProvider)} before accessing any monetary
  * services.
  *
  * @author Anatole Tresch
@@ -46,6 +46,7 @@ public final class Bootstrap {
      *
      * @return {@link ServiceProvider} to be used for loading the services.
      */
+    @SuppressWarnings("LoopStatementThatDoesntLoop")
     private static ServiceProvider loadDefaultServiceProvider() {
         try {
             for (ServiceProvider sp : ServiceLoader.load(ServiceProvider.class)) {
@@ -82,7 +83,7 @@ public final class Bootstrap {
     }
 
     /**
-     * Ge {@link ServiceProvider}. If necessary the {@link ServiceProvider} will be laziliy loaded.
+     * Ge {@link ServiceProvider}. If necessary the {@link ServiceProvider} will be lazily loaded.
      *
      * @return the {@link ServiceProvider} used.
      */

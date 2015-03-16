@@ -22,8 +22,8 @@ package org.javamoney.bp;
  * <p>
  * This is a <b>functional interface</b> whose
  * functional method is {@link #getCurrency()}.
- * This class does not extends {@link java.util.function.Supplier} since {@link MonetaryAmount} implements
- * both supplier interfaces, {@link NumberSupplier} and {@link javax.money.CurrencySupplier},
+ * This class does not extends {@code java.util.function.Supplier} since {@link MonetaryAmount} implements
+ * both supplier interfaces, {@link NumberSupplier} and {@link CurrencySupplier},
  * which will lead
  * to method name conflicts.
  * </p>
@@ -31,7 +31,6 @@ package org.javamoney.bp;
  * @author Werner Keil
  * @version 0.5
  * @since 0.8
- * @see java.util.function.Supplier
  */
 //@FunctionalInterface
 public interface CurrencySupplier {

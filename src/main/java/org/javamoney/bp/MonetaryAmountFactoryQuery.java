@@ -17,12 +17,12 @@ import java.io.Serializable;
  * <li>The maximal scale needed (THE ADDITIONAL <i>fixed scale</i> allows to define the minimal an maximal scale to
  * be the same).</li>
  * <li>The maximal numeric precision required.</li>
- * <li>the target {@link javax.money.MonetaryAmount} implementation type.</li>
+ * <li>the target {@link MonetaryAmount} implementation type.</li>
  * <li>any other attributes, currently supported by the current factory and query implementation registered.</li>
  * </ul>
  * <p>This class is thread-safe, final and serializable.</p>
  *
- * @see MonetaryAmounts#getAmountFactory(javax.money.MonetaryAmountFactoryQuery)
+ * @see MonetaryAmounts#getAmountFactory(MonetaryAmountFactoryQuery)
  * @see MonetaryAmountFactory
  */
 public final class MonetaryAmountFactoryQuery extends AbstractQuery implements Serializable {

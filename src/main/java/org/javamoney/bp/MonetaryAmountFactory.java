@@ -11,12 +11,12 @@ package org.javamoney.bp;
 /**
  * Factory for {@link MonetaryAmount} instances for a given type. It can be accessed, by
  * <ul>
- * <li>calling {@link MonetaryAmount#getFactory()}, returning a {@link javax.money.MonetaryAmountFactory}
+ * <li>calling {@link MonetaryAmount#getFactory()}, returning a {@link org.javamoney.bp.MonetaryAmountFactory}
  * creating amounts of the same implementation type, which also provided the factory instance.</li>
  * <li>calling {@link MonetaryAmounts#getAmountFactory(Class)} accessing a
- * {@link javax.money.MonetaryAmountFactory} for a concrete type <code>Class<T></code>.</li>
+ * {@link org.javamoney.bp.MonetaryAmountFactory} for a concrete type <code>Class<T></code>.</li>
  * <li>calling {@link MonetaryAmounts#getDefaultAmountFactory()} accessing a default
- * {@link javax.money.MonetaryAmountFactory}.
+ * {@link org.javamoney.bp.MonetaryAmountFactory}.
  * </ul>
  * <p>
  * Implementations of this interface allow to get {@link MonetaryAmount} instances providing

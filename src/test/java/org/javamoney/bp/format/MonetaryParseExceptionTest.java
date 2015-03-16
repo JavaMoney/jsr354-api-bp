@@ -12,7 +12,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
- * Created by Anatole on 05.03.14.
+ * Tests for {@link org.javamoney.bp.format.MonetaryParseException}.
  */
 public class MonetaryParseExceptionTest{
     @Test
@@ -33,11 +33,13 @@ public class MonetaryParseExceptionTest{
         Assert.assertEquals(e.getMessage(),"message");
     }
 
+    @SuppressWarnings("ThrowableInstanceNeverThrown")
     @Test(expectedExceptions=IllegalArgumentException.class)
     public void testCreateIllegalInput(){
         new MonetaryParseException("testInput", 500);
     }
 
+    @SuppressWarnings("ThrowableInstanceNeverThrown")
     @Test(expectedExceptions=IllegalArgumentException.class)
     public void testCreateIllegalInputWithMessage(){
         new MonetaryParseException("message", "testInput", 500);

@@ -18,8 +18,10 @@ import java.util.Set;
 
 import static org.testng.Assert.*;
 
+@SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
 public class AbstractContextBuilderTest {
 
+    @SuppressWarnings("unchecked")
     private AbstractContextBuilder<AbstractContextBuilder, AbstractContext> createBuilder() {
         return new AbstractContextBuilder() {
             @Override

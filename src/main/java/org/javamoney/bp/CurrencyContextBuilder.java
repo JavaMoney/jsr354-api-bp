@@ -36,7 +36,7 @@ public final class CurrencyContextBuilder extends AbstractContextBuilder<Currenc
     /**
      * Creates a new builder.
      *
-     * @param context the {@link javax.money.CurrencyContext} to be used for initializing this builder.
+     * @param context the {@link org.javamoney.bp.CurrencyContext} to be used for initializing this builder.
      */
     private CurrencyContextBuilder(CurrencyContext context) {
         Objects.requireNonNull(context);
@@ -44,9 +44,9 @@ public final class CurrencyContextBuilder extends AbstractContextBuilder<Currenc
     }
 
     /**
-     * Creates a new instance of {@link javax.money.CurrencyContext}.
+     * Creates a new instance of {@link org.javamoney.bp.CurrencyContext}.
      *
-     * @return a new {@link javax.money.CurrencyContext} instance.
+     * @return a new {@link org.javamoney.bp.CurrencyContext} instance.
      */
     @Override
     public CurrencyContext build() {
@@ -58,7 +58,7 @@ public final class CurrencyContextBuilder extends AbstractContextBuilder<Currenc
      *
      * @param provider the provider name, creating the corresponding {@link CurrencyUnit} containing
      *                 the final {@link CurrencyContext} created by this builder, not null.
-     * @return a new {@link javax.money.CurrencyContextBuilder} instance, never null.
+     * @return a new {@link org.javamoney.bp.CurrencyContextBuilder} instance, never null.
      */
     public static CurrencyContextBuilder of(String provider) {
         return new CurrencyContextBuilder(provider);
@@ -67,8 +67,8 @@ public final class CurrencyContextBuilder extends AbstractContextBuilder<Currenc
     /**
      * Creates a new builder.
      *
-     * @param context the {@link javax.money.CurrencyContext} to be used for initializing this builder.
-     * @return a new {@link javax.money.CurrencyContextBuilder} instance, never null.
+     * @param context the {@link org.javamoney.bp.CurrencyContext} to be used for initializing this builder.
+     * @return a new {@link org.javamoney.bp.CurrencyContextBuilder} instance, never null.
      */
     public static CurrencyContextBuilder of(CurrencyContext context) {
         return new CurrencyContextBuilder(context);

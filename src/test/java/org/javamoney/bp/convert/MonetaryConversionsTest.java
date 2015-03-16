@@ -19,7 +19,7 @@ import org.javamoney.bp.TestCurrency;
 import static org.testng.Assert.*;
 
 /**
- * Created by Anatole on 05.03.14.
+ * Tests for {@link org.javamoney.bp.convert.MonetaryConversions}.
  */
 public class MonetaryConversionsTest {
     @Test

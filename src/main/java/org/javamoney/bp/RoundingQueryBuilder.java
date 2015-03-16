@@ -80,9 +80,9 @@ public final class RoundingQueryBuilder extends AbstractQueryBuilder<RoundingQue
     }
 
     /**
-     * Creates a new instance of {@link javax.money.RoundingQuery}.
+     * Creates a new instance of {@link org.javamoney.bp.RoundingQuery}.
      *
-     * @return a new {@link javax.money.RoundingQuery} instance.
+     * @return a new {@link org.javamoney.bp.RoundingQuery} instance.
      */
     public RoundingQuery build() {
         return new RoundingQuery(this);
@@ -99,7 +99,7 @@ public final class RoundingQueryBuilder extends AbstractQueryBuilder<RoundingQue
      * Creates a new RoundingQueryBuilder.
      *
      * @param roundingQuery the rounding query, used as a template, not null.
-     * @return a new {@link javax.money.RoundingQueryBuilder} instance, never null.
+     * @return a new {@link org.javamoney.bp.RoundingQueryBuilder} instance, never null.
      */
     public static RoundingQueryBuilder of(RoundingQuery roundingQuery) {
         return new RoundingQueryBuilder(roundingQuery);

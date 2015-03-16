@@ -9,7 +9,6 @@
 package org.javamoney.bp;
 
 import java.util.Locale;
-import java.util.Objects;
 
 /**
  * Exception thrown when a currency code cannot be resolved into a {@link CurrencyUnit}.
@@ -33,7 +32,7 @@ public class UnknownCurrencyException extends MonetaryException {
 	 * Creates a new exception instance when a {@link CurrencyUnit} could not be evaluated given a
 	 * currency code.
 	 * 
-	 * @see MonetaryCurrencies#getCurrency(String)
+	 * @see MonetaryCurrencies#getCurrency(String, String...)
 	 * @param code
 	 *            The unknown currency code (the message is constructed automatically), not null.
 	 */
@@ -47,7 +46,7 @@ public class UnknownCurrencyException extends MonetaryException {
 	 * Creates a new exception instance when a {@link CurrencyUnit} could not be evaluated given a
 	 * (country) {@link java.util.Locale}.
 	 * 
-	 * @see MonetaryCurrencies#getCurrency(java.util.Locale)
+	 * @see MonetaryCurrencies#getCurrency(java.util.Locale, String...)
 	 * @param locale
 	 *            The unknown {@link java.util.Locale}, for which a {@link CurrencyUnit} was queried (the
 	 *            message is constructed automatically), not null.

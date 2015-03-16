@@ -9,13 +9,13 @@
 package org.javamoney.bp;
 
 /**
- * Query for accessing instances of {@link javax.money.MonetaryRounding}. In general it is determined by the
+ * Query for accessing instances of {@link org.javamoney.bp.MonetaryRounding}. In general it is determined by the
  * implementation, what roundings are provided. Nevertheless the following queries must be supported:
  * <ul>
  * <li>Accessing roundings using rounding names and/or regular expressions.</li>
  * <li>Accessing mathematical rounding by setting a scale and (optionally) a {@link java.math.MathContext} as
  * additinal generic attribute.</li>
- * <li>Accessing default roundings for a {@link javax.money.CurrencyUnit}. This method should return the most
+ * <li>Accessing default roundings for a {@link org.javamoney.bp.CurrencyUnit}. This method should return the most
  * appropriate rounding for a currency. If no
  * currency specific rounding is available, it should return a rounding with {@code scale==currency
  * .getDefaultFractionUnits(), java.math.RoundingMode = RoundingMode.HALF_EVEN}.</li>
@@ -47,7 +47,7 @@ public final class RoundingQuery extends AbstractQuery implements CurrencySuppli
 
     /**
      * Gets the target rounding name. This method allows to
-     * access the {@link javax.money.MonetaryRounding} instances by passing a name, which most of the time
+     * access the {@link org.javamoney.bp.MonetaryRounding} instances by passing a name, which most of the time
      * identifies a certain rounding instance. Each entry is first matched as name on equality. If no instance
      * with such a name exists, the value passed is interpreted as a regular
      * expression to lookup roundings.

@@ -59,6 +59,7 @@ public final class CurrencyQuery extends AbstractQuery implements Serializable {
      *
      * @return the otarget locales, never null.
      */
+    @SuppressWarnings("unchecked")
     public Collection<Locale> getCountries() {
         Collection<Locale> result = get(KEY_QUERY_COUNTRIES, Collection.class);
         if (result == null) {
@@ -72,6 +73,7 @@ public final class CurrencyQuery extends AbstractQuery implements Serializable {
      *
      * @return the query for chaining.
      */
+    @SuppressWarnings("unchecked")
     public Collection<String> getCurrencyCodes() {
         Collection<String> result = get(KEY_QUERY_CURRENCY_CODES, Collection.class);
         if (result == null) {
@@ -85,6 +87,7 @@ public final class CurrencyQuery extends AbstractQuery implements Serializable {
      *
      * @return the query for chaining.
      */
+    @SuppressWarnings("unchecked")
     public Collection<Integer> getNumericCodes() {
         Collection<Integer> result = get(KEY_QUERY_NUMERIC_CODES, Collection.class);
         if (result == null) {

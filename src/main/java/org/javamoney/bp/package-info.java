@@ -20,10 +20,10 @@
  * Users should not reference the interfaces, instead the value types should be
  * used.</li>
  * <li>Implementations must provide value types for currencies and amounts,
- * implementing {@link javax.money.CurrencyUnit} and
- * {@link javax.money.MonetaryAmount}.</li>
+ * implementing {@link org.javamoney.bp.CurrencyUnit} and
+ * {@link org.javamoney.bp.MonetaryAmount}.</li>
  * <li>Implementations must also provide a minimal set of roundings, modeled as
- * {@link javax.money.MonetaryRounding}. This should include basic roundings for
+ * {@link org.javamoney.bp.MonetaryRounding}. This should include basic roundings for
  * ISO currencies, roundings defined by {@link java.math.MathContext} or
  * {@link java.math.RoundingMode}.</li>
  * <li>This API must avoid restrictions that prevents its use in different

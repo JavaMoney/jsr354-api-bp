@@ -15,7 +15,7 @@ package org.javamoney.bp;
  * <p>
  * Note this class is NOT thread-safe.
  *
- * @see javax.money.MonetaryAmount#getContext()
+ * @see org.javamoney.bp.MonetaryAmount#getContext()
  */
 public final class MonetaryContextBuilder extends AbstractContextBuilder<MonetaryContextBuilder, MonetaryContext> {
 
@@ -69,7 +69,7 @@ public final class MonetaryContextBuilder extends AbstractContextBuilder<Monetar
      * Set the MonetaryAmount implementation class.
      *
      * @return the implementation class of the containing amount instance, never null.
-     * @see javax.money.MonetaryAmount#getContext()
+     * @see org.javamoney.bp.MonetaryAmount#getContext()
      */
     public MonetaryContextBuilder setAmountType(Class<? extends MonetaryAmount> amountType) {
         return set(MonetaryContext.AMOUNT_TYPE, amountType);
@@ -89,16 +89,16 @@ public final class MonetaryContextBuilder extends AbstractContextBuilder<Monetar
      * acquire a specific amount type and additionally configure the amount factory with the attributes in this
      * query.
      *
-     * @return a new {@link javax.money.MonetaryContextBuilder} instance, never null.
+     * @return a new {@link org.javamoney.bp.MonetaryContextBuilder} instance, never null.
      */
     public static MonetaryContextBuilder of() {
         return of(MonetaryAmount.class);
     }
 
     /**
-     * Creates a new builder, using an existing {@link javax.money.MonetaryContext} as a template.
+     * Creates a new builder, using an existing {@link org.javamoney.bp.MonetaryContext} as a template.
      *
-     * @return a new {@link javax.money.MonetaryContextBuilder} instance, never null.
+     * @return a new {@link org.javamoney.bp.MonetaryContextBuilder} instance, never null.
      */
     public static MonetaryContextBuilder of(MonetaryContext monetaryContext) {
         return new MonetaryContextBuilder(monetaryContext);
@@ -110,7 +110,7 @@ public final class MonetaryContextBuilder extends AbstractContextBuilder<Monetar
      * query.
      *
      * @param amountType the target amount type, not null.
-     * @return a new {@link javax.money.MonetaryContextBuilder} instance, never null.
+     * @return a new {@link org.javamoney.bp.MonetaryContextBuilder} instance, never null.
      */
     public static MonetaryContextBuilder of(Class<? extends MonetaryAmount> amountType) {
         return new MonetaryContextBuilder(amountType);

@@ -59,7 +59,7 @@ public abstract class BaseMonetaryFormatsSingletonSpi implements MonetaryFormats
      * .AmountFormatQuery}.
      *
      * @param locale    the target {@link java.util.Locale}, not {@code null}.
-     * @param providers The (optional) providers to be used, oredered correspondingly.
+     * @param providers The (optional) providers to be used, ordered correspondingly.
      * @return true, if a t least one {@link org.javamoney.bp.format.MonetaryAmountFormat} is matching the query.
      */
     public boolean isAvailable(Locale locale, String... providers) {
@@ -70,7 +70,7 @@ public abstract class BaseMonetaryFormatsSingletonSpi implements MonetaryFormats
      * Access the default {@link org.javamoney.bp.format.MonetaryAmountFormat} given a {@link java.util.Locale}.
      *
      * @param locale    the target {@link java.util.Locale}, not {@code null}.
-     * @param providers The (optional) providers to be used, oredered correspondingly.
+     * @param providers The (optional) providers to be used, ordered correspondingly.
      * @return the matching {@link org.javamoney.bp.format.MonetaryAmountFormat}
      * @throws org.javamoney.bp.MonetaryException if no registered {@link org.javamoney.bp.spi.MonetaryAmountFormatProviderSpi} can provide a
      *                           corresponding {@link org.javamoney.bp.format.MonetaryAmountFormat} instance.
@@ -83,7 +83,7 @@ public abstract class BaseMonetaryFormatsSingletonSpi implements MonetaryFormats
      * Access the default {@link org.javamoney.bp.format.MonetaryAmountFormat} given a {@link java.util.Locale}.
      *
      * @param formatName the target format name, not {@code null}.
-     * @param providers  The (optional) providers to be used, oredered correspondingly.
+     * @param providers  The (optional) providers to be used, ordered correspondingly.
      * @return the matching {@link org.javamoney.bp.format.MonetaryAmountFormat}
      * @throws org.javamoney.bp.MonetaryException if no registered {@link org.javamoney.bp.spi.MonetaryAmountFormatProviderSpi} can provide a
      *                           corresponding {@link org.javamoney.bp.format.MonetaryAmountFormat} instance.

@@ -21,7 +21,7 @@ package org.javamoney.bp;
  * <p>
  * There are two equivalent ways of using a {@code MonetaryOperator}. The first
  * is to invoke the method on this interface. The second is to use
- * {@link MonetaryAmount#with(javax.money.MonetaryOperator)}:
+ * {@link MonetaryAmount#with(org.javamoney.bp.MonetaryOperator)}:
  * 
  * <pre>
  * // these two lines are equivalent, but the second approach is recommended

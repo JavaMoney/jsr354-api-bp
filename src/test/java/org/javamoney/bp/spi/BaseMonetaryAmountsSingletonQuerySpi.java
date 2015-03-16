@@ -50,11 +50,12 @@ public abstract class BaseMonetaryAmountsSingletonQuerySpi implements MonetaryAm
     }
 
     /**
-     * Executes the query and returns the {@link org.javamoney.bp.MonetaryAmount} implementation typea found.
+     * Executes the query and returns the {@link org.javamoney.bp.MonetaryAmount} implementation types found.
      *
      * @param query the factory query, not null.
      * @return the type found, or null.
      */
+    @SuppressWarnings("unchecked")
     public Collection<Class<? extends MonetaryAmount>> getAmountTypes(MonetaryAmountFactoryQuery query) {
         Collection<MonetaryAmountFactory<? extends MonetaryAmount>> factories = getAmountFactories(query);
         Set<Class<? extends MonetaryAmount>> result = new HashSet<Class<? extends MonetaryAmount>>();

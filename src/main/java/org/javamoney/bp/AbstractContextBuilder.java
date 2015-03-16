@@ -22,6 +22,7 @@ import java.util.TreeMap;
  * <p>
  * Instances of this class are not thread-safe and not serializable.
  */
+@SuppressWarnings("ALL")
 public abstract class AbstractContextBuilder<B extends AbstractContextBuilder, C extends AbstractContext>{
 
     /**

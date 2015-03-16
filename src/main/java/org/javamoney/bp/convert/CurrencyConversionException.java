@@ -10,8 +10,6 @@
  */
 package org.javamoney.bp.convert;
 
-import java.util.Objects;
-
 import org.javamoney.bp.CurrencyUnit;
 import org.javamoney.bp.MonetaryException;
 

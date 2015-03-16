@@ -15,7 +15,7 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Adapter that implements the new {@link javax.money.CurrencyUnit} interface using the
+ * Adapter that implements the new {@link org.javamoney.bp.CurrencyUnit} interface using the
  * JDK's {@link java.util.Currency}.
  *
  * @author Anatole Tresch
@@ -113,6 +113,7 @@ public final class TestCurrency implements CurrencyUnit, Serializable, Comparabl
         // Templates.
     }
 
+    @SuppressWarnings("NullableProblems")
     public int compareTo(CurrencyUnit currency) {
         Objects.requireNonNull(currency);
         return getCurrencyCode().compareTo(currency.getCurrencyCode());
@@ -197,7 +198,7 @@ public final class TestCurrency implements CurrencyUnit, Serializable, Comparabl
     }
 
     /**
-     * Adapter that implements the new {@link javax.money.CurrencyUnit} interface using the
+     * Adapter that implements the new {@link org.javamoney.bp.CurrencyUnit} interface using the
      * JDK's {@link java.util.Currency}.
      * <p>
      * This adapter will be removed in the final platform implementation.
@@ -224,7 +225,7 @@ public final class TestCurrency implements CurrencyUnit, Serializable, Comparabl
         /**
          * Private constructor.
          *
-         * @param currency
+         * @param currency the underlying JDK currency, not null.
          */
         private JDKCurrencyAdapter(Currency currency) {
             if (currency==null) {
@@ -233,6 +234,7 @@ public final class TestCurrency implements CurrencyUnit, Serializable, Comparabl
             this.currency = currency;
         }
 
+        @SuppressWarnings("NullableProblems")
         public int compareTo(CurrencyUnit currency) {
             Objects.requireNonNull(currency);
             int compare = getCurrencyCode().compareTo(currency.getCurrencyCode());

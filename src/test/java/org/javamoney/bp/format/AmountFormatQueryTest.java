@@ -8,8 +8,6 @@
  */
 package org.javamoney.bp.format;
 
-import org.javamoney.bp.MonetaryAmount;
-import org.javamoney.bp.MonetaryOperator;
 import org.testng.annotations.Test;
 
 import java.text.DecimalFormat;
@@ -18,9 +16,9 @@ import java.util.*;
 import static org.testng.Assert.*;
 
 /**
- * Created by Anatole on 05.03.14.
+ * Tests for {@link AmountFormatQuery}.
  */
-public class AmountStyleTest{
+public class AmountFormatQueryTest {
     @Test
     public void testOf() throws Exception{
         AmountFormatQuery style = AmountFormatQuery.of(Locale.ENGLISH);
@@ -39,12 +37,6 @@ public class AmountStyleTest{
 
     @Test
     public void testHashCode(){
-        MonetaryOperator op = new MonetaryOperator() {
-            @Override
-            public MonetaryAmount apply(MonetaryAmount amount) {
-                return amount.multiply(2.0d);
-            }
-        };
         List<AmountFormatContext> contexts = new ArrayList<AmountFormatContext>();
         contexts.add(AmountFormatContextBuilder.of(Locale.GERMAN).build());
         contexts.add(AmountFormatContextBuilder.of(Locale.ENGLISH).build());
@@ -58,12 +50,6 @@ public class AmountStyleTest{
 
     @Test
     public void testEquals(){
-        MonetaryOperator op = new MonetaryOperator() {
-            @Override
-            public MonetaryAmount apply(MonetaryAmount amount) {
-                return amount.multiply(2.0d);
-            }
-        };
         List<AmountFormatContext> contexts = new ArrayList<AmountFormatContext>();
         contexts.add(AmountFormatContextBuilder.of(Locale.ENGLISH).build());
         contexts.add(AmountFormatContextBuilder.of(Locale.GERMAN).build());
