@@ -1,0 +1,517 @@
+﻿Java Money and Currency API -- Backport for Java 7
+==================================================
+:title: Java Money and Currency API -- Backport for Java 7
+:revnumber: 1.0-RC1
+:revdate: March 2015
+:longversion: 1.0-RC1 March 2015
+:authorinitials: ATR
+:author: Anatole Tresch, Credit Suisse
+:email: <anatole.tresch@credit-suisse.com>
+:source-highlighter: coderay
+:website: http://javamoney.org/
+:toc:
+:toc-placement: manual
+:icons:
+:encoding: UTF-8
+:numbered:
+
+'''
+
+<<<
+
+image::https://raw.githubusercontent.com/JavaMoney/jsr354-api/master/src/main/asciidoc/images/javamoney_cup.jpg[]
+
+:numbered!:
+
+==== Version Information:
+------------------------------------------------------------------
+Specification: Java Money and Currency API -- Backport for Java 7
+Version:       1.0-RC1
+Status:        Prerelease
+Release Date:  March 2015
+Copyright:     2012-2015
+               Credit Suisse AG
+               P.O.Box
+               8070 Zurich
+               Switzerland
+               All rights reserved.
+License:       Apache Licence v2
+------------------------------------------------------------------
+
+toc::[]
+
+<<<
+:numbered:
+
+<<<
+
+== Introduction
+This document is the user guide of the Java API for Money and Currency Backport of JSR 354. The technical objective is
+to provide a money and currency API for Java, targeted at all users of currencies and monetary amounts, compatible
+with Android and Java 7.
+The API will provide support for standard [ISO-4217] and custom currencies, and a model for monetary amounts and
+rounding. It will have extension points for adding additional features like currency exchange, financial calculations
+and formulas. For detailed information on the API and its usage, we recommend reading the JSR's specification, which can
+be downloaded from the JCP page http://jcp.org/en/jsr/detail?id=35[JSR 354 on jcp.org .
+
+Basically the specification of JSR 354 can be used as documentation base, if you want to have some introduction how
+to use this library. Hereby you must map the following packages:
+
+* org.javamoney.bp.api -> org.javamoney.bp
+* org.javamoney.bp.api.spi -> org.javamoney.bp.spi
+* org.javamoney.bp.api.convert -> org.javamoney.bp.convert
+* org.javamoney.bp.api.format -> org.javamoney.bp.format
+
+Additionally this library provides a package +org.javamoney.bp.spi.base+, which contains abstract classes that
+contain the logic included as _default_ methods in the JSR 354 API. So basically, when you have code based on
+JSR 354 Java 8 API as follows:
+
+[source,java]
+----------------------------------------------------------------------
+public class MyImplClass implements CurrencyProviderSpi{
+  ...
+}
+----------------------------------------------------------------------
+
+you simply have to rewrite it as:
+
+[source,java]
+----------------------------------------------------------------------
+public class MyImplClass extends BaseCurrencyProviderSpi{
+  ...
+}
+----------------------------------------------------------------------
+
+...and it will run similarly in Java 7.
+
+
+[[ProjectStructure]]
+== Package and Project Structure
+==== Package Overview
+Similar to JSR 354 the backport defines the following 4 main packages:
+
++org.javamoney.bp.api+:: contains the main artifacts, such as +CurrencyUnit, MonetaryAmount, MonetaryContext, MonetaryOperator,
+MonetaryQuery, MonetaryRounding+, and the singleton accessors +MonetaryCurrencies, MonetaryAmounts, MonetaryRoundings+.
+
++org.javamoney.bp.api.conversion+:: contains the conversion artifacts +ExchangeRate, ExchangeRateProvider, CurrencyConversion+
+and the according +MonetaryConversions+ accessor singleton.
+
++org.javamoney.bp.api.format+:: contains the formatting artifacts +MonetaryAmountFormat, AmountFormatContext+ and the according
++MonetaryFormats+ accessor singleton. 
+
++org.javamoney.bp.api.spi+:: contains the SPI interfaces provided by the JSR 354 API and the bootstrap logic, to support
+different runtime environments and component loading mechanisms.
+
+
+[[Modules]]
+==== Module/Repository Overview
+The JSR’s source code repository under <<source>> provides several modules:
+
+javamoney-api-bp:: contains the API backport for use with Java 7. 
+javamoney-moneta-bp:: contains the ''moneta'' implementation, based on Java 7.
+jsr354-api:: contains the JSR 354 API for use with Java 8. We highly recommend using this version, if possible, to
+benefit from the power of Java 8.
+jsr354-ri:: contains the ''moneta'' reference implementation, based on Java 8.
+jsr354-tck:: contains the technical compatibility kit (TCK) of the JSR, requiring as well Java 8.
+javamoney-parent:: is a root “POM” project for all modules under +org.javamoney+. This includes the RI/TCK projects,
+  but not jsr354-api and javamoney-api-bp (which are standalone).
+javamoney-library:: contains a financial library (JavaMoney) adding comprehensive support for several extended
+  functionality, built on top of the JSR's API, but not part of the JSR.
+javamoney-examples:: finally contains the examples and demos, and also is not part of this JSR.
+
+
+== Examples
+The following sections illustrate the backport's API usage in more detail.
+
+=== Working with org.javamoney.moneta.bp.Money
+The Javamoney backport implementation of JSR 354 has to provide value type classes for monetary amounts, hereby implementing
++org.javamoney.moneta.bp.api.MonetaryAmount+, and registering at least one implementation class with the +org.javamoney.moneta.bp.api.MonetaryAmounts+ singleton by
+implementing and registering a corresponding +org.javamoney.moneta.bp.api.MonetayAmountFactory+ instance.
+
+As an example the reference implementation provides a class +org.javamoney.moneta.bp.Money+, which is using
++java.math.BigDecimal+ internally:
+
+[source,java]
+.Class Money
+-------------------------------------------------------------------------------
+public final class Money
+implements MonetaryAmount, Comparable<MonetaryAmount>, Serializable, CurrencySupplier {
+  ...
+}
+-------------------------------------------------------------------------------
+
+
+Since a corresponding +MonetaryAmountFactory+ is registered, a new instance can be created using the typed factory:
+
+[source,java]
+.Example Usage of MonetaryAmountFactory
+-------------------------------------------------------------------
+MonetaryAmountFactory<Money> fact = MonetaryAmounts.getAmountFactory(Money.class);
+Money m = fact.withCurrency("USD").with(200.50).create();
+-------------------------------------------------------------------
+
+Also a generic +MonetaryAmount+ instance can be accessed using a raw factory (hereby it depends on the configured
+default amount factory, which effective type instance is returned):
+
+[source,java]
+.Example Usage MonetaryAmountFactory
+-------------------------------------------------------------------
+MonetaryAmount amt = MonetaryAmounts.getDefaultAmountFactory()
+                       .withCurrency("USD").with(200.50).create();
+-------------------------------------------------------------------
+
+Still we can evaluate the effective amount’s type effectively:
+
+[source,java]
+-------------------------------------------------------------------------------
+if(Money.class==amt.getClass()){
+  Money m = (Money)amt;
+}
+-------------------------------------------------------------------------------
+
+But in general, we do not need to know the exact implementation in most cases, since we can access amount
+meta-data as a +MonetaryContext+, This meta-data provides information, such as the maximal precision, maximal scale
+supported by the type's implementation as well as other attributes. Refer to <<MonetaryContext>> for more details.
+
+[source,java]
+.Example Usage MonetaryContext
+-------------------------------------------------------------------
+MonetaryContext ctx = m.getMonetaryContext();
+if(ctx.getMaxPrecision()==0){
+   System.out.println("Unbounded maximal precision.");
+}
+if(ctx.getMaxScale()>=5){
+   System.out.println("Sufficient scale for our use case, go for it.");
+}
+-------------------------------------------------------------------
+
+Finally performing arithmetic operations in both above scenarios works similar as it is when using
++java.math.BigDecimal+:
+
+[source,java]
+.Example Usage Monetary Arithmetic
+-------------------------------------------------------------------
+MonetaryAmount amt = ...;
+amt = amt.multiply(2.0).subtract(1.345);
+-------------------------------------------------------------------
+
+Also the sample above illustrates how algorithmic operations can be chained together using a fluent API. As
+mentioned also external functionality can be chained, e.g. using instances of +MonetaryOperator+:
+
+[source,java]
+.Example Function Chaining footnote:[+MonetaryFunctions+ is not part of the JSR, its just for illustration purposes.]
+-------------------------------------------------------------------
+MonetaryAmount amt = ...;
+amt = amt.multiply(2.12345).with(MonetaryRoundings.getDefaultRounding())
+        .with(MonetaryFunctions.minimal(100)).
+        .multiply(2.12345).with(MonetaryRoundings.getDefaultRounding())
+        .with(MonetaryFunctions.percent(23));
+-------------------------------------------------------------------
+
+==== Numeric Precision and Scale
+Since the +Money+ implementation class, which is part of the reference implementation, internally uses
++java.math.BigDecimal+ the numeric capabilities match exact the capabilities of +BigDecimal+.
+When accessing +MonetaryAmountFactory+ instances it is possible to configure the +MathContext+ effectively used
+(by default +Money+ uses +MathContext.DECIMAL64+).:
+
+[source,java]
+.Example Configuring a +MonetaryAmountFactory+, using the RI class +Money+ as example.
+-------------------------------------------------------------------
+MonetaryAmountFactory<Money> fact = MonetaryAmounts.getAmountFactory(
+   MonetaryAmountFactoryQueryBuilder.of(Money.class)
+     .set(new MathContext(250, RoundingMode.HALF_DOWN)).build()
+);
+// Creates an instance of Money with the given MathContext
+MonetaryAmount m1 = fact.setCurrency("CHF").setNumber(250.34).create();
+Money m2 = fact.setCurrency("CHF").setNumber(250.34).create();
+-------------------------------------------------------------------
+
+==== Extending the API
+Now, one last thing to discuss is, how users can add their own functionality, e.g. by writing their own
++MonetaryOperator+ functions. Basically there are two distinct usage scenarios:
+
+* When the basic arithmetic defined on each +MonetaryAmount+ are sufficient, it should be easy to implement such
+  functionality, since its behaving like any other type, e.g.
+
+[source,java]
+-------------------------------------------------------------------------------
+public final class DuplicateOp implements MonetaryOperator{
+  public <T extends MonetaryAmount> T apply(T amount){
+    return (T) amount.multiply(2);
+  }
+}
+-------------------------------------------------------------------------------
+
+Below is a rather academical example of a +MonetaryOperator+ that simply converts any given amount to an amount with
+the same numeric value, but with XXX (undefined) as currency:
+
+[source,java]
+.Simple example of a +MonetaryOperstor+ using the +MonetaryAmountFactory+ provided.
+-------------------------------------------------------------------------------
+public final class ToInvalid implements MonetaryOperator{
+  public <T extends MonetaryAmount> T apply(T amount){
+    return (T)amount.getFactory().setCurrency("XXX").create();
+  }
+}
+-------------------------------------------------------------------------------
+
+=== Working with org.javamoney.moneta.FastMoney
+This class implements a +MonetaryAmount+ using long as numeric representation, whereas the full amount is interpreted
+as minor units, with a _denumerator_ of +100000+.
+
+As an example +CHF 2.5+ is internally stored as +CHF 250000+. Addition and subtraction of values is trivial, whereas
+division and multiplication get complex with non integral values. Compared to +Money+ the possible amounts to be modeled
+are limited to an overall precision of +18+ and a _fixed scale_ of +5+ digits.
+
+Beside that the overall handling of +FastMoney+ is similar to +Money+. So we could rewrite the former example by
+just replacing +FastMoney+ with +Money+:
+
+[source,java]
+.Usage Example - FastMoney
+-------------------------------------------------------------------
+MonetaryAmountFactory<FastMoney> fact = MonetaryAmounts.getAmountFactory(FastMoney.class);
+// Creates an instance of Money with the given MathContext
+MonetaryAmount m1 = fact.setCurrency("CHF").setNumber(250.34).create();
+FastMoney m2 = fact.setCurrency("CHF").setNumber(250.34).create();
+-------------------------------------------------------------------
+
+Of course, the +MonetaryContext+ is different than for +Money+:
+
+.The MonetaryContext of FastMoney
+-------------------------------------------------------------------------------
+maxPrecision = 18;  // hard limit
+maxScale = 5;       // fixed scale
+numeric class = Long
+attributes: RoundingMode.HALF_EVEN
+-------------------------------------------------------------------------------
+
+=== Calculating a Total
+A total of amounts can be calculated in multiple ways, one way is simply to chain the amounts with +add(MonetaryAmount)+:
+
+[source,java]
+.Usage Example Calculating a Total
+-------------------------------------------------------------------
+MonetaryAmount[] params = new MonetaryAmount[]{
+                   Money.of("CHF", 100), Money.of("CHF", 10.20),
+                         Money.of("CHF", 1.15),};
+MonetaryAmount total = params[0];
+for(int i=1; i<params.length;i++){
+   total = total.add(params[i]);
+}
+-------------------------------------------------------------------
+
+As an alternate it is also possible to define a +MonetaryOperator+, which can be passed to all amounts:
+
+[source,java]
+.Example of total/add method
+-------------------------------------------------------------------
+public class Total implements MonetaryOperator{
+   private MonetaryAmount total;
+
+   public <T extends MonetaryAmount<T>> T apply(T amount){
+      if(total==null){
+         total = amount;
+      }
+      else{
+         total = total.add(amount);
+      }
+      // ensure to return correct type, since different implementations
+      // can be passed as amount parameter
+      return amount.getFactory().with(total).create();
+   }
+
+
+   public MonetaryAmount getTotal(){
+      return total;
+   }
+
+   public <T extends MonetaryAmount> T getTotal(Class<T> amountType){
+      return MonetaryAmounts.getAmountFactory(amountType).with(total).create();
+   }
+
+}
+-------------------------------------------------------------------
+
+[IMPORTANT]
+=======================================================================
+We are well aware of the fact that this implementation still has some severe drawbacks, but we decided for
+simplicity to not add the following features to this example:
+
+* the implementation can only handle one currency, a better implementation could also be _multi-currency_ capable.
+* The implementation above is not thread-safe.
+=======================================================================
+
+Now with the +MonetaryOperator+ totalizing looks as follows:
+
+[source,java]
+.Example Using Total/add method
+-------------------------------------------------------------------
+Total total = new Total();
+for(int i=1; i<params.length;i++){
+  total.with(params[i]);
+}
+System.out.println("TOTAL: " + total.getTotal());
+-------------------------------------------------------------------
+
+A similar approach can also be used for other multi value calculations as used in statistics, e.g. average, median etc.
+
+
+=== Calculating a Present Value
+The present value (abbreviated PV) shows how financial formulas can be implemented based on the JSR 354 API. A PV
+models the current value of a financial in- or outflow in the future, weighted with a calculatory interest rate.
+The PV is defined as follows:
+
+  C / ((1+r)^n)
+
+Hereby
+
+* +n+ is the time of the cash flow (in periods)
+* +r+ is the discount rate (the rate of return that could be earned on an investment in the financial markets with
+  similar risk.); the opportunity cost of capital.
+* +C+ is the net cash flow i.e. cash inflow – cash outflow, at time t . For educational purposes,
+
+The same financial function now can be implemented for example as follows:
+
+[source,java]
+.Example Using Total/add method
+-------------------------------------------------------------------
+public <T extends MonetaryAmount> T presentValue(
+                                T amt, BigDecimal rate, int periods){
+  BigDecimal divisor = BigDecimal.ONE.add(rate).pow(periods);
+  // cast should be safe for implementations that adhere to this spec
+  return (T)amt.divide(divisor);
+}
+-------------------------------------------------------------------
+
+This algorithm can be implemented as +MonetaryOperator+:
+
+[source,java]
+.Example Implementing a MonetaryOperator
+-------------------------------------------------------------------
+public final class PresentValue implements MonetaryOperator{
+  private BigDecimal rate;
+  private int periods;
+  private BigDecimal divisor;
+
+  public PresentValue(BigDecimal rate, int periods){
+    Objects.requireNotNull(rate);
+    this.rate = rate;
+    this.periods = periods;
+    this.divisor = BigDecimal.ONE.add(periods).power(periods);
+  }
+
+  public int getPeriods(){ return periods; }
+
+  public BigDecimal getRate(){ return rate; }
+
+  public <T extends MonetaryAmount> T apply(T amount){
+     // cast should be safe for implementations that adhere to this spec
+     return (T)amount.divide(divisor);
+  }
+
+  public String toString(){...}
+}
+-------------------------------------------------------------------
+
+For simplicity we did not add additional feature such as caching of PresentValue instances using a static factory
+method, or pre-calculation of divisor matrices. Now given the +MonetaryOperator+ a present value can be
+calculated as follows:
+
+[source,java]
+.Example Using a Financial Function
+-------------------------------------------------------------------
+Money m = Money.of("CHF", 1000);
+// present value for an amount of 100, available in two periods,
+// with a rate of 5%.
+Money pv = m.with(new PresentValue(new BigDecimal("0.05"), 2));
+-------------------------------------------------------------------
+
+
+=== Performing Currency Conversion
+Currency Conversion also is a special case of a +MonetaryOperator+ since it creates a new amount based on another
+amount. Hereby by the conversion the resulting amount will typically have a different currency and a different
+numeric amount:
+
+[source,java]
+.Example Currency Conversion
+-------------------------------------------------------------------
+MonetaryAmount inCHF =...;
+CurrencyConversion conv = MonetaryConversions.getConversion("EUR");
+MonetaryAmount inEUR = inCHF.with(conv);
+-------------------------------------------------------------------
+
+Also we can define the providers to be used for currency conversion by passing the provider names explicitly:
+[source,java]
+-------------------------------------------------------------------------------
+CurrencyConversion conv = MonetaryConversions.getConversion("EUR", "EZB", "IMF");
+-------------------------------------------------------------------------------
+
+To cover also more complex usage scenarios we can also pass a +ConversionQuery+ with additional parameters for
+conversion, e.g.:
+
+[source,java]
+-------------------------------------------------------------------
+MonetaryAmount inCHF =...;
+CurrencyConversion conv = MonetaryConversions.getConversion(ConversionQueryBuilder.of()
+        .setProviders("CS", "EZB", "IMF")
+        .setTermCurrency("EUR")
+        .set(MonetaryAmount.class, inCHF, MonetaryAmount.class)
+        .set(LocalDate.of(2008, 1, 1))
+        .setRateType(RateType.HISTORIC)
+        .set(StockExchange.NYSE) // custom type
+        .set("contractId", "AA-1234.2")
+        .build());
+MonetaryAmount inEUR = inCHF.with(conv);
+-------------------------------------------------------------------
+
+:numbered!:
+
+== APPENDIX
+[[Bibliography]]
+=== Bibliography
+
+[[[ISO-4217]]]
+http://www.iso.org/iso/home/standards/currency_codes.htm
+
+[[[ISO-20022]]]
+http://www.iso20022.org
+
+[[[JodaMoney]]]
+http://www.joda.org/joda-money/
+
+[[[java.net]]]
+http://java.net/projects/javamoney/
+
+[[[JSR354]]]
+http://jcp.org/en/jsr/detail?id=354
+
+[[[source]]]
+Public Source Code Repository on GitHub: http://github.com/JavaMoney,
+             Branch/Tag matching updated PDR is {version}
+
+
+=== Links
+* http://jcp.org/en/jsr/detail?id=35[JSR 354 on jcp.org]
+* http://java.net/projects/javamoney/[JavaMoney Project on Java.net]
+  ** https://github.com/JavaMoney[JSR 354 API GitHub Repository]
+  ** https://github.com/JavaMoney/jsr354-ro[Moneta RI GitHub Repository]
+* http://www.javapractices.com/topic/TopicAction.do?Id=13[Java Practices about Representing Money]
+* http://blog.eisele.net/2011/08/working-with-money-in-java.html[Working with Money in Java]
+* http://mindprod.com/jgloss/currency.html[Java currency] by Roedy Green, http://mindprod.com[Canadian Mind Products]
+* http://www.eclipse.org/uomo/[UOMo Business], based on ICU4J and concepts by JScience Economics]
+* http://site.icu-project.org/[ICU4J] Uses Number for all operations and internal storage in its Money type.
+* http://moneydance.com/dev/apidoc/[MoneyDance API]
+* http://javamoney.org[JavaMoney] is the Apache 2.0 licensed OSS project that evolved from JSR 354 development. It provides concrete implementations for currency conversion and mapping, advanced formatting, historic data access, regions and a set of financial calculations and formulas.
+* http://www.joda.org/joda-money[Joda Money] can be referred to as an inspiration for API and design style. it is based on real-world use cases in an e-commerce application for airlines
+* http://grails.org/plugin/currencies[Grails Currencies] uses BigDecimal as internal representation, but API only exposes Number in all Money operations like plus(), minus() or similar.
+* http://lemnik.wordpress.com/2011/03/25/bigdecimal-and-your-money/[Why not to use BigDecimal for Money]
+* http://de.wikipedia.org/wiki/M-Pesa[M-Pesa-Mobile Money] in Africa
+* Currency Internationalization (i18n), Multiple Currencies and Foreign Exchange (FX).
+* http://en.wikipedia.org/wiki/Japanese_units_of_measurement#Money: Discussion of internationalization of currencies, rounding, grouping and formatting, separators etc]
+* http://speleotrove.com/decimal/
+* http://sourceforge.net/projects/oquote/
+* http://en.wikipedia.org/wiki/Karatsuba_algorithm[Karatsuba Algorithm] for Fast Big Decimal Multiplication
+
+=== Related Initiatives
+* http://timeandmoney.sourceforge.net/ [Eric Evans Time and Money Library]
+* http://bitcoinj.github.io/ [Bitcoin Java Client]
