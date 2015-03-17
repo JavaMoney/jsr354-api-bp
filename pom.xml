@@ -15,7 +15,7 @@
     <artifactId>money-api-bp</artifactId>
     <packaging>jar</packaging>
 
-    <version>1.0-RC3</version>
+    <version>1.0-RC1</version>
 
     <name>Money and Currency API (JSR 354) - Java 6 Compatible Backport</name>
     <url>http://java.net/projects/javamoney</url>
@@ -248,11 +248,12 @@
             <name>Nexus Release Repository</name>
         </repository>
         <snapshotRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <name>Sonatype Nexus Snapshots</name>
+            <id>sonatype-nexus-staging</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <name>Nexus Snapshot Repository</name>
         </snapshotRepository>
     </distributionManagement>
+
 
     <profiles>
         <profile>
@@ -271,9 +272,24 @@
                             <artifactId>maven-gpg-plugin</artifactId>
                             <version>1.4</version>
                         </plugin>
+                        <plugin>
+                            <groupId>org.sonatype.plugins</groupId>
+                            <artifactId>nexus-staging-maven-plugin</artifactId>
+                            <version>1.6.3</version>
+                            <extensions>true</extensions>
+                            <configuration>
+                                <serverId>ossrh</serverId>
+                                <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                                <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                            </configuration>
+                        </plugin>
                     </plugins>
                 </pluginManagement>
                 <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                    </plugin>
                     <plugin>
                         <!-- Usage: mvn clean deploy -Dgpg.passphrase=yourpassphrase ; Or sign
                             already deployed artifact: mvn gpg:sign-and-deploy-file -DpomFile=target/myapp-1.0.pom
