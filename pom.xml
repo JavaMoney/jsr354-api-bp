@@ -11,13 +11,12 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.javamoney</groupId>
-    <artifactId>money-api-bp</artifactId>
+    <groupId>javax.money</groupId>
+    <artifactId>money-api-java7</artifactId>
     <packaging>jar</packaging>
+    <version>1.0-RC3</version>
 
-    <version>1.0-RC1</version>
-
-    <name>Money and Currency API (JSR 354) - Java 6 Compatible Backport</name>
+    <name>Money and Currency API (JSR 354) - Java 7 Compatible Version</name>
     <url>http://java.net/projects/javamoney</url>
     <inceptionYear>2015</inceptionYear>
     <description>JSR 354 provides an API for representing, transporting, and performing comprehensive calculations with
@@ -204,6 +203,9 @@
                                 </goals>
                             </execution>
                         </executions>
+                        <configuration>
+                            <classifier>java7</classifier>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
@@ -342,6 +344,9 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
+                    <configuration>
+                        <classifier>java7</classifier>
+                    </configuration>
                     <version>2.4</version>
                 </plugin>
                 <plugin>
