@@ -203,9 +203,6 @@
                                 </goals>
                             </execution>
                         </executions>
-                        <configuration>
-                            <classifier>java7</classifier>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>
@@ -344,9 +341,6 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <configuration>
-                        <classifier>java7</classifier>
-                    </configuration>
                     <version>2.4</version>
                 </plugin>
                 <plugin>
