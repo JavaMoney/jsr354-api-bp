@@ -93,8 +93,15 @@
 
     <licenses>
         <license>
-            <name>Apache 2 License</name>
-            <url>LICENSE</url>
+            <name>Spec Evaluation License</name>
+            <comments>Spec</comments>
+            <url>EVALUATION-LICENSE.html</url>
+            <distribution>repo</distribution>
+        </license>
+        <license>
+            <name>Spec Implementation License</name>
+            <comments>Spec</comments>
+            <url>IMPLEMENTATION-LICENSE.html</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
