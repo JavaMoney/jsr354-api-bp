@@ -16,15 +16,14 @@
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
 
-    <name>Money and Currency API (JSR 354) - Java 7 Compatible Version</name>
+    <name>Money and Currency API (JSR 354) - Java 6/7 Compatible Version</name>
     <url>http://java.net/projects/javamoney</url>
-    <inceptionYear>2015</inceptionYear>
+    <inceptionYear>2012</inceptionYear>
     <description>JSR 354 provides an API for representing, transporting, and performing comprehensive calculations with
         Money and Currency. This module provides a forward compatible backport of the API.
     </description>
 
     <properties>
-
         <moduleDir>.</moduleDir>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -207,8 +206,8 @@
     </mailingLists>
 
     <issueManagement>
-        <system>GITHUB</system>
-        <url>https://github.com/JavaMoney/javamoney-api-bp/issues</url>
+        <system>JIRA</system>
+        <url>http://java.net/jira/browse/JAVAMONEY</url>
     </issueManagement>
 
 
