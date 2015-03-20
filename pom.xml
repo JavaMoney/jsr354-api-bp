@@ -59,6 +59,129 @@
                 <role>Expert Group Member</role>
             </roles>
         </developer>
+        <developer>
+            <id>dunnschtig</id>
+            <name>Sascha Freitag</name>
+            <organization>Credit Suisse</organization>
+            <roles>
+                <role>Expert Group Member (until EDR)</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>tom-huesler</id>
+            <name>Thomas Hüsler</name>
+            <organization>Espalier Technologies</organization>
+            <timezone>GMT+1</timezone>
+            <roles>
+                <role>Expert Group Member</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>vgrazi</id>
+            <name>Victor Grazi</name>
+            <roles>
+                <role>Expert Group Member (Emeritus)</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>jodastephen</id>
+            <name>Stephen Colebourne</name>
+            <roles>
+                <role>Expert Group Member</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>chrisphe</id>
+            <name>Christopher Pheby</name>
+            <roles>
+                <role>Expert Group Member</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>crazybob</id>
+            <name>Bob Lee</name>
+            <roles>
+                <role>Expert Group Member</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>jeffprestes</id>
+            <name>Jefferson Prestes</name>
+            <roles>
+                <role>Expert Group Member</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>jezdavies</id>
+            <name>Jeremy Davies</name>
+            <roles>
+                <role>Expert Group Member</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>-</id>
+            <name>Mathias Bücker</name>
+            <organization>Credit Suisse</organization>
+            <roles>
+                <role>Expert Group Member</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>-</id>
+            <name>Benjamin Cotton</name>
+            <roles>
+                <role>Expert Group Member</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>simasch</id>
+            <name>Simon Martinelli</name>
+            <roles>
+                <role>Expert Group Member</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>-</id>
+            <name>Greg Bakos</name>
+            <roles>
+                <role>Expert Group Member</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>-</id>
+            <name>Tony Jewell</name>
+            <roles>
+                <role>Expert Group Member</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>-</id>
+            <name>Arumugam Swaminathan</name>
+            <roles>
+                <role>Expert Group Member</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>-</id>
+            <name>Sanjay Nagpal</name>
+            <roles>
+                <role>Expert Group Member</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>otaviojava</id>
+            <name>Otavio Santana</name>
+            <roles>
+                <role>Expert Group Member</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>-</id>
+            <name>Manuela Grindei</name>
+            <roles>
+                <role>Expert Group Member</role>
+            </roles>
+        </developer>
     </developers>
 
     <ciManagement>
@@ -170,6 +293,43 @@
                             </execution>
                         </executions>
                     </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>release-createDocs</id>
+            <activation>
+                <property>
+                    <name>createDocs</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
