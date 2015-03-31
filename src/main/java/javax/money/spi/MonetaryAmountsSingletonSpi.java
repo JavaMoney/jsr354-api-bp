@@ -10,12 +10,12 @@ package javax.money.spi;
 
 import javax.money.MonetaryAmount;
 import javax.money.MonetaryAmountFactory;
-import javax.money.MonetaryAmounts;
+import javax.money.Monetary;
 import javax.money.MonetaryException;
 import java.util.Collection;
 
 /**
- * SPI (core) for the backing implementation of the {@link javax.money.MonetaryAmounts} singleton. It
+ * SPI (core) for the backing implementation of the {@link javax.money.Monetary} singleton. It
  * should load and manage (including contextual behavior), if needed) the different registered
  * {@link javax.money.MonetaryAmountFactory} instances.
  *
@@ -39,7 +39,7 @@ public interface MonetaryAmountsSingletonSpi{
      * @throws MonetaryException if no {@link MonetaryAmountFactoryProviderSpi} is available, or no
      *                           {@link MonetaryAmountFactoryProviderSpi} targeting the configured default
      *                           {@link MonetaryAmount} type.
-     * @see MonetaryAmounts#getDefaultAmountType()
+     * @see Monetary#getDefaultAmountType()
      */
     Class<? extends MonetaryAmount> getDefaultAmountType();
 
@@ -59,7 +59,7 @@ public interface MonetaryAmountsSingletonSpi{
      * @throws MonetaryException if no {@link MonetaryAmountFactoryProviderSpi} is available, or no
      *                           {@link MonetaryAmountFactoryProviderSpi} targeting the configured default
      *                           {@link MonetaryAmount} type.
-     * @see MonetaryAmounts#getDefaultAmountType()
+     * @see Monetary#getDefaultAmountType()
      */
     MonetaryAmountFactory<?> getDefaultAmountFactory();
 

@@ -19,7 +19,7 @@ import java.util.Locale;
 import java.util.Set;
 
 /**
- * Factory singleton backing interface for {@link javax.money.MonetaryCurrencies} that provides access to
+ * Factory singleton backing interface for {@link javax.money.Monetary} that provides access to
  * different registered {@link CurrencyProviderSpi} instances.
  * <p>
  * Implementations of this interface must be thread safe.
@@ -65,7 +65,7 @@ public interface MonetaryCurrenciesSingletonSpi {
      *
      * @param currencyCode the ISO currency code, not {@code null}.
      * @param providers    the (optional) specification of providers to consider. If not set (empty) the providers
-     *                     as defined by #getDefaultProviderChain() should be used.
+     *                     as defined by #getDefaultRoundingProviderChain() should be used.
      * @return the corresponding {@link javax.money.CurrencyUnit} instance.
      * @throws javax.money.UnknownCurrencyException if no such currency exists.
      */
@@ -78,7 +78,7 @@ public interface MonetaryCurrenciesSingletonSpi {
      *
      * @param country   the ISO currency's country, not {@code null}.
      * @param providers the (optional) specification of providers to consider. If not set (empty) the providers
-     *                  as defined by #getDefaultProviderChain() should be used.
+     *                  as defined by #getDefaultRoundingProviderChain() should be used.
      * @return the corresponding {@link javax.money.CurrencyUnit} instance.
      * @throws javax.money.UnknownCurrencyException if no such currency exists.
      */
@@ -90,7 +90,7 @@ public interface MonetaryCurrenciesSingletonSpi {
      * @param locale    the target {@link java.util.Locale}, typically representing an ISO country,
      *                  not {@code null}.
      * @param providers the (optional) specification of providers to consider. If not set (empty) the providers
-     *                  as defined by #getDefaultProviderChain() should be used.
+     *                  as defined by #getDefaultRoundingProviderChain() should be used.
      * @return a collection of all known currencies, never null.
      */
     Set<CurrencyUnit> getCurrencies(Locale locale, String... providers);
@@ -101,7 +101,7 @@ public interface MonetaryCurrenciesSingletonSpi {
      *
      * @param code      the currency code, not {@code null}.
      * @param providers the (optional) specification of providers to consider. If not set (empty) the providers
-     *                  as defined by #getDefaultProviderChain() should be used.
+     *                  as defined by #getDefaultRoundingProviderChain() should be used.
      * @return {@code true} if {@link MonetaryCurrenciesSingletonSpi#getCurrency(String, String...)}
      * would return a result for the given code.
      */
@@ -113,7 +113,7 @@ public interface MonetaryCurrenciesSingletonSpi {
      *
      * @param locale    the target {@link java.util.Locale}, not {@code null}.
      * @param providers the (optional) specification of providers to consider. If not set (empty) the providers
-     *                  as defined by #getDefaultProviderChain() should be used.
+     *                  as defined by #getDefaultRoundingProviderChain() should be used.
      * @return {@code true} if {@link #getCurrencies(java.util.Locale, String...)} would return a
      * non empty result for the given code.
      */
@@ -123,7 +123,7 @@ public interface MonetaryCurrenciesSingletonSpi {
      * Provide access to all currently known currencies.
      *
      * @param providers the (optional) specification of providers to consider. If not set (empty) the providers
-     *                  as defined by #getDefaultProviderChain() should be used.
+     *                  as defined by #getDefaultRoundingProviderChain() should be used.
      * @return a collection of all known currencies, never null.
      */
     Set<CurrencyUnit> getCurrencies(String... providers);

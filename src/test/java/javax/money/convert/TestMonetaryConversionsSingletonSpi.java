@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.money.CurrencyUnit;
+import javax.money.Monetary;
 import javax.money.MonetaryAmount;
-import javax.money.MonetaryCurrencies;
 import javax.money.MonetaryException;
 import javax.money.spi.MonetaryConversionsSingletonSpi;
 
@@ -71,7 +71,7 @@ public class TestMonetaryConversionsSingletonSpi implements MonetaryConversionsS
      * @param providers    the provider names defines a corresponding
      *                     provider chain that must be encapsulated by the resulting {@link javax
      *                     .money.convert.CurrencyConversion}. By default the provider
-     *                     chain as defined by #getDefaultProviderChain will be used.
+     *                     chain as defined by #getDefaultRoundingProviderChain will be used.
      * @return {@code true}, if such a conversion is supported, meaning an according
      * {@link CurrencyConversion} can be
      * accessed.
@@ -114,7 +114,7 @@ public class TestMonetaryConversionsSingletonSpi implements MonetaryConversionsS
      *                  prpovider chain that must be
      *                  encapsulated by the resulting {@link ExchangeRateProvider}. By default
      *                  the default
-     *                  provider changes as defined in #getDefaultProviderChain will be used.
+     *                  provider changes as defined in #getDefaultRoundingProviderChain will be used.
      * @return an {@link ExchangeRateProvider} built up with the given sub
      * providers, never {@code null}.
      * @throws javax.money.MonetaryException if a provider listed could not be found.
@@ -147,7 +147,7 @@ public class TestMonetaryConversionsSingletonSpi implements MonetaryConversionsS
      * @param providers    the {@link ConversionQuery} provider names defines a corresponding
      *                     prpovider chain that must be encapsulated by the resulting {@link javax
      *                     .money.convert.CurrencyConversion}. By default the default
-     *                     provider chain as defined by #getDefaultProviderChain will be used.
+     *                     provider chain as defined by #getDefaultRoundingProviderChain will be used.
      * @return the corresponding conversion, not null.
      * @throws javax.money.MonetaryException if no matching conversion could be found.
      * @see #isConversionAvailable(ConversionQuery)
@@ -280,7 +280,7 @@ public class TestMonetaryConversionsSingletonSpi implements MonetaryConversionsS
          * @throws javax.money.MonetaryException if one of the currency codes passed is not valid.
          */
         public boolean isAvailable(String baseCode, String termCode){
-            return isAvailable(MonetaryCurrencies.getCurrency(baseCode), MonetaryCurrencies.getCurrency(termCode));
+            return isAvailable(Monetary.getCurrency(baseCode), Monetary.getCurrency(termCode));
         }
 
 
@@ -297,7 +297,7 @@ public class TestMonetaryConversionsSingletonSpi implements MonetaryConversionsS
          * @throws javax.money.MonetaryException           if one of the currency codes passed is not valid.
          */
         public ExchangeRate getExchangeRate(String baseCode, String termCode){
-            return getExchangeRate(MonetaryCurrencies.getCurrency(baseCode), MonetaryCurrencies.getCurrency(termCode));
+            return getExchangeRate(Monetary.getCurrency(baseCode), Monetary.getCurrency(termCode));
         }
 
         /**
@@ -310,7 +310,7 @@ public class TestMonetaryConversionsSingletonSpi implements MonetaryConversionsS
          * @throws javax.money.MonetaryException if one of the currency codes passed is not valid.
          */
         public CurrencyConversion getCurrencyConversion(String termCode){
-            return getCurrencyConversion(MonetaryCurrencies.getCurrency(termCode));
+            return getCurrencyConversion(Monetary.getCurrency(termCode));
         }
 
     }

@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.money.CurrencyUnit;
-import javax.money.MonetaryCurrencies;
+import javax.money.Monetary;
 import javax.money.MonetaryException;
 import javax.money.spi.Bootstrap;
 import javax.money.spi.MonetaryConversionsSingletonSpi;
@@ -101,7 +101,7 @@ public final class MonetaryConversions{
      */
     public static CurrencyConversion getConversion(String termCurrencyCode, String... providers){
         Objects.requireNonNull(termCurrencyCode, "Term currency code may not be null");
-        return getConversion(MonetaryCurrencies.getCurrency(termCurrencyCode), providers);
+        return getConversion(Monetary.getCurrency(termCurrencyCode), providers);
     }
 
     /**
@@ -137,7 +137,7 @@ public final class MonetaryConversions{
     /**
      * Checks if a {@link CurrencyConversion} is available for the given parameters.
      *
-     * @param currencyCode The currencoy code, resolbable by {@link javax.money.MonetaryCurrencies#getCurrency
+     * @param currencyCode The currencoy code, resolbable by {@link javax.money.Monetary#getCurrency
      *                     (String, String...)}
      * @param providers    Additional providers, for building a provider chain
      * @return true, if a conversion is accessible from {@link #getConversion(String, String...)}.
@@ -147,7 +147,7 @@ public final class MonetaryConversions{
             throw new MonetaryException(
                     "No MonetaryConveresionsSingletonSpi " + "loaded, query functionality is not available.");
         }
-        return MONETARY_CONVERSION_SPI.isConversionAvailable(MonetaryCurrencies.getCurrency(currencyCode), providers);
+        return MONETARY_CONVERSION_SPI.isConversionAvailable(Monetary.getCurrency(currencyCode), providers);
     }
 
     /**

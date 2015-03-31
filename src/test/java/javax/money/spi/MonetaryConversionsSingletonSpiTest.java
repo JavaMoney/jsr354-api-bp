@@ -10,7 +10,7 @@ package javax.money.spi;
 
 import javax.money.CurrencyUnit;
 import javax.money.MonetaryAmount;
-import javax.money.MonetaryCurrencies;
+import javax.money.Monetary;
 import javax.money.MonetaryException;
 import javax.money.TestCurrency;
 import javax.money.convert.ConversionContext;
@@ -251,7 +251,7 @@ public class MonetaryConversionsSingletonSpiTest {
          * @throws javax.money.MonetaryException if one of the currency codes passed is not valid.
          */
         public boolean isAvailable(String baseCode, String termCode){
-            return isAvailable(MonetaryCurrencies.getCurrency(baseCode), MonetaryCurrencies.getCurrency(termCode));
+            return isAvailable(Monetary.getCurrency(baseCode), Monetary.getCurrency(termCode));
         }
 
 
@@ -268,7 +268,7 @@ public class MonetaryConversionsSingletonSpiTest {
          * @throws javax.money.MonetaryException           if one of the currency codes passed is not valid.
          */
         public ExchangeRate getExchangeRate(String baseCode, String termCode){
-            return getExchangeRate(MonetaryCurrencies.getCurrency(baseCode), MonetaryCurrencies.getCurrency(termCode));
+            return getExchangeRate(Monetary.getCurrency(baseCode), Monetary.getCurrency(termCode));
         }
 
 
@@ -301,7 +301,7 @@ public class MonetaryConversionsSingletonSpiTest {
          * @throws javax.money.MonetaryException if one of the currency codes passed is not valid.
          */
         public CurrencyConversion getCurrencyConversion(String termCode){
-            return getCurrencyConversion(MonetaryCurrencies.getCurrency(termCode));
+            return getCurrencyConversion(Monetary.getCurrency(termCode));
         }
 
     }

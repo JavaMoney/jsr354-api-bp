@@ -12,7 +12,7 @@ import java.util.Locale;
 
 import javax.money.AbstractQuery;
 import javax.money.MonetaryAmountFactory;
-import javax.money.MonetaryAmounts;
+import javax.money.Monetary;
 
 /**
  * Query for accessing instances of {@link MonetaryAmountFormat}. In general it is determined by the
@@ -68,7 +68,7 @@ public final class AmountFormatQuery extends AbstractQuery {
     public MonetaryAmountFactory getMonetaryAmountFactory() {
         MonetaryAmountFactory factory = get(MonetaryAmountFactory.class);
         if (factory == null) {
-            return MonetaryAmounts.getDefaultAmountFactory();
+            return Monetary.getDefaultAmountFactory();
         }
         return factory;
     }

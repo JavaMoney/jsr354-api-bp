@@ -60,8 +60,8 @@ public interface MonetaryConversionsSingletonSpi {
     List<String> getDefaultProviderChain();
 
     /**
-     * Access an instance of {@link javax.money.convert.ExchangeRateProvider}. By setting {@link org.javamoney.bp.api.convert
-     * .ConversionQuery#getProviderNames()} multiple providers can be selected,
+     * Access an instance of {@link javax.money.convert.ExchangeRateProvider}. By setting {@link javax.money.convert
+     * .ConversionQuery#getRoundingProviderNames()} multiple providers can be selected,
      * that will be included into a <i>compound</i> instance, with the same order as returned by the {@link javax
      * .money.convert.ConversionQuery}.
      *
@@ -109,7 +109,7 @@ public interface MonetaryConversionsSingletonSpi {
      * @param providers    the provider names defines a corresponding
      *                     prpovider chain that must be encapsulated by the resulting {@link javax
      *                     .money.convert.CurrencyConversion}. By default the provider
-     *                     chain as defined by #getDefaultProviderChain will be used.
+     *                     chain as defined by #getDefaultRoundingProviderChain will be used.
      * @return {@code true}, if such a conversion is supported, meaning an according
      * {@link javax.money.convert.CurrencyConversion} can be
      * accessed.
@@ -134,7 +134,7 @@ public interface MonetaryConversionsSingletonSpi {
      *                  prpovider chain that must be
      *                  encapsulated by the resulting {@link javax.money.convert.ExchangeRateProvider}. By default
      *                  the default
-     *                  provider changes as defined in #getDefaultProviderChain will be used.
+     *                  provider changes as defined in #getDefaultRoundingProviderChain will be used.
      * @return an {@link ExchangeRateProvider} built up with the given sub
      * providers, never {@code null}.
      * @throws MonetaryException if a provider listed could not be found.
@@ -161,7 +161,7 @@ public interface MonetaryConversionsSingletonSpi {
      * @param providers    the {@link javax.money.convert.ConversionQuery} provider names defines a corresponding
      *                     prpovider chain that must be encapsulated by the resulting {@link javax
      *                     .money.convert.CurrencyConversion}. By default the default
-     *                     provider chain as defined by #getDefaultProviderChain will be used.
+     *                     provider chain as defined by #getDefaultRoundingProviderChain will be used.
      * @return the correspöonding conversion, not null.
      * @throws javax.money.MonetaryException if no matching conversion could be found.
      * @see #isConversionAvailable(javax.money.convert.ConversionQuery)

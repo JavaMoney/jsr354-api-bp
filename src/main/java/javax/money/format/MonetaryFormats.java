@@ -59,7 +59,7 @@ public final class MonetaryFormats {
      * Checks if a {@link MonetaryAmountFormat} is available for the given {@link java.util.Locale} and providers.
      *
      * @param locale    the target {@link java.util.Locale}, not {@code null}.
-     * @param providers The providers to be queried, if not set the providers as defined by #getDefaultProviderChain()
+     * @param providers The providers to be queried, if not set the providers as defined by #getDefaultRoundingProviderChain()
      *                  are queried.
      * @return true, if a corresponding {@link MonetaryAmountFormat} is accessible.
      */
@@ -75,7 +75,7 @@ public final class MonetaryFormats {
      * Access the default {@link MonetaryAmountFormat} given a {@link java.util.Locale}.
      *
      * @param locale    the target {@link java.util.Locale}, not {@code null}.
-     * @param providers The providers to be queried, if not set the providers as defined by #getDefaultProviderChain()
+     * @param providers The providers to be queried, if not set the providers as defined by #getDefaultRoundingProviderChain()
      *                  are queried.
      * @return the matching {@link MonetaryAmountFormat}
      * @throws MonetaryException if no registered {@link javax.money.spi.MonetaryAmountFormatProviderSpi} can provide a
@@ -89,7 +89,7 @@ public final class MonetaryFormats {
      * Checks if a {@link MonetaryAmountFormat} is available for the given {@link AmountFormatQuery}.
      *
      * @param formatQuery the required {@link AmountFormatQuery}, not {@code null}. If the query does not define
-     *                    any explicit provider chain, the providers as defined by #getDefaultProviderChain()
+     *                    any explicit provider chain, the providers as defined by #getDefaultRoundingProviderChain()
      *                    are used.
      * @return true, if a corresponding {@link MonetaryAmountFormat} is accessible.
      */
@@ -105,7 +105,7 @@ public final class MonetaryFormats {
      * Access the default {@link MonetaryAmountFormat} given a {@link java.util.Locale}.
      *
      * @param formatQuery the required {@link AmountFormatQuery}, not {@code null}. If the query does not define
-     *                    any explicit provider chain, the providers as defined by #getDefaultProviderChain()
+     *                    any explicit provider chain, the providers as defined by #getDefaultRoundingProviderChain()
      *                    are used.
      * @return the matching {@link MonetaryAmountFormat}
      * @throws MonetaryException if no registered {@link javax.money.spi.MonetaryAmountFormatProviderSpi} can provide a
@@ -123,7 +123,7 @@ public final class MonetaryFormats {
      * Access all {@link MonetaryAmountFormat} instances that match the given a {@link AmountFormatQuery}.
      *
      * @param formatQuery the required {@link AmountFormatQuery}, not {@code null}. If the query does not define
-     *                    any explicit provider chain, the providers as defined by #getDefaultProviderChain()
+     *                    any explicit provider chain, the providers as defined by #getDefaultRoundingProviderChain()
      *                    are used.
      * @return the matching {@link MonetaryAmountFormat}
      * @throws MonetaryException if no registered {@link javax.money.spi.MonetaryAmountFormatProviderSpi} can provide a
@@ -141,7 +141,7 @@ public final class MonetaryFormats {
      * Access the a {@link MonetaryAmountFormat} given its styleId.
      *
      * @param formatName the target format name, not {@code null}.
-     * @param providers  The providers to be used, if not set the providers as defined by #getDefaultProviderChain() are
+     * @param providers  The providers to be used, if not set the providers as defined by #getDefaultRoundingProviderChain() are
      *                   used.
      * @return the matching {@link MonetaryAmountFormat}
      * @throws MonetaryException if no registered {@link javax.money.spi.MonetaryAmountFormatProviderSpi} can provide a
@@ -154,7 +154,7 @@ public final class MonetaryFormats {
     /**
      * Get all available locales. This equals to {@link javax.money.spi.MonetaryAmountFormatProviderSpi#getAvailableLocales()}.
      *
-     * @param providers The providers to be used, if not set the providers as defined by #getDefaultProviderChain() are
+     * @param providers The providers to be used, if not set the providers as defined by #getDefaultRoundingProviderChain() are
      *                  used.
      * @return all available locales, never {@code null}.
      */
@@ -200,12 +200,12 @@ public final class MonetaryFormats {
 
 
         /**
-         * Access an {@link MonetaryAmountFormat} given a {@link org.javamoney.bp.api.format
+         * Access an {@link MonetaryAmountFormat} given a {@link javax.money.format
          * .AmountFormatContext}.
          *
          * @param formatQuery The format query defining the requirements of the formatter.
          * @return the corresponding {@link MonetaryAmountFormat}
-         * @throws javax.money.MonetaryException if no registered {@link org.javamoney.bp.api.spi
+         * @throws javax.money.MonetaryException if no registered {@link javax.money.spi
          *                                       .MonetaryAmountFormatProviderSpi} can provide a
          *                                       corresponding {@link MonetaryAmountFormat} instance.
          */
@@ -240,7 +240,7 @@ public final class MonetaryFormats {
 
 
         /**
-         * Get all available locales. This equals to {@link org.javamoney.bp.api.spi
+         * Get all available locales. This equals to {@link javax.money.spi
          * .MonetaryAmountFormatProviderSpi#getAvailableLocales()}.
          *
          * @return all available locales, never {@code null}.
@@ -286,12 +286,12 @@ public final class MonetaryFormats {
         }
 
         /**
-         * Access an {@link MonetaryAmountFormat} given a {@link org.javamoney.bp.api.format
+         * Access an {@link MonetaryAmountFormat} given a {@link javax.money.format
          * .AmountFormatQuery}.
          *
          * @param formatQuery The format query defining the requirements of the formatter.
          * @return the corresponding {@link MonetaryAmountFormat}
-         * @throws javax.money.MonetaryException if no registered {@link org.javamoney.bp.api.spi
+         * @throws javax.money.MonetaryException if no registered {@link javax.money.spi
          *                                       .MonetaryAmountFormatProviderSpi} can provide a
          *                                       corresponding {@link MonetaryAmountFormat} instance.
          */
@@ -304,7 +304,7 @@ public final class MonetaryFormats {
         }
 
         /**
-         * Checks if a {@link MonetaryAmountFormat} is available given a {@link org.javamoney.bp.api.format
+         * Checks if a {@link MonetaryAmountFormat} is available given a {@link javax.money.format
          * .AmountFormatQuery}.
          *
          * @param formatQuery The format query defining the requirements of the formatter.
@@ -315,7 +315,7 @@ public final class MonetaryFormats {
         }
 
         /**
-         * Checks if a {@link MonetaryAmountFormat} is available given a {@link org.javamoney.bp.api.format
+         * Checks if a {@link MonetaryAmountFormat} is available given a {@link javax.money.format
          * .AmountFormatQuery}.
          *
          * @param locale    the target {@link java.util.Locale}, not {@code null}.

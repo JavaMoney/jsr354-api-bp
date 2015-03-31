@@ -10,7 +10,7 @@ package javax.money.convert;
 
 import javax.money.AbstractQueryBuilder;
 import javax.money.CurrencyUnit;
-import javax.money.MonetaryCurrencies;
+import javax.money.Monetary;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -63,11 +63,11 @@ public final class ConversionQueryBuilder extends AbstractQueryBuilder<Conversio
     /**
      * Sets the base currency.
      *
-     * @param currencyCode the currency code, resolvable through {@link javax.money.MonetaryCurrencies#getCurrency(String, String...)}, not null.
+     * @param currencyCode the currency code, resolvable through {@link javax.money.Monetary#getCurrency(String, String...)}, not null.
      * @return the query for chaining.
      */
     public ConversionQueryBuilder setBaseCurrency(String currencyCode) {
-        return setBaseCurrency(MonetaryCurrencies.getCurrency(currencyCode));
+        return setBaseCurrency(Monetary.getCurrency(currencyCode));
     }
 
     /**
@@ -83,11 +83,11 @@ public final class ConversionQueryBuilder extends AbstractQueryBuilder<Conversio
     /**
      * Sets the term currency.
      *
-     * @param currencyCode the currency code, resolvable through {@link MonetaryCurrencies#getCurrency(String, String...)}, not null.
+     * @param currencyCode the currency code, resolvable through {@link javax.money.Monetary#getCurrency(String, String...)}, not null.
      * @return the query for chaining.
      */
     public ConversionQueryBuilder setTermCurrency(String currencyCode) {
-        return setTermCurrency(MonetaryCurrencies.getCurrency(currencyCode));
+        return setTermCurrency(Monetary.getCurrency(currencyCode));
     }
 
     /**

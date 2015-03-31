@@ -146,7 +146,7 @@ Since a corresponding +MonetaryAmountFactory+ is registered, a new instance can 
 [source,java]
 .Example Usage of MonetaryAmountFactory
 -------------------------------------------------------------------
-MonetaryAmountFactory<Money> fact = MonetaryAmounts.getAmountFactory(Money.class);
+MonetaryAmountFactory<Money> fact = Monetary.getAmountFactory(Money.class);
 Money m = fact.withCurrency("USD").with(200.50).create();
 -------------------------------------------------------------------
 
@@ -156,7 +156,7 @@ default amount factory, which effective type instance is returned):
 [source,java]
 .Example Usage MonetaryAmountFactory
 -------------------------------------------------------------------
-MonetaryAmount amt = MonetaryAmounts.getDefaultAmountFactory()
+MonetaryAmount amt = Monetary.getDefaultAmountFactory()
                        .withCurrency("USD").with(200.50).create();
 -------------------------------------------------------------------
 
@@ -202,9 +202,9 @@ mentioned also external functionality can be chained, e.g. using instances of +M
 .Example Function Chaining footnote:[+MonetaryFunctions+ is not part of the JSR, its just for illustration purposes.]
 -------------------------------------------------------------------
 MonetaryAmount amt = ...;
-amt = amt.multiply(2.12345).with(MonetaryRoundings.getDefaultRounding())
+amt = amt.multiply(2.12345).with(Monetary.getDefaultRounding())
         .with(MonetaryFunctions.minimal(100)).
-        .multiply(2.12345).with(MonetaryRoundings.getDefaultRounding())
+        .multiply(2.12345).with(Monetary.getDefaultRounding())
         .with(MonetaryFunctions.percent(23));
 -------------------------------------------------------------------
 
@@ -217,7 +217,7 @@ When accessing +MonetaryAmountFactory+ instances it is possible to configure the
 [source,java]
 .Example Configuring a +MonetaryAmountFactory+, using the RI class +Money+ as example.
 -------------------------------------------------------------------
-MonetaryAmountFactory<Money> fact = MonetaryAmounts.getAmountFactory(
+MonetaryAmountFactory<Money> fact = Monetary.getAmountFactory(
    MonetaryAmountFactoryQueryBuilder.of(Money.class)
      .set(new MathContext(250, RoundingMode.HALF_DOWN)).build()
 );
@@ -269,7 +269,7 @@ just replacing +FastMoney+ with +Money+:
 [source,java]
 .Usage Example - FastMoney
 -------------------------------------------------------------------
-MonetaryAmountFactory<FastMoney> fact = MonetaryAmounts.getAmountFactory(FastMoney.class);
+MonetaryAmountFactory<FastMoney> fact = Monetary.getAmountFactory(FastMoney.class);
 // Creates an instance of Money with the given MathContext
 MonetaryAmount m1 = fact.setCurrency("CHF").setNumber(250.34).create();
 FastMoney m2 = fact.setCurrency("CHF").setNumber(250.34).create();
@@ -326,7 +326,7 @@ public class Total implements MonetaryOperator{
    }
 
    public <T extends MonetaryAmount> T getTotal(Class<T> amountType){
-      return MonetaryAmounts.getAmountFactory(amountType).with(total).create();
+      return Monetary.getAmountFactory(amountType).with(total).create();
    }
 
 }

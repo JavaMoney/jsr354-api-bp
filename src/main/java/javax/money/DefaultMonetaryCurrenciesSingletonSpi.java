@@ -10,33 +10,85 @@
  *
  * Copyright (c) 2012-2013, Credit Suisse All rights reserved.
  */
-package javax.money.spi;
+package javax.money;
 
-import javax.money.CurrencyQuery;
-import javax.money.CurrencyQueryBuilder;
-import javax.money.CurrencyUnit;
-import javax.money.MonetaryException;
-import javax.money.UnknownCurrencyException;
+import javax.money.spi.Bootstrap;
+import javax.money.spi.CurrencyProviderSpi;
+import javax.money.spi.MonetaryCurrenciesSingletonSpi;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
- * Factory singleton backing interface for {@link javax.money.Monetary} that provides access to
- * different registered {@link CurrencyProviderSpi} instances.
+ * Factory singleton for {@link javax.money.CurrencyUnit} instances as provided by the
+ * different registered {@link javax.money.spi.CurrencyProviderSpi} instances.
  * <p>
- * Implementations of this interface must be thread safe.
+ * This class is thread safe.
  *
  * @author Anatole Tresch
  * @version 0.8
  */
-public abstract class BaseMonetaryCurrenciesSingletonSpi implements MonetaryCurrenciesSingletonSpi{
+final class DefaultMonetaryCurrenciesSingletonSpi implements MonetaryCurrenciesSingletonSpi {
+
+    @Override
+    public Set<CurrencyUnit> getCurrencies(CurrencyQuery query) {
+        Set<CurrencyUnit> result = new HashSet<CurrencyUnit>();
+        for (CurrencyProviderSpi spi : Bootstrap.getServices(CurrencyProviderSpi.class)) {
+            try {
+                result.addAll(spi.getCurrencies(query));
+            } catch (Exception e) {
+                Logger.getLogger(DefaultMonetaryCurrenciesSingletonSpi.class.getName())
+                        .log(Level.SEVERE, "Error loading currency provider names for " + spi.getClass().getName(),
+                                e);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * This default implementation simply returns all providers defined in arbitrary order.
+     *
+     * @return the default provider chain, never null.
+     */
+    @Override
+    public List<String> getDefaultProviderChain() {
+        List<String> list = new ArrayList<String>();
+        list.addAll(getProviderNames());
+        Collections.sort(list);
+        return list;
+    }
+
+    /**
+     * Get the names of the currently loaded providers.
+     *
+     * @return the names of the currently loaded providers, never null.
+     */
+    @Override
+    public Set<String> getProviderNames() {
+        Set<String> result = new HashSet<String>();
+        for (CurrencyProviderSpi spi : Bootstrap.getServices(CurrencyProviderSpi.class)) {
+            try {
+                result.add(spi.getProviderName());
+            } catch (Exception e) {
+                Logger.getLogger(DefaultMonetaryCurrenciesSingletonSpi.class.getName())
+                        .log(Level.SEVERE, "Error loading currency provider names for " + spi.getClass().getName(),
+                                e);
+            }
+        }
+        return result;
+    }
 
     /**
      * Access a new instance based on the currency code. Currencies are
-     * available as provided by {@link CurrencyProviderSpi} instances registered
-     * with the {@link Bootstrap}.
+     * available as provided by {@link javax.money.spi.CurrencyProviderSpi} instances registered
+     * with the {@link javax.money.spi.Bootstrap}.
      *
      * @param currencyCode the ISO currency code, not {@code null}.
      * @param providers    the (optional) specification of providers to consider. If not set (empty) the providers
@@ -59,8 +111,8 @@ public abstract class BaseMonetaryCurrenciesSingletonSpi implements MonetaryCurr
 
     /**
      * Access a new instance based on the currency code. Currencies are
-     * available as provided by {@link CurrencyProviderSpi} instances registered
-     * with the {@link Bootstrap}.
+     * available as provided by {@link javax.money.spi.CurrencyProviderSpi} instances registered
+     * with the {@link javax.money.spi.Bootstrap}.
      *
      * @param country   the ISO currency's country, not {@code null}.
      * @param providers the (optional) specification of providers to consider. If not set (empty) the providers
@@ -95,12 +147,12 @@ public abstract class BaseMonetaryCurrenciesSingletonSpi implements MonetaryCurr
 
     /**
      * Allows to check if a {@link javax.money.CurrencyUnit} instance is defined, i.e.
-     * accessible from {@link BaseMonetaryCurrenciesSingletonSpi#getCurrency(String, String...)}.
+     * accessible from {@link javax.money.spi.MonetaryCurrenciesSingletonSpi#getCurrency(String, String...)}.
      *
      * @param code      the currency code, not {@code null}.
      * @param providers the (optional) specification of providers to consider. If not set (empty) the providers
      *                  as defined by #getDefaultRoundingProviderChain() should be used.
-     * @return {@code true} if {@link BaseMonetaryCurrenciesSingletonSpi#getCurrency(String, String...)}
+     * @return {@code true} if {@link javax.money.spi.MonetaryCurrenciesSingletonSpi#getCurrency(String, String...)}
      * would return a result for the given code.
      */
     public boolean isCurrencyAvailable(String code, String... providers) {
