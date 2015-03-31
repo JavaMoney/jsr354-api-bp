@@ -1,7 +1,11 @@
 jsr354-api-bp
 ==================
 
-JSR 354 forward compatible backport to JDK 6/7 or other platforms (e.g. Android).
+JSR 354 forward compatible backport for JDK 6/7 or other platforms (e.g. Android).
+
+This is the API module of JSR 354 licenced under
+- the JSR Spec Licence for Evaluation (see *EVALUATION-LICENCE.txt)
+- the JSR Spec Licence for Implementation (see *IMPLEMENTATION-LICENCE.txt)
 
 [![Build Status](https://api.travis-ci.org/JavaMoney/jsr354-api-bp.png?branch=master)](https://travis-ci.org/JavaMoney/jsr354-api-bp)
 
