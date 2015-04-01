@@ -1,9 +1,9 @@
 ﻿Java Money and Currency API -- Backport for Java 7
 ==================================================
-:title: Java Money and Currency API -- Backport for Java 7
-:revnumber: 1.0-RC1
-:revdate: March 2015
-:longversion: 1.0-RC1 March 2015
+:title: Java Money and Currency API for Java 7
+:revnumber: 1.0
+:revdate: April 2015
+:longversion: 1.0 April 2015
 :authorinitials: ATR
 :author: Anatole Tresch, Credit Suisse
 :email: <anatole.tresch@credit-suisse.com>
@@ -25,10 +25,10 @@ image::https://raw.githubusercontent.com/JavaMoney/jsr354-api/master/src/main/as
 
 ==== Version Information:
 ------------------------------------------------------------------
-Specification: Java Money and Currency API -- Backport for Java 7
-Version:       1.0-RC1
-Status:        Prerelease
-Release Date:  March 2015
+Specification: Java Money and Currency API for Java 7
+Version:       1.0
+Status:        Release
+Release Date:  April 2015
 Copyright:     2012-2015
                Credit Suisse AG
                P.O.Box
@@ -46,7 +46,7 @@ toc::[]
 <<<
 
 == Introduction
-This document is the user guide of the Java API for Money and Currency Backport of JSR 354. The technical objective is
+This document is the user guide of the Java API for Money and Currency of JSR 354 targeting Java 7. The technical objective is
 to provide a money and currency API for Java, targeted at all users of currencies and monetary amounts, compatible
 with Android and Java 7.
 The API will provide support for standard [ISO-4217] and custom currencies, and a model for monetary amounts and
@@ -54,17 +54,10 @@ rounding. It will have extension points for adding additional features like curr
 and formulas. For detailed information on the API and its usage, we recommend reading the JSR's specification, which can
 be downloaded from the JCP page http://jcp.org/en/jsr/detail?id=35[JSR 354 on jcp.org .
 
-Basically the specification of JSR 354 can be used as documentation base, if you want to have some introduction how
-to use this library. Hereby you must map the following packages:
-
-* org.javamoney.bp.api -> org.javamoney.bp
-* org.javamoney.bp.api.spi -> org.javamoney.bp.spi
-* org.javamoney.bp.api.convert -> org.javamoney.bp.convert
-* org.javamoney.bp.api.format -> org.javamoney.bp.format
-
-Additionally this library provides a package +org.javamoney.bp.spi.base+, which contains abstract classes that
-contain the logic included as _default_ methods in the JSR 354 API. So basically, when you have code based on
-JSR 354 Java 8 API as follows:
+The APIs for both Java 7 and Java 8 are basically the same. Java 8 additionally provides full support for _default
+methods_, which adds lots of comfort implementing the SPIs. For Java 7 users the reference implementation provides
+a set of common base classes, that provide the same functionality as provided by default methods in the Java 8 version
+of the API:
 
 [source,java]
 ----------------------------------------------------------------------
@@ -88,18 +81,18 @@ public class MyImplClass extends BaseCurrencyProviderSpi{
 [[ProjectStructure]]
 == Package and Project Structure
 ==== Package Overview
-Similar to JSR 354 the backport defines the following 4 main packages:
+Similar to JSR 354 Java 8 API this the Java 7 API defines 4 main packages:
 
-+org.javamoney.bp.api+:: contains the main artifacts, such as +CurrencyUnit, MonetaryAmount, MonetaryContext, MonetaryOperator,
-MonetaryQuery, MonetaryRounding+, and the singleton accessors +MonetaryCurrencies, MonetaryAmounts, MonetaryRoundings+.
++javax.money+:: contains the main artifacts, such as +CurrencyUnit, MonetaryAmount, MonetaryContext, MonetaryOperator,
+MonetaryQuery, MonetaryRounding+, and the singleton accessor +Monetary+.
 
-+org.javamoney.bp.api.conversion+:: contains the conversion artifacts +ExchangeRate, ExchangeRateProvider, CurrencyConversion+
++javax.money.conversion+:: contains the conversion artifacts +ExchangeRate, ExchangeRateProvider, CurrencyConversion+
 and the according +MonetaryConversions+ accessor singleton.
 
-+org.javamoney.bp.api.format+:: contains the formatting artifacts +MonetaryAmountFormat, AmountFormatContext+ and the according
++javax.money.format+:: contains the formatting artifacts +MonetaryAmountFormat, AmountFormatContext+ and the according
 +MonetaryFormats+ accessor singleton. 
 
-+org.javamoney.bp.api.spi+:: contains the SPI interfaces provided by the JSR 354 API and the bootstrap logic, to support
++javax.money.spi+:: contains the SPI interfaces provided by the JSR 354 API and the bootstrap logic, to support
 different runtime environments and component loading mechanisms.
 
 
@@ -107,12 +100,13 @@ different runtime environments and component loading mechanisms.
 ==== Module/Repository Overview
 The JSR’s source code repository under <<source>> provides several modules:
 
-javamoney-api-bp:: contains the API backport for use with Java 7. 
-javamoney-moneta-bp:: contains the ''moneta'' implementation, based on Java 7.
+jsr354-api-bp:: contains the API backport compatible with Java g and 7.
+jsr354-ri-bp:: contains the ''moneta'' implementation, based on Java 7.
 jsr354-api:: contains the JSR 354 API for use with Java 8. We highly recommend using this version, if possible, to
 benefit from the power of Java 8.
 jsr354-ri:: contains the ''moneta'' reference implementation, based on Java 8.
-jsr354-tck:: contains the technical compatibility kit (TCK) of the JSR, requiring as well Java 8.
+jsr354-tck:: contains the technical compatibility kit (TCK) of the JSR, requiring as well Java 7. The TCK is the same
+for Java 7 and Java 8.
 javamoney-parent:: is a root “POM” project for all modules under +org.javamoney+. This includes the RI/TCK projects,
   but not jsr354-api and javamoney-api-bp (which are standalone).
 javamoney-library:: contains a financial library (JavaMoney) adding comprehensive support for several extended
@@ -121,14 +115,14 @@ javamoney-examples:: finally contains the examples and demos, and also is not pa
 
 
 == Examples
-The following sections illustrate the backport's API usage in more detail.
+The following sections illustrate the API usage in more detail.
 
-=== Working with org.javamoney.moneta.bp.Money
-The Javamoney backport implementation of JSR 354 has to provide value type classes for monetary amounts, hereby implementing
-+org.javamoney.moneta.bp.api.MonetaryAmount+, and registering at least one implementation class with the +org.javamoney.moneta.bp.api.MonetaryAmounts+ singleton by
-implementing and registering a corresponding +org.javamoney.moneta.bp.api.MonetayAmountFactory+ instance.
+=== Working with javax.money.Money
+The Java 7 based implementation of JSR 354 has to provide value type classes for monetary amounts, hereby implementing
++javax.money.MonetaryAmount+, and registering at least one implementation class with the +javax.money.Monetary+
+singleton by implementing and registering a corresponding +javax.money.MonetayAmountFactory+ instance.
 
-As an example the reference implementation provides a class +org.javamoney.moneta.bp.Money+, which is using
+As an example the reference implementation provides a class +org.javamoney.moneta.Money+, which is using
 +java.math.BigDecimal+ internally:
 
 [source,java]
@@ -246,7 +240,7 @@ Below is a rather academical example of a +MonetaryOperator+ that simply convert
 the same numeric value, but with XXX (undefined) as currency:
 
 [source,java]
-.Simple example of a +MonetaryOperstor+ using the +MonetaryAmountFactory+ provided.
+.Simple example of a +MonetaryOperator+ using the +MonetaryAmountFactory+ provided.
 -------------------------------------------------------------------------------
 public final class ToInvalid implements MonetaryOperator{
   public <T extends MonetaryAmount> T apply(T amount){
@@ -495,23 +489,3 @@ Public Source Code Repository on GitHub: http://github.com/JavaMoney,
 * http://java.net/projects/javamoney/[JavaMoney Project on Java.net]
   ** https://github.com/JavaMoney[JSR 354 API GitHub Repository]
   ** https://github.com/JavaMoney/jsr354-ro[Moneta RI GitHub Repository]
-* http://www.javapractices.com/topic/TopicAction.do?Id=13[Java Practices about Representing Money]
-* http://blog.eisele.net/2011/08/working-with-money-in-java.html[Working with Money in Java]
-* http://mindprod.com/jgloss/currency.html[Java currency] by Roedy Green, http://mindprod.com[Canadian Mind Products]
-* http://www.eclipse.org/uomo/[UOMo Business], based on ICU4J and concepts by JScience Economics]
-* http://site.icu-project.org/[ICU4J] Uses Number for all operations and internal storage in its Money type.
-* http://moneydance.com/dev/apidoc/[MoneyDance API]
-* http://javamoney.org[JavaMoney] is the Apache 2.0 licensed OSS project that evolved from JSR 354 development. It provides concrete implementations for currency conversion and mapping, advanced formatting, historic data access, regions and a set of financial calculations and formulas.
-* http://www.joda.org/joda-money[Joda Money] can be referred to as an inspiration for API and design style. it is based on real-world use cases in an e-commerce application for airlines
-* http://grails.org/plugin/currencies[Grails Currencies] uses BigDecimal as internal representation, but API only exposes Number in all Money operations like plus(), minus() or similar.
-* http://lemnik.wordpress.com/2011/03/25/bigdecimal-and-your-money/[Why not to use BigDecimal for Money]
-* http://de.wikipedia.org/wiki/M-Pesa[M-Pesa-Mobile Money] in Africa
-* Currency Internationalization (i18n), Multiple Currencies and Foreign Exchange (FX).
-* http://en.wikipedia.org/wiki/Japanese_units_of_measurement#Money: Discussion of internationalization of currencies, rounding, grouping and formatting, separators etc]
-* http://speleotrove.com/decimal/
-* http://sourceforge.net/projects/oquote/
-* http://en.wikipedia.org/wiki/Karatsuba_algorithm[Karatsuba Algorithm] for Fast Big Decimal Multiplication
-
-=== Related Initiatives
-* http://timeandmoney.sourceforge.net/ [Eric Evans Time and Money Library]
-* http://bitcoinj.github.io/ [Bitcoin Java Client]

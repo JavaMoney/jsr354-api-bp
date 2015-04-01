@@ -70,7 +70,7 @@ public final class MonetaryConversions{
 
     /**
      * Access an instance of {@link CurrencyConversion} for the given providers.
-     * Use {@link #getProviderNames()} to check, which are available.
+     * Use {@link #getConversionProviderNames()} to check, which are available.
      *
      * @param termCurrency the terminating or target currency, not {@code null}
      * @param providers    Additional providers, for building a provider chain
@@ -82,7 +82,7 @@ public final class MonetaryConversions{
         Objects.requireNonNull(termCurrency);
         if(providers.length == 0){
             return MONETARY_CONVERSION_SPI.getConversion(
-                    ConversionQueryBuilder.of().setTermCurrency(termCurrency).setProviderNames(getDefaultProviderChain())
+                    ConversionQueryBuilder.of().setTermCurrency(termCurrency).setProviderNames(getDefaultConversionProviderChain())
                             .build());
         }
         return MONETARY_CONVERSION_SPI.getConversion(
@@ -91,7 +91,7 @@ public final class MonetaryConversions{
 
     /**
      * Access an instance of {@link CurrencyConversion} for the given providers.
-     * Use {@link #getProviderNames()}} to check, which are available.
+     * Use {@link #getConversionProviderNames()}} to check, which are available.
      *
      * @param termCurrencyCode the terminating or target currency code, not {@code null}
      * @param providers        Additional providers, for building a provider chain
@@ -106,7 +106,7 @@ public final class MonetaryConversions{
 
     /**
      * Access an instance of {@link CurrencyConversion} for the given providers.
-     * Use {@link #getProviderNames()}} to check, which are available.
+     * Use {@link #getConversionProviderNames()}} to check, which are available.
      *
      * @param conversionQuery The {@link ConversionQuery} required, not {@code null}
      * @return the {@link CurrencyConversion}  instance matching.
@@ -167,7 +167,7 @@ public final class MonetaryConversions{
 
     /**
      * Access an instance of {@link CurrencyConversion} using the given
-     * providers as a provider chain. Use {@link #getProviderNames()}s
+     * providers as a provider chain. Use {@link #getConversionProviderNames()}s
      * to check, which are available.
      *
      * @return the exchange rate provider.
@@ -175,7 +175,7 @@ public final class MonetaryConversions{
      */
     public static ExchangeRateProvider getExchangeRateProvider(String... providers){
         if(providers.length == 0){
-            List<String> defaultProviderChain = getDefaultProviderChain();
+            List<String> defaultProviderChain = getDefaultConversionProviderChain();
             return MONETARY_CONVERSION_SPI.getExchangeRateProvider(ConversionQueryBuilder.of().setProviderNames(
                     defaultProviderChain.toArray(new String[defaultProviderChain.size()])).build());
         }
@@ -216,7 +216,7 @@ public final class MonetaryConversions{
 	}
     /**
      * Access an instance of {@link CurrencyConversion} using the given
-     * providers as a provider chain. Use {@link #getProviderNames()}
+     * providers as a provider chain. Use {@link #getConversionProviderNames()}
      * to check, which are available.
      *
      * @return the exchange rate provider.
@@ -252,7 +252,7 @@ public final class MonetaryConversions{
      *
      * @return all supported provider ids, never {@code null}.
      */
-    public static Collection<String> getProviderNames(){
+    public static Collection<String> getConversionProviderNames(){
         if(MONETARY_CONVERSION_SPI==null){
             throw new MonetaryException(
                     "No MonetaryConveresionsSingletonSpi " + "loaded, query functionality is not available.");
@@ -265,7 +265,7 @@ public final class MonetaryConversions{
      *
      * @return the default provider, never {@code null}.
      */
-    public static List<String> getDefaultProviderChain(){
+    public static List<String> getDefaultConversionProviderChain(){
         if(MONETARY_CONVERSION_SPI==null){
             throw new MonetaryException(
                     "No MonetaryConveresionsSingletonSpi " + "loaded, query functionality is not available.");

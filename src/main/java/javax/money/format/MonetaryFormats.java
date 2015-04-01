@@ -167,7 +167,7 @@ public final class MonetaryFormats {
      *
      * @return the provider names, never null.
      */
-    public static Collection<String> getProviderNames() {
+    public static Collection<String> getFormatProviderNames() {
         if(monetaryFormatsSingletonSpi==null){
             throw new MonetaryException(
                     "No MonetaryFormatsSingletonSpi " + "loaded, query functionality is not available.");
@@ -180,7 +180,7 @@ public final class MonetaryFormats {
      *
      * @return the default provider chain, never null.
      */
-    public static List<String> getDefaultProviderChain() {
+    public static List<String> getDefaultFormatProviderChain() {
         if(monetaryFormatsSingletonSpi==null){
             throw new MonetaryException(
                     "No MonetaryFormatsSingletonSpi " + "loaded, query functionality is not available.");
