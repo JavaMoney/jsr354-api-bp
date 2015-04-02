@@ -42,7 +42,7 @@
         <url>http://javamoney.org</url>
     </organization>
 
-    <developers>
+   <developers>
         <developer>
             <id>atsticks</id>
             <name>Anatole Tresch</name>
@@ -68,8 +68,15 @@
             </roles>
         </developer>
         <developer>
-            <id>jodastephen</id>
-            <name>Stephen Colebourne</name>
+            <id>otaviojava</id>
+            <name>Otávio Santana</name>
+            <roles>
+                <role>Expert Group Member</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>simasch</id>
+            <name>Simon Martinelli</name>
             <roles>
                 <role>Expert Group Member</role>
             </roles>
@@ -97,14 +104,21 @@
         </developer>
         <developer>
             <id>-</id>
-            <name>Benjamin Cotton</name>
+            <name>Manuela Grindei</name>
             <roles>
                 <role>Expert Group Member</role>
             </roles>
         </developer>
         <developer>
-            <id>simasch</id>
-            <name>Simon Martinelli</name>
+            <id>-</id>
+            <name>Benjamin Cotton</name>
+            <roles>
+                <role>Expert Group Member</role>
+            </roles>
+        </developer>
+	<developer>
+            <id>jodastephen</id>
+            <name>Stephen Colebourne</name>
             <roles>
                 <role>Expert Group Member</role>
             </roles>
@@ -134,7 +148,7 @@
         </developer>
         <developer>
             <id>-</id>
-            <name>Scot James</name>
+            <name>Scott James</name>
             <roles>
                 <role>Expert Group Member</role>
             </roles>
@@ -154,15 +168,8 @@
             </roles>
         </developer>
         <developer>
-            <id>keilw</id>
-            <name>Werner Keil</name>
-            <roles>
-                <role>Expert Group Member</role>
-            </roles>
-        </developer>
-        <developer>
-            <id>crazybob</id>
-            <name>Bob Lee</name>
+            <id>-</id>
+            <name>Mohamed Taman</name>
             <roles>
                 <role>Expert Group Member</role>
             </roles>
@@ -182,7 +189,7 @@
             </roles>
         </developer>
     </developers>
-
+    
     <ciManagement>
         <system>Travis CI</system>
         <url>https://travis-ci.org/JavaMoney/javamoney-api-bp</url>
