@@ -10,8 +10,7 @@ package javax.money.convert;
 
 
 /**
- * The supplier of {@link ExchangeRateProvider} that defines an implementations.
- * @author otaviojava
+ * A supplier of {@link ExchangeRateProvider} name that references an implementation.
  */
 public interface ExchangeRateProviderSupplier{
 
@@ -22,8 +21,4 @@ public interface ExchangeRateProviderSupplier{
      */
     String get();
 
-	/**
-	 * @return description of the implementation of {@link ExchangeRateProvider}
-	 */
-	String getDescription();
 }
