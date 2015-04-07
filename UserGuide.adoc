@@ -27,7 +27,7 @@ image::https://raw.githubusercontent.com/JavaMoney/jsr354-api/master/src/main/as
 ------------------------------------------------------------------
 Specification: Java Money and Currency API for Java 7
 Version:       1.0
-Status:        Release
+Status:        Final
 Release Date:  April 2015
 Copyright:     2012-2015
                Credit Suisse AG
@@ -35,7 +35,7 @@ Copyright:     2012-2015
                8070 Zurich
                Switzerland
                All rights reserved.
-License:       Apache Licence v2
+License:       Spec Evaluation/Implementation Licence
 ------------------------------------------------------------------
 
 toc::[]
