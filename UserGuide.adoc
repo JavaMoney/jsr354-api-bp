@@ -285,9 +285,11 @@ A total of amounts can be calculated in multiple ways, one way is simply to chai
 [source,java]
 .Usage Example Calculating a Total
 -------------------------------------------------------------------
+MonetaryAmountFactory factory = Monetary.getDefaultAmountFactory().setCurrency("CHF");
 MonetaryAmount[] params = new MonetaryAmount[]{
-                   Money.of("CHF", 100), Money.of("CHF", 10.20),
-                         Money.of("CHF", 1.15),};
+                   factory.setNumber(100).create(),
+                   factory.setNumber(10.20).create(),
+                   factory.setNumber(1.15).create(),};
 MonetaryAmount total = params[0];
 for(int i=1; i<params.length;i++){
    total = total.add(params[i]);
@@ -414,7 +416,7 @@ calculated as follows:
 [source,java]
 .Example Using a Financial Function
 -------------------------------------------------------------------
-Money m = Money.of("CHF", 1000);
+Money m = Monetary.getAmountFactory(Money.class).setCurrency("CHF").setNumber(1000).create();
 // present value for an amount of 100, available in two periods,
 // with a rate of 5%.
 Money pv = m.with(new PresentValue(new BigDecimal("0.05"), 2));
