@@ -103,7 +103,7 @@ public final class AmountFormatContextBuilder
     }
 
     /**
-     * Creates a new instance of {@link AmountFormatContext} that configures a {@link org.javamoney.bp.api.format
+     * Creates a new instance of {@link AmountFormatContext} that configures a {@link javax.money.format
      * .MonetaryAmountFormat}.
      *
      * @return a new {@link AmountFormatContext} instance.

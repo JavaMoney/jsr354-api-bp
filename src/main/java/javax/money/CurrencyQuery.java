@@ -21,7 +21,7 @@ import java.util.Locale;
  * <li>a target timestamp / temporal unit, when the {@link CurrencyUnit} instances should be valid
  * <li>any other attributes, identified by the attribute type, e.g. regions, tenants etc.
  * </ul>
- * The effective attributes supported are only determined by the implementations of {@link org.javamoney.bp.api.spi
+ * The effective attributes supported are only determined by the implementations of {@link javax.money.spi
  * .CurrencyProviderSpi}.
  * <p>
  * This class is immutable, serializable and thread-safe.

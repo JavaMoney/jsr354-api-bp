@@ -57,12 +57,12 @@ public class MonetaryAmountFactoryQueryTest {
 
     /**
      * Test method for
-     * {@link MonetaryAmountFactoryQuery#getFixedScale()}.
+     * {@link MonetaryAmountFactoryQuery#isFixedScale()}.
      */
     @Test
     public void testGetFixedScale() throws Exception {
         //when
-        final boolean retVal = query.getFixedScale();
+        final boolean retVal = query.isFixedScale();
 
         //then
         assertEquals(retVal, FIXED_SCALE);

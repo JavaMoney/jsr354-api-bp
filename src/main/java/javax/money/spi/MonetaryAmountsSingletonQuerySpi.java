@@ -14,7 +14,7 @@ import javax.money.MonetaryAmountFactoryQuery;
 import java.util.Collection;
 
 /**
- * SPI (core) for the backing implementation of the {@link javax.money.MonetaryAmounts} singleton, implementing
+ * SPI (core) for the backing implementation of the {@link javax.money.Monetary} singleton, implementing
  * the query functionality for amounts.
  *
  * @author Anatole Tresch
@@ -67,7 +67,7 @@ public interface MonetaryAmountsSingletonQuerySpi {
     Class<? extends MonetaryAmount> getAmountType(MonetaryAmountFactoryQuery query);
 
     /**
-     * Executes the query and returns the {@link javax.money.MonetaryAmount} implementation typea found.
+     * Executes the query and returns the {@link javax.money.MonetaryAmount} implementation types found.
      *
      * @param query the factory query, not null.
      * @return the type found, or null.

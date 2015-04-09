@@ -32,7 +32,7 @@ public interface MonetaryFormatsSingletonSpi {
     Set<Locale> getAvailableLocales(String... providers);
 
     /**
-     * Access all {@link javax.money.format.MonetaryAmountFormat} instances matching the given {@link org.javamoney.bp.api.format
+     * Access all {@link javax.money.format.MonetaryAmountFormat} instances matching the given {@link javax.money.format
      * .AmountFormatQuery}.
      *
      * @param formatQuery The format query defining the requirements of the formatters.
@@ -55,19 +55,19 @@ public interface MonetaryFormatsSingletonSpi {
     List<String> getDefaultProviderChain();
 
     /**
-     * Access an {@link javax.money.format.MonetaryAmountFormat} given a {@link org.javamoney.bp.api.format
+     * Access an {@link javax.money.format.MonetaryAmountFormat} given a {@link javax.money.format
      * .AmountFormatQuery}.
      *
      * @param formatQuery The format query defining the requirements of the formatter.
      * @return the corresponding {@link javax.money.format.MonetaryAmountFormat}
-     * @throws javax.money.MonetaryException if no registered {@link org.javamoney.bp.api.spi
+     * @throws javax.money.MonetaryException if no registered {@link javax.money.spi
      *                                       .MonetaryAmountFormatProviderSpi} can provide a
      *                                       corresponding {@link javax.money.format.MonetaryAmountFormat} instance.
      */
     MonetaryAmountFormat getAmountFormat(AmountFormatQuery formatQuery);
 
     /**
-     * Checks if a {@link javax.money.format.MonetaryAmountFormat} is available given a {@link org.javamoney.bp.api.format
+     * Checks if a {@link javax.money.format.MonetaryAmountFormat} is available given a {@link javax.money.format
      * .AmountFormatQuery}.
      *
      * @param formatQuery The format query defining the requirements of the formatter.
@@ -76,7 +76,7 @@ public interface MonetaryFormatsSingletonSpi {
     boolean isAvailable(AmountFormatQuery formatQuery);
 
     /**
-     * Checks if a {@link javax.money.format.MonetaryAmountFormat} is available given a {@link org.javamoney.bp.api.format
+     * Checks if a {@link javax.money.format.MonetaryAmountFormat} is available given a {@link javax.money.format
      * .AmountFormatQuery}.
      *
      * @param locale    the target {@link java.util.Locale}, not {@code null}.

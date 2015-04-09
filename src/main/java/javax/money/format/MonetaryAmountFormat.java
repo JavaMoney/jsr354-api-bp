@@ -20,7 +20,7 @@ import java.io.IOException;
  * To obtain a <code>MonetaryAmountFormat</code> for a specific locale, including the default
  * locale, call {@link MonetaryFormats#getAmountFormat(java.util.Locale, String...)}.
  *
- * More complex formatting scenarios can be implemented by registering instances of {@link org.javamoney.bp.api.spi
+ * More complex formatting scenarios can be implemented by registering instances of {@link javax.money.spi
  * .MonetaryAmountFormatProviderSpi}.
  * The spi implementation creates new instances of {@link MonetaryAmountFormat} based on the
  * <i>styleId</i> and <i> (arbitrary) attributes</i> passed within the {@link AmountFormatContext}.
@@ -129,7 +129,7 @@ public interface MonetaryAmountFormat extends MonetaryQuery<String> {
      * Additionally the effective implementation type returned can be determined by the
      * {@link javax.money.MonetaryContext} applied to the {@link MonetaryAmountFormat}.
      * This formatter will call
-     * {@link javax.money.MonetaryAmounts#getDefaultAmountType()} and will use the result returned
+     * {@link javax.money.Monetary#getDefaultAmountType()} and will use the result returned
      * to access a corresponding {@link javax.money.MonetaryAmountFactory} to of the instance
      * returned.
      *

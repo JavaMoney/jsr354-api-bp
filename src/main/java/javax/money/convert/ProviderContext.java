@@ -14,7 +14,7 @@ import java.util.Set;
 import javax.money.AbstractContext;
 
 /**
- * This class describes what kind of {@link ExchangeRate}s a {@link org.javamoney.bp.api.convert
+ * This class describes what kind of {@link ExchangeRate}s a {@link javax.money.convert
  * .ExchangeRateProvider} delivers, including the provider's name, rate type and additional data.
  * By default such a context supports the following attributes:
  * <ul>

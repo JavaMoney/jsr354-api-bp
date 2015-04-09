@@ -16,7 +16,7 @@ import java.util.Objects;
  * <p>
  * Note this class is NOT thread-safe.
  *
- * @see MonetaryAmounts#getAmountFactory(MonetaryAmountFactoryQuery)
+ * @see Monetary#getAmountFactory(MonetaryAmountFactoryQuery)
  * @see MonetaryAmountFactory
  */
 public final class MonetaryAmountFactoryQueryBuilder

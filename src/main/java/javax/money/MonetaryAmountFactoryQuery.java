@@ -22,7 +22,7 @@ import java.io.Serializable;
  * </ul>
  * <p>This class is thread-safe, final and serializable.</p>
  *
- * @see MonetaryAmounts#getAmountFactory(MonetaryAmountFactoryQuery)
+ * @see Monetary#getAmountFactory(MonetaryAmountFactoryQuery)
  * @see MonetaryAmountFactory
  */
 public final class MonetaryAmountFactoryQuery extends AbstractQuery implements Serializable {
@@ -75,7 +75,7 @@ public final class MonetaryAmountFactoryQuery extends AbstractQuery implements S
      *
      * @return the fixed scale flag, or null, if this attribute must not be considered.
      */
-    public Boolean getFixedScale() {
+    public Boolean isFixedScale() {
         return getBoolean(KEY_FIXED_SCALE);
     }
 
