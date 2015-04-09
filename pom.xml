@@ -511,7 +511,6 @@
 						</execution>
 					</executions>
 					<configuration>
-						<additionalparam>-Xdoclint:none</additionalparam>
 						<detectLinks>false</detectLinks>
 						<keywords>true</keywords>
 						<linksource>false</linksource>
