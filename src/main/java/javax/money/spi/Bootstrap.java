@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 
 /**
  * This singleton provides access to the services available in the current runtime environment and context. The
- * behaviour can be adapted, by calling {@link #init(ServiceProvider)} before accessing any monetary
+ * behavior can be adapted, by calling {@link #init(ServiceProvider)} before accessing any monetary
  * services.
  *
  * @author Anatole Tresch
