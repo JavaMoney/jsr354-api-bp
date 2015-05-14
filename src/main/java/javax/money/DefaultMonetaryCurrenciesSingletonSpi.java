@@ -17,7 +17,6 @@ import javax.money.spi.CurrencyProviderSpi;
 import javax.money.spi.MonetaryCurrenciesSingletonSpi;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -40,7 +39,8 @@ final class DefaultMonetaryCurrenciesSingletonSpi implements MonetaryCurrenciesS
     @Override
     public Set<CurrencyUnit> getCurrencies(CurrencyQuery query) {
         Set<CurrencyUnit> result = new HashSet<CurrencyUnit>();
-        for (CurrencyProviderSpi spi : Bootstrap.getServices(CurrencyProviderSpi.class)) {
+        List<CurrencyProviderSpi> providers = collectProviders(query);
+        for (CurrencyProviderSpi spi : providers) {
             try {
                 result.addAll(spi.getCurrencies(query));
             } catch (Exception e) {
@@ -52,6 +52,42 @@ final class DefaultMonetaryCurrenciesSingletonSpi implements MonetaryCurrenciesS
         return result;
     }
 
+    private List<CurrencyProviderSpi> collectProviders(CurrencyQuery query) {
+        List<CurrencyProviderSpi> result = new ArrayList<CurrencyProviderSpi>();
+        if (!query.getProviderNames().isEmpty()) {
+            for (String providerName : query.getProviderNames()) {
+                CurrencyProviderSpi provider = getProvider(providerName);
+                if (provider == null) {
+                    Logger.getLogger(DefaultMonetaryCurrenciesSingletonSpi.class.getName()).warning("No such currenvcy " +
+                            "provider found, ignoring: " + providerName);
+                } else {
+                    result.add(provider);
+                }
+            }
+        }
+        else{
+            for(String providerName:getDefaultProviderChain()){
+                CurrencyProviderSpi provider = getProvider(providerName);
+                if (provider == null) {
+                    Logger.getLogger(DefaultMonetaryCurrenciesSingletonSpi.class.getName()).warning("No such currenvcy " +
+                            "provider found, ignoring: " + providerName);
+                } else {
+                    result.add(provider);
+                }
+            }
+        }
+        return result;
+    }
+
+    private CurrencyProviderSpi getProvider(String providerName) {
+        for(CurrencyProviderSpi provider:Bootstrap.getServices(CurrencyProviderSpi.class)){
+            if(provider.getProviderName().equals(providerName)){
+                return provider;
+            }
+        }
+        return null;
+    }
+
     /**
      * This default implementation simply returns all providers defined in arbitrary order.
      *
@@ -59,10 +95,11 @@ final class DefaultMonetaryCurrenciesSingletonSpi implements MonetaryCurrenciesS
      */
     @Override
     public List<String> getDefaultProviderChain() {
-        List<String> list = new ArrayList<String>();
-        list.addAll(getProviderNames());
-        Collections.sort(list);
-        return list;
+        List<String> provList = new ArrayList<String>();
+        for(CurrencyProviderSpi currencyProviderSpi:Bootstrap.getServices(CurrencyProviderSpi.class)){
+            provList.add(currencyProviderSpi.getProviderName());
+        }
+        return provList;
     }
 
     /**
