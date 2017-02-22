@@ -459,7 +459,7 @@
                     <configuration>
                         <skipTests>false</skipTests>
                         <trimStackTrace>false</trimStackTrace>
-                        <forkMode>never</forkMode>
+                        <forkMode>once</forkMode>
                         <useSystemClassLoader>true</useSystemClassLoader>
                         <includes>
                             <include>**/*Test.java</include>
