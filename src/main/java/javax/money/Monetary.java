@@ -35,37 +35,7 @@ public final class Monetary {
     /**
      * The used {@link javax.money.spi.MonetaryCurrenciesSingletonSpi} instance.
      */
-    private static final MonetaryCurrenciesSingletonSpi monetaryCurrenciesSpi = loadMonetaryCurrenciesSingletonSpi();
-
-    /**
-     * The used {@link javax.money.spi.MonetaryAmountsSingletonSpi} instance.
-     */
-    private static final MonetaryAmountsSingletonSpi monetaryAmountsSingletonSpi = loadMonetaryAmountsSingletonSpi();
-
-    /**
-     * The used {@link javax.money.spi.MonetaryAmountsSingletonSpi} instance.
-     */
-    private static final MonetaryAmountsSingletonQuerySpi monetaryAmountsSingletonQuerySpi =
-            loadMonetaryAmountsSingletonQuerySpi();
-
-    /**
-     * The used {@link javax.money.spi.MonetaryCurrenciesSingletonSpi} instance.
-     */
-    private static final MonetaryRoundingsSingletonSpi monetaryRoundingsSpi = loadMonetaryRoundingsSingletonSpi();
-
-
-    /**
-     * Required for deserialization only.
-     */
-    private Monetary() {
-    }
-
-    /**
-     * Loads the SPI backing bean.
-     *
-     * @return the {@link MonetaryCurrenciesSingletonSpi} backing bean to be used.
-     */
-    private static MonetaryCurrenciesSingletonSpi loadMonetaryCurrenciesSingletonSpi() {
+    private static final MonetaryCurrenciesSingletonSpi monetaryCurrenciesSpi() {
         try {
             MonetaryCurrenciesSingletonSpi spi = Bootstrap
                     .getService(MonetaryCurrenciesSingletonSpi.class);
@@ -81,11 +51,9 @@ public final class Monetary {
     }
 
     /**
-     * Loads the SPI backing bean.
-     *
-     * @return the MonetaryAmountsSingletonSpi bean from the bootstrapping logic.
+     * The used {@link javax.money.spi.MonetaryAmountsSingletonSpi} instance.
      */
-    private static MonetaryAmountsSingletonSpi loadMonetaryAmountsSingletonSpi() {
+    private static final MonetaryAmountsSingletonSpi monetaryAmountsSingletonSpi() {
         try {
             return Bootstrap.getService(MonetaryAmountsSingletonSpi.class);
         } catch (Exception e) {
@@ -96,11 +64,9 @@ public final class Monetary {
     }
 
     /**
-     * Loads the SPI backing bean.
-     *
-     * @return the MonetaryAmountsSingletonQuerySpi bean from the bootstrapping logic.
+     * The used {@link javax.money.spi.MonetaryAmountsSingletonSpi} instance.
      */
-    private static MonetaryAmountsSingletonQuerySpi loadMonetaryAmountsSingletonQuerySpi() {
+    private static final MonetaryAmountsSingletonQuerySpi monetaryAmountsSingletonQuerySpi() { 
         try {
             return Bootstrap.getService(MonetaryAmountsSingletonQuerySpi.class);
         } catch (Exception e) {
@@ -113,11 +79,9 @@ public final class Monetary {
     }
 
     /**
-     * Loads the SPI backing bean.
-     *
-     * @return an instance of MonetaryRoundingsSingletonSpi.
+     * The used {@link javax.money.spi.MonetaryCurrenciesSingletonSpi} instance.
      */
-    private static MonetaryRoundingsSingletonSpi loadMonetaryRoundingsSingletonSpi() {
+    private static final MonetaryRoundingsSingletonSpi monetaryRoundingsSpi() {
         try {
             MonetaryRoundingsSingletonSpi spi = Bootstrap
                     .getService(MonetaryRoundingsSingletonSpi.class);
@@ -134,6 +98,12 @@ public final class Monetary {
 
 
     /**
+     * Required for deserialization only.
+     */
+    private Monetary() {
+    }
+
+    /**
      * Access a new instance based on the currency code. Currencies are
      * available as provided by {@link CurrencyProviderSpi} instances registered
      * with the {@link javax.money.spi.Bootstrap}.
@@ -144,10 +114,10 @@ public final class Monetary {
      * @throws UnknownCurrencyException if no such currency exists.
      */
     public static CurrencyUnit getCurrency(String currencyCode, String... providers) {
-        if(monetaryCurrenciesSpi==null) {
+        if(monetaryCurrenciesSpi()==null) {
             throw new MonetaryException("No MonetaryCurrenciesSingletonSpi loaded, check your system setup.");
         }
-        return monetaryCurrenciesSpi.getCurrency(currencyCode, providers);
+        return monetaryCurrenciesSpi().getCurrency(currencyCode, providers);
     }
 
     /**
@@ -162,10 +132,10 @@ public final class Monetary {
      * @throws UnknownCurrencyException if no such currency exists.
      */
     public static CurrencyUnit getCurrency(Locale locale, String... providers) {
-        if(monetaryCurrenciesSpi==null) {
+        if(monetaryCurrenciesSpi()==null) {
             throw new MonetaryException("No MonetaryCurrenciesSingletonSpi loaded, check your system setup.");
         }
-        return monetaryCurrenciesSpi.getCurrency(locale, providers);
+        return monetaryCurrenciesSpi().getCurrency(locale, providers);
     }
 
     /**
@@ -180,10 +150,10 @@ public final class Monetary {
      * @throws UnknownCurrencyException if no such currency exists.
      */
     public static Set<CurrencyUnit> getCurrencies(Locale locale, String... providers) {
-        if(monetaryCurrenciesSpi==null) {
+        if(monetaryCurrenciesSpi()==null) {
             throw new MonetaryException("No MonetaryCurrenciesSingletonSpi loaded, check your system setup.");
         }
-        return monetaryCurrenciesSpi.getCurrencies(locale, providers);
+        return monetaryCurrenciesSpi().getCurrencies(locale, providers);
     }
 
     /**
@@ -196,10 +166,10 @@ public final class Monetary {
      * would return a result for the given code.
      */
     public static boolean isCurrencyAvailable(String code, String... providers) {
-        if(monetaryCurrenciesSpi==null){
+        if(monetaryCurrenciesSpi()==null){
             throw new IllegalStateException("No Monetary Spi loaded.");
         }
-        return monetaryCurrenciesSpi.isCurrencyAvailable(code, providers);
+        return monetaryCurrenciesSpi().isCurrencyAvailable(code, providers);
     }
 
     /**
@@ -212,10 +182,10 @@ public final class Monetary {
      * result containing a currency with the given code.
      */
     public static boolean isCurrencyAvailable(Locale locale, String... providers) {
-        if(monetaryCurrenciesSpi==null){
+        if(monetaryCurrenciesSpi()==null){
             throw new IllegalStateException("No Monetary Spi loaded.");
         }
-        return monetaryCurrenciesSpi.isCurrencyAvailable(locale, providers);
+        return monetaryCurrenciesSpi().isCurrencyAvailable(locale, providers);
     }
 
     /**
@@ -225,10 +195,10 @@ public final class Monetary {
      * @return the list of known currencies, never null.
      */
     public static Collection<CurrencyUnit> getCurrencies(String... providers) {
-        if(monetaryCurrenciesSpi==null) {
+        if(monetaryCurrenciesSpi()==null) {
             throw new MonetaryException("No MonetaryCurrenciesSingletonSpi loaded, check your system setup.");
         }
-        return monetaryCurrenciesSpi.getCurrencies(providers);
+        return monetaryCurrenciesSpi().getCurrencies(providers);
     }
 
     /**
@@ -238,10 +208,10 @@ public final class Monetary {
      * @return the list of known currencies, never null.
      */
     public static CurrencyUnit getCurrency(CurrencyQuery query) {
-        if(monetaryCurrenciesSpi==null) {
+        if(monetaryCurrenciesSpi()==null) {
             throw new MonetaryException("No MonetaryCurrenciesSingletonSpi loaded, check your system setup.");
         }
-        return monetaryCurrenciesSpi.getCurrency(query);
+        return monetaryCurrenciesSpi().getCurrency(query);
     }
 
 
@@ -252,10 +222,10 @@ public final class Monetary {
      * @return the list of known currencies, never null.
      */
     public static Collection<CurrencyUnit> getCurrencies(CurrencyQuery query) {
-        if(monetaryCurrenciesSpi==null) {
+        if(monetaryCurrenciesSpi()==null) {
             throw new MonetaryException("No MonetaryCurrenciesSingletonSpi loaded, check your system setup.");
         }
-        return monetaryCurrenciesSpi.getCurrencies(query);
+        return monetaryCurrenciesSpi().getCurrencies(query);
     }
 
     /**
@@ -264,10 +234,10 @@ public final class Monetary {
      * @return the list of known currencies, never null.
      */
     public static Set<String> getCurrencyProviderNames() {
-        if(monetaryCurrenciesSpi==null) {
+        if(monetaryCurrenciesSpi()==null) {
             throw new MonetaryException("No MonetaryCurrenciesSingletonSpi loaded, check your system setup.");
         }
-        return monetaryCurrenciesSpi.getProviderNames();
+        return monetaryCurrenciesSpi().getProviderNames();
     }
 
     /**
@@ -277,10 +247,10 @@ public final class Monetary {
      * @return the orderend list provider names, modelling the default provider chain used, never null.
      */
     public static List<String> getDefaultCurrencyProviderChain() {
-        if(monetaryCurrenciesSpi==null) {
+        if(monetaryCurrenciesSpi()==null) {
             throw new MonetaryException("No MonetaryCurrenciesSingletonSpi loaded, check your system setup.");
         }
-        return monetaryCurrenciesSpi.getDefaultProviderChain();
+        return monetaryCurrenciesSpi().getDefaultProviderChain();
     }
 
     /**
@@ -293,11 +263,11 @@ public final class Monetary {
      *                           implementation class is registered.
      */
     public static <T extends MonetaryAmount> MonetaryAmountFactory<T> getAmountFactory(Class<T> amountType) {
-        if(monetaryAmountsSingletonQuerySpi==null){
+        if(monetaryAmountsSingletonSpi()==null){
             throw new MonetaryException(
-                    "No MonetaryAmountsSingletonQuerySpi loaded, query functionality is not available.");
+                    "No MonetaryAmountsSingletonSpi loaded, query functionality is not available.");
         }
-        MonetaryAmountFactory<T> factory = monetaryAmountsSingletonSpi.getAmountFactory(amountType);
+        MonetaryAmountFactory<T> factory = monetaryAmountsSingletonSpi().getAmountFactory(amountType);
         if(factory==null){
             throw new MonetaryException("No AmountFactory available for type: " + amountType.getName());
         }
@@ -314,11 +284,11 @@ public final class Monetary {
      *                           implementation class is registered.
      */
     public static MonetaryAmountFactory<?> getDefaultAmountFactory() {
-        if(monetaryAmountsSingletonSpi==null){
+        if(monetaryAmountsSingletonSpi()==null){
             throw new MonetaryException(
                     "No MonetaryAmountsSingletonSpi loaded, query functionality is not available.");
         }
-        return monetaryAmountsSingletonSpi.getDefaultAmountFactory();
+        return monetaryAmountsSingletonSpi().getDefaultAmountFactory();
     }
 
     /**
@@ -329,11 +299,11 @@ public final class Monetary {
      * corresponding {@link MonetaryAmountFactory} instances provided, never {@code null}
      */
     public static Collection<MonetaryAmountFactory<?>> getAmountFactories() {
-        if(monetaryAmountsSingletonSpi==null){
+        if(monetaryAmountsSingletonSpi()==null){
             throw new MonetaryException(
                     "No MonetaryAmountsSingletonSpi loaded, query functionality is not available.");
         }
-        return monetaryAmountsSingletonSpi.getAmountFactories();
+        return monetaryAmountsSingletonSpi().getAmountFactories();
     }
 
     /**
@@ -344,11 +314,11 @@ public final class Monetary {
      * corresponding {@link MonetaryAmountFactory} instances provided, never {@code null}
      */
     public static Collection<Class<? extends MonetaryAmount>> getAmountTypes() {
-        if(monetaryAmountsSingletonSpi==null){
+        if(monetaryAmountsSingletonSpi()==null){
             throw new MonetaryException(
                     "No MonetaryAmountsSingletonSpi loaded, query functionality is not available.");
         }
-        return monetaryAmountsSingletonSpi.getAmountTypes();
+        return monetaryAmountsSingletonSpi().getAmountTypes();
     }
 
     /**
@@ -358,11 +328,11 @@ public final class Monetary {
      * @return all current default {@link MonetaryAmount} implementation class, never {@code null}
      */
     public static Class<? extends MonetaryAmount> getDefaultAmountType() {
-        if(monetaryAmountsSingletonSpi==null){
+        if(monetaryAmountsSingletonSpi()==null){
             throw new MonetaryException(
                     "No MonetaryAmountsSingletonSpi loaded, query functionality is not available.");
         }
-        return monetaryAmountsSingletonSpi.getDefaultAmountType();
+        return monetaryAmountsSingletonSpi().getDefaultAmountType();
     }
 
     /**
@@ -373,11 +343,11 @@ public final class Monetary {
      * @return the factory found, or null.
      */
     public static MonetaryAmountFactory getAmountFactory(MonetaryAmountFactoryQuery query) {
-        if(monetaryAmountsSingletonQuerySpi==null){
+        if(monetaryAmountsSingletonQuerySpi()==null){
             throw new MonetaryException(
                     "No MonetaryAmountsSingletonQuerySpi loaded, query functionality is not available.");
         }
-        return monetaryAmountsSingletonQuerySpi.getAmountFactory(query);
+        return monetaryAmountsSingletonQuerySpi().getAmountFactory(query);
     }
 
     /**
@@ -387,11 +357,11 @@ public final class Monetary {
      * @return the instances found, never null.
      */
     public static Collection<MonetaryAmountFactory<?>> getAmountFactories(MonetaryAmountFactoryQuery query) {
-        if(monetaryAmountsSingletonQuerySpi==null){
+        if(monetaryAmountsSingletonQuerySpi()==null){
             throw new MonetaryException(
                     "No MonetaryAmountsSingletonQuerySpi loaded, query functionality is not available.");
         }
-        return monetaryAmountsSingletonQuerySpi.getAmountFactories(query);
+        return monetaryAmountsSingletonQuerySpi().getAmountFactories(query);
     }
 
     /**
@@ -401,11 +371,11 @@ public final class Monetary {
      * @return true, if at least one {@link MonetaryAmountFactory} matches the query.
      */
     public static boolean isAvailable(MonetaryAmountFactoryQuery query) {
-        if(monetaryAmountsSingletonQuerySpi==null){
+        if(monetaryAmountsSingletonQuerySpi()==null){
             throw new MonetaryException(
                     "No MonetaryAmountsSingletonQuerySpi loaded, query functionality is not available.");
         }
-        return monetaryAmountsSingletonQuerySpi.isAvailable(query);
+        return monetaryAmountsSingletonQuerySpi().isAvailable(query);
     }
 
     /**
@@ -417,10 +387,10 @@ public final class Monetary {
      * @return the (shared) default rounding instance.
      */
     public static MonetaryRounding getDefaultRounding() {
-        if(monetaryRoundingsSpi==null){
+        if(monetaryRoundingsSpi()==null){
             throw new MonetaryException("No MonetaryRoundingsSpi loaded, query functionality is not available.");
         }
-        return monetaryRoundingsSpi.getDefaultRounding();
+        return monetaryRoundingsSpi().getDefaultRounding();
     }
 
 
@@ -437,10 +407,10 @@ public final class Monetary {
      * rounding, never {@code null}.
      */
     public static MonetaryRounding getRounding(CurrencyUnit currencyUnit, String... providers) {
-        if(monetaryRoundingsSpi==null){
+        if(monetaryRoundingsSpi()==null){
             throw new MonetaryException("No MonetaryRoundingsSpi loaded, query functionality is not available.");
         }
-        return monetaryRoundingsSpi.getRounding(currencyUnit, providers);
+        return monetaryRoundingsSpi().getRounding(currencyUnit, providers);
     }
 
     /**
@@ -456,10 +426,10 @@ public final class Monetary {
      *                                  {@link javax.money.spi.RoundingProviderSpi} instance.
      */
     public static MonetaryRounding getRounding(String roundingName, String... providers) {
-        if(monetaryRoundingsSpi==null){
+        if(monetaryRoundingsSpi()==null){
             throw new MonetaryException("No MonetaryRoundingsSpi loaded, query functionality is not available.");
         }
-        return monetaryRoundingsSpi.getRounding(roundingName, providers);
+        return monetaryRoundingsSpi().getRounding(roundingName, providers);
     }
 
     /**
@@ -472,10 +442,10 @@ public final class Monetary {
      *                                  {@link javax.money.spi.RoundingProviderSpi} instance.
      */
     public static MonetaryRounding getRounding(RoundingQuery roundingQuery) {
-        if(monetaryRoundingsSpi==null){
+        if(monetaryRoundingsSpi()==null){
             throw new MonetaryException("No MonetaryRoundingsSpi loaded, query functionality is not available.");
         }
-        return monetaryRoundingsSpi.getRounding(roundingQuery);
+        return monetaryRoundingsSpi().getRounding(roundingQuery);
     }
 
     /**
@@ -489,10 +459,10 @@ public final class Monetary {
      *                                  {@link javax.money.spi.RoundingProviderSpi} instance.
      */
     public static boolean isRoundingAvailable(String roundingName, String... providers) {
-        if(monetaryRoundingsSpi==null){
+        if(monetaryRoundingsSpi()==null){
             throw new MonetaryException("No MonetaryRoundingsSpi loaded, query functionality is not available.");
         }
-        return monetaryRoundingsSpi.isRoundingAvailable(roundingName, providers);
+        return monetaryRoundingsSpi().isRoundingAvailable(roundingName, providers);
     }
 
     /**
@@ -507,10 +477,10 @@ public final class Monetary {
      *                                  {@link javax.money.spi.RoundingProviderSpi} instance.
      */
     public static boolean isRoundingAvailable(CurrencyUnit currencyUnit, String... providers) {
-        if(monetaryRoundingsSpi==null){
+        if(monetaryRoundingsSpi()==null){
             throw new MonetaryException("No MonetaryRoundingsSpi loaded, query functionality is not available.");
         }
-        return monetaryRoundingsSpi.isRoundingAvailable(currencyUnit, providers);
+        return monetaryRoundingsSpi().isRoundingAvailable(currencyUnit, providers);
     }
 
     /**
@@ -523,10 +493,10 @@ public final class Monetary {
      *                                  {@link javax.money.spi.RoundingProviderSpi} instance.
      */
     public static boolean isRoundingAvailable(RoundingQuery roundingQuery) {
-        if(monetaryRoundingsSpi==null){
+        if(monetaryRoundingsSpi()==null){
             throw new MonetaryException("No MonetaryRoundingsSpi loaded, query functionality is not available.");
         }
-        return monetaryRoundingsSpi.isRoundingAvailable(roundingQuery);
+        return monetaryRoundingsSpi().isRoundingAvailable(roundingQuery);
     }
 
 
@@ -538,10 +508,10 @@ public final class Monetary {
      * @return all {@link MonetaryRounding} instances macthing the query, never {@code null}.
      */
     public static Collection<MonetaryRounding> getRoundings(RoundingQuery roundingQuery) {
-        if(monetaryRoundingsSpi==null){
+        if(monetaryRoundingsSpi()==null){
             throw new MonetaryException("No MonetaryRoundingsSpi loaded, query functionality is not available.");
         }
-        return monetaryRoundingsSpi.getRoundings(roundingQuery);
+        return monetaryRoundingsSpi().getRoundings(roundingQuery);
     }
 
 
@@ -553,10 +523,10 @@ public final class Monetary {
      * @return the set of custom rounding ids, never {@code null}.
      */
     public static Set<String> getRoundingNames(String... providers) {
-        if(monetaryRoundingsSpi==null){
+        if(monetaryRoundingsSpi()==null){
             throw new MonetaryException("No MonetaryRoundingsSpi loaded, query functionality is not available.");
         }
-        return monetaryRoundingsSpi.getRoundingNames(providers);
+        return monetaryRoundingsSpi().getRoundingNames(providers);
     }
 
     /**
@@ -565,10 +535,10 @@ public final class Monetary {
      * @return the set of provider names, never {@code null}.
      */
     public static Set<String> getRoundingProviderNames() {
-        if(monetaryRoundingsSpi==null){
+        if(monetaryRoundingsSpi()==null){
             throw new MonetaryException("No MonetaryRoundingsSpi loaded, query functionality is not available.");
         }
-        return monetaryRoundingsSpi.getProviderNames();
+        return monetaryRoundingsSpi().getProviderNames();
     }
 
 
@@ -578,10 +548,10 @@ public final class Monetary {
      * @return the chained list of provider names, never {@code null}.
      */
     public static List<String> getDefaultRoundingProviderChain() {
-        if(monetaryRoundingsSpi==null){
+        if(monetaryRoundingsSpi()==null){
             throw new MonetaryException("No MonetaryRoundingsSpi loaded, query functionality is not available.");
         }
-        return monetaryRoundingsSpi.getDefaultProviderChain();
+        return monetaryRoundingsSpi().getDefaultProviderChain();
     }
 
 
