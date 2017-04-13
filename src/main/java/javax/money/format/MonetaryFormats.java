@@ -8,14 +8,22 @@
  */
 package javax.money.format;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.money.MonetaryException;
 import javax.money.spi.Bootstrap;
 import javax.money.spi.MonetaryAmountFormatProviderSpi;
 import javax.money.spi.MonetaryFormatsSingletonSpi;
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * This class models the singleton accessor for {@link MonetaryAmountFormat} instances.
@@ -27,21 +35,7 @@ import java.util.logging.Logger;
  */
 public final class MonetaryFormats {
 
-    private static final MonetaryFormatsSingletonSpi monetaryFormatsSingletonSpi = loadMonetaryFormatsSingletonSpi();
-
-    /**
-     * Private singleton constructor.
-     */
-    private MonetaryFormats() {
-        // Singleton
-    }
-
-    /**
-     * Loads the SPI backing bean.
-     *
-     * @return the instance of MonetaryFormatsSingletonSpi to be used by this singleton.
-     */
-    private static MonetaryFormatsSingletonSpi loadMonetaryFormatsSingletonSpi() {
+    private static final MonetaryFormatsSingletonSpi monetaryFormatsSingletonSpi() {
         try {
             MonetaryFormatsSingletonSpi spi = Bootstrap.getService(MonetaryFormatsSingletonSpi.class);
             if(spi==null){
@@ -56,6 +50,13 @@ public final class MonetaryFormats {
     }
 
     /**
+     * Private singleton constructor.
+     */
+    private MonetaryFormats() {
+        // Singleton
+    }
+
+    /**
      * Checks if a {@link MonetaryAmountFormat} is available for the given {@link java.util.Locale} and providers.
      *
      * @param locale    the target {@link java.util.Locale}, not {@code null}.
@@ -64,11 +65,11 @@ public final class MonetaryFormats {
      * @return true, if a corresponding {@link MonetaryAmountFormat} is accessible.
      */
     public static boolean isAvailable(Locale locale, String... providers) {
-        if(monetaryFormatsSingletonSpi==null){
+        if(monetaryFormatsSingletonSpi()==null){
             throw new MonetaryException(
                     "No MonetaryFormatsSingletonSpi " + "loaded, query functionality is not available.");
         }
-        return monetaryFormatsSingletonSpi.isAvailable(locale, providers);
+        return monetaryFormatsSingletonSpi().isAvailable(locale, providers);
     }
 
     /**
@@ -94,11 +95,11 @@ public final class MonetaryFormats {
      * @return true, if a corresponding {@link MonetaryAmountFormat} is accessible.
      */
     public static boolean isAvailable(AmountFormatQuery formatQuery) {
-        if(monetaryFormatsSingletonSpi==null){
+        if(monetaryFormatsSingletonSpi()==null){
             throw new MonetaryException(
                     "No MonetaryFormatsSingletonSpi " + "loaded, query functionality is not available.");
         }
-        return monetaryFormatsSingletonSpi.isAvailable(formatQuery);
+        return monetaryFormatsSingletonSpi().isAvailable(formatQuery);
     }
 
     /**
@@ -112,11 +113,11 @@ public final class MonetaryFormats {
      *                           corresponding {@link MonetaryAmountFormat} instance.
      */
     public static MonetaryAmountFormat getAmountFormat(AmountFormatQuery formatQuery) {
-        if(monetaryFormatsSingletonSpi==null){
+        if(monetaryFormatsSingletonSpi()==null){
             throw new MonetaryException(
                     "No MonetaryFormatsSingletonSpi " + "loaded, query functionality is not available.");
         }
-        return monetaryFormatsSingletonSpi.getAmountFormat(formatQuery);
+        return monetaryFormatsSingletonSpi().getAmountFormat(formatQuery);
     }
 
     /**
@@ -130,11 +131,11 @@ public final class MonetaryFormats {
      *                           corresponding {@link MonetaryAmountFormat} instance.
      */
     public static Collection<MonetaryAmountFormat> getAmountFormats(AmountFormatQuery formatQuery) {
-        if(monetaryFormatsSingletonSpi==null){
+        if(monetaryFormatsSingletonSpi()==null){
             throw new MonetaryException(
                     "No MonetaryFormatsSingletonSpi " + "loaded, query functionality is not available.");
         }
-        return monetaryFormatsSingletonSpi.getAmountFormats(formatQuery);
+        return monetaryFormatsSingletonSpi().getAmountFormats(formatQuery);
     }
 
     /**
@@ -159,7 +160,7 @@ public final class MonetaryFormats {
      * @return all available locales, never {@code null}.
      */
     public static Set<Locale> getAvailableLocales(String... providers) {
-        return monetaryFormatsSingletonSpi.getAvailableLocales(providers);
+        return monetaryFormatsSingletonSpi().getAvailableLocales(providers);
     }
 
     /**
@@ -168,11 +169,11 @@ public final class MonetaryFormats {
      * @return the provider names, never null.
      */
     public static Collection<String> getFormatProviderNames() {
-        if(monetaryFormatsSingletonSpi==null){
+        if(monetaryFormatsSingletonSpi()==null){
             throw new MonetaryException(
                     "No MonetaryFormatsSingletonSpi " + "loaded, query functionality is not available.");
         }
-        return monetaryFormatsSingletonSpi.getProviderNames();
+        return monetaryFormatsSingletonSpi().getProviderNames();
     }
 
     /**
@@ -181,11 +182,11 @@ public final class MonetaryFormats {
      * @return the default provider chain, never null.
      */
     public static List<String> getDefaultFormatProviderChain() {
-        if(monetaryFormatsSingletonSpi==null){
+        if(monetaryFormatsSingletonSpi()==null){
             throw new MonetaryException(
                     "No MonetaryFormatsSingletonSpi " + "loaded, query functionality is not available.");
         }
-        return monetaryFormatsSingletonSpi.getDefaultProviderChain();
+        return monetaryFormatsSingletonSpi().getDefaultProviderChain();
     }
 
     /**
