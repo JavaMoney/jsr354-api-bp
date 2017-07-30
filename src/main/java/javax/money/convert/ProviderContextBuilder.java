@@ -29,7 +29,7 @@ public final class ProviderContextBuilder extends AbstractContextBuilder<Provide
         Objects.requireNonNull(rateType, "At least one RateType is required.");
         Objects.requireNonNull(rateTypes);
         setProviderName(provider);
-        Set<RateType> rts = new HashSet<RateType>();
+        Set<RateType> rts = new HashSet<>();
         rts.add(rateType);
         Collections.addAll(rts, rateTypes);
         set(ProviderContext.KEY_RATE_TYPES, rts);
@@ -47,7 +47,7 @@ public final class ProviderContextBuilder extends AbstractContextBuilder<Provide
             throw new IllegalArgumentException("At least one RateType is required.");
         }
         setProviderName(provider);
-        Set<RateType> rts = new HashSet<RateType>();
+        Set<RateType> rts = new HashSet<>();
         rts.addAll(rateTypes);
         set("rateTypes", rts);
     }
@@ -61,7 +61,7 @@ public final class ProviderContextBuilder extends AbstractContextBuilder<Provide
      */
     private ProviderContextBuilder(ProviderContext context) {
         importContext(context);
-        Set<RateType> rts = new HashSet<RateType>();
+        Set<RateType> rts = new HashSet<>();
         rts.addAll(context.getRateTypes());
         set(ProviderContext.KEY_RATE_TYPES, rts);
     }
@@ -90,7 +90,7 @@ public final class ProviderContextBuilder extends AbstractContextBuilder<Provide
         if (rateTypes.size() == 0) {
             throw new IllegalArgumentException("At least one RateType is required.");
         }
-        Set<RateType> rtSet = new HashSet<RateType>();
+        Set<RateType> rtSet = new HashSet<>();
         rtSet.addAll(rateTypes);
         set(ProviderContext.KEY_RATE_TYPES, rtSet);
         return this;

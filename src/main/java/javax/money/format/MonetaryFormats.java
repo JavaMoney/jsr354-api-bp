@@ -35,7 +35,7 @@ import javax.money.spi.MonetaryFormatsSingletonSpi;
  */
 public final class MonetaryFormats {
 
-    private static final MonetaryFormatsSingletonSpi monetaryFormatsSingletonSpi() {
+    private static MonetaryFormatsSingletonSpi monetaryFormatsSingletonSpi() {
         try {
             MonetaryFormatsSingletonSpi spi = Bootstrap.getService(MonetaryFormatsSingletonSpi.class);
             if(spi==null){
@@ -211,7 +211,7 @@ public final class MonetaryFormats {
          *                                       corresponding {@link MonetaryAmountFormat} instance.
          */
         public Collection<MonetaryAmountFormat> getAmountFormats(AmountFormatQuery formatQuery) {
-            Collection<MonetaryAmountFormat> result = new ArrayList<MonetaryAmountFormat>();
+            Collection<MonetaryAmountFormat> result = new ArrayList<>();
             for (MonetaryAmountFormatProviderSpi spi : Bootstrap.getServices(MonetaryAmountFormatProviderSpi.class)) {
                 Collection<MonetaryAmountFormat> formats = spi.getAmountFormats(formatQuery);
                 if (formats!=null) {
@@ -233,7 +233,7 @@ public final class MonetaryFormats {
          */
         @Override
         public List<String> getDefaultProviderChain() {
-            List<String> list = new ArrayList<String>();
+            List<String> list = new ArrayList<>();
             list.addAll(getProviderNames());
             Collections.sort(list);
             return list;
@@ -247,7 +247,7 @@ public final class MonetaryFormats {
          * @return all available locales, never {@code null}.
          */
         public Set<Locale> getAvailableLocales(String... providerNames) {
-            Set<Locale> locales = new HashSet<Locale>();
+            Set<Locale> locales = new HashSet<>();
             Collection<MonetaryAmountFormatProviderSpi> spis = getSpis(providerNames);
             for (MonetaryAmountFormatProviderSpi spi : spis) {
                 locales.addAll(spi.getAvailableLocales());
@@ -256,7 +256,7 @@ public final class MonetaryFormats {
         }
 
         private Map<String, MonetaryAmountFormatProviderSpi> getSpisAsMap() {
-            Map<String, MonetaryAmountFormatProviderSpi> spis = new ConcurrentHashMap<String, MonetaryAmountFormatProviderSpi>();
+            Map<String, MonetaryAmountFormatProviderSpi> spis = new ConcurrentHashMap<>();
             for (MonetaryAmountFormatProviderSpi spi : Bootstrap.getServices(MonetaryAmountFormatProviderSpi.class)) {
                 if (spi.getProviderName() == null) {
                     Logger.getLogger(MonetaryFormats.class.getName()).warning("MonetaryAmountFormatProviderSpi " +
@@ -270,7 +270,7 @@ public final class MonetaryFormats {
         }
 
         private Collection<MonetaryAmountFormatProviderSpi> getSpis(String... providerNames) {
-            List<MonetaryAmountFormatProviderSpi> providers = new ArrayList<MonetaryAmountFormatProviderSpi>();
+            List<MonetaryAmountFormatProviderSpi> providers = new ArrayList<>();
             Map<String, MonetaryAmountFormatProviderSpi> spis = getSpisAsMap();
             if (providerNames.length == 0) {
                 providers.addAll(spis.values());

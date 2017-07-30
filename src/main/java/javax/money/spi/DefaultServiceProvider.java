@@ -24,7 +24,7 @@ import java.util.logging.Logger;
  */
 class DefaultServiceProvider implements ServiceProvider {
     /** List of services loaded, per class. */
-    private final ConcurrentHashMap<Class, List<Object>> servicesLoaded = new ConcurrentHashMap<Class, List<Object>>();
+    private final ConcurrentHashMap<Class, List<Object>> servicesLoaded = new ConcurrentHashMap<>();
 
     @Override
     public int getPriority() {
@@ -69,7 +69,7 @@ class DefaultServiceProvider implements ServiceProvider {
      * @return  the items found, never {@code null}.
      */
     private <T> List<T> loadServices(final Class<T> serviceType) {
-        List<T> services = new ArrayList<T>();
+        List<T> services = new ArrayList<>();
         try {
             for (T t : ServiceLoader.load(serviceType)) {
                 services.add(t);

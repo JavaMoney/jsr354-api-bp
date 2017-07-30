@@ -52,7 +52,7 @@ public final class MonetaryConversions{
      * The SPI currently active, use {@link java.util.ServiceLoader} to register an
      * alternate implementation.
      */
-    private static final MonetaryConversionsSingletonSpi getMonetaryConversionsSpi() {
+    private static MonetaryConversionsSingletonSpi getMonetaryConversionsSpi() {
         MonetaryConversionsSingletonSpi spi = Bootstrap.getService(MonetaryConversionsSingletonSpi.class);
         if(spi==null){
             throw new MonetaryException("MonetaryConversionsSingletonSpi no available: no conversion will be possible.");
@@ -201,7 +201,7 @@ public final class MonetaryConversions{
 			ExchangeRateProviderSupplier provider,
 			ExchangeRateProviderSupplier... providers) {
 
-		List<ExchangeRateProviderSupplier> suppliers = new ArrayList<ExchangeRateProviderSupplier>();
+		List<ExchangeRateProviderSupplier> suppliers = new ArrayList<>();
         suppliers.add(Objects.requireNonNull(provider));
         Collections.addAll(suppliers, providers);
 

@@ -37,7 +37,7 @@ public abstract class AbstractContext implements Serializable {
     /**
      * The data map containing all values.
      */
-    final Map<String, Object> data = new HashMap<String, Object>();
+    final Map<String, Object> data = new HashMap<>();
 
     /**
      * Private constructor, used by {@link AbstractContextBuilder}.
@@ -56,7 +56,7 @@ public abstract class AbstractContext implements Serializable {
      * @return all present keys of attributes being assignable to the type, never null.
      */
     public Set<String> getKeys(Class<?> type) {
-        Set<String> result = new HashSet<String>();
+        Set<String> result = new HashSet<>();
         for (Map.Entry<String, Object> en : data.entrySet()) {
             if (type.isAssignableFrom(en.getValue().getClass())) {
                 result.add(en.getKey());

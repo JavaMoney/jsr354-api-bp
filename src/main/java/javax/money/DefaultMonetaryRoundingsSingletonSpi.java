@@ -71,7 +71,7 @@ final class DefaultMonetaryRoundingsSingletonSpi implements MonetaryRoundingsSin
          */
         @Override
         public Collection<MonetaryRounding> getRoundings(RoundingQuery query) {
-            List<MonetaryRounding> result = new ArrayList<MonetaryRounding>();
+            List<MonetaryRounding> result = new ArrayList<>();
             Collection<String> providerNames = query.getProviderNames();
             if (providerNames == null || providerNames.isEmpty()) {
                 providerNames = getDefaultProviderChain();
@@ -103,7 +103,7 @@ final class DefaultMonetaryRoundingsSingletonSpi implements MonetaryRoundingsSin
          */
         @Override
         public Set<String> getProviderNames() {
-            Set<String> result = new HashSet<String>();
+            Set<String> result = new HashSet<>();
             for (RoundingProviderSpi prov : Bootstrap.getServices(RoundingProviderSpi.class)) {
                 try {
                     result.add(prov.getProviderName());
@@ -122,7 +122,7 @@ final class DefaultMonetaryRoundingsSingletonSpi implements MonetaryRoundingsSin
          */
         @Override
         public List<String> getDefaultProviderChain() {
-            List<String> result = new ArrayList<String>();
+            List<String> result = new ArrayList<>();
             result.addAll(getProviderNames());
             Collections.sort(result);
             return result;
@@ -136,7 +136,7 @@ final class DefaultMonetaryRoundingsSingletonSpi implements MonetaryRoundingsSin
          * @return the set of custom rounding ids, never {@code null}.
          */
         public Set<String> getRoundingNames(String... providers) {
-            Set<String> result = new HashSet<String>();
+            Set<String> result = new HashSet<>();
             String[] providerNames = providers;
             if (providerNames.length == 0) {
                 providerNames = getDefaultProviderChain().toArray(new String[getDefaultProviderChain().size()]);

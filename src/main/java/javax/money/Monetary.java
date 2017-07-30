@@ -35,7 +35,7 @@ public final class Monetary {
     /**
      * The used {@link javax.money.spi.MonetaryCurrenciesSingletonSpi} instance.
      */
-    private static final MonetaryCurrenciesSingletonSpi monetaryCurrenciesSpi() {
+    private static MonetaryCurrenciesSingletonSpi monetaryCurrenciesSpi() {
         try {
             MonetaryCurrenciesSingletonSpi spi = Bootstrap
                     .getService(MonetaryCurrenciesSingletonSpi.class);
@@ -53,7 +53,7 @@ public final class Monetary {
     /**
      * The used {@link javax.money.spi.MonetaryAmountsSingletonSpi} instance.
      */
-    private static final MonetaryAmountsSingletonSpi monetaryAmountsSingletonSpi() {
+    private static MonetaryAmountsSingletonSpi monetaryAmountsSingletonSpi() {
         try {
             return Bootstrap.getService(MonetaryAmountsSingletonSpi.class);
         } catch (Exception e) {
@@ -66,7 +66,7 @@ public final class Monetary {
     /**
      * The used {@link javax.money.spi.MonetaryAmountsSingletonSpi} instance.
      */
-    private static final MonetaryAmountsSingletonQuerySpi monetaryAmountsSingletonQuerySpi() { 
+    private static MonetaryAmountsSingletonQuerySpi monetaryAmountsSingletonQuerySpi() {
         try {
             return Bootstrap.getService(MonetaryAmountsSingletonQuerySpi.class);
         } catch (Exception e) {
@@ -81,7 +81,7 @@ public final class Monetary {
     /**
      * The used {@link javax.money.spi.MonetaryCurrenciesSingletonSpi} instance.
      */
-    private static final MonetaryRoundingsSingletonSpi monetaryRoundingsSpi() {
+    private static MonetaryRoundingsSingletonSpi monetaryRoundingsSpi() {
         try {
             MonetaryRoundingsSingletonSpi spi = Bootstrap
                     .getService(MonetaryRoundingsSingletonSpi.class);

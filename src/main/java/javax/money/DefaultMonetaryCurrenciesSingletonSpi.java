@@ -38,7 +38,7 @@ final class DefaultMonetaryCurrenciesSingletonSpi implements MonetaryCurrenciesS
 
     @Override
     public Set<CurrencyUnit> getCurrencies(CurrencyQuery query) {
-        Set<CurrencyUnit> result = new HashSet<CurrencyUnit>();
+        Set<CurrencyUnit> result = new HashSet<>();
         List<CurrencyProviderSpi> providers = collectProviders(query);
         for (CurrencyProviderSpi spi : providers) {
             try {
@@ -53,7 +53,7 @@ final class DefaultMonetaryCurrenciesSingletonSpi implements MonetaryCurrenciesS
     }
 
     private List<CurrencyProviderSpi> collectProviders(CurrencyQuery query) {
-        List<CurrencyProviderSpi> result = new ArrayList<CurrencyProviderSpi>();
+        List<CurrencyProviderSpi> result = new ArrayList<>();
         if (!query.getProviderNames().isEmpty()) {
             for (String providerName : query.getProviderNames()) {
                 CurrencyProviderSpi provider = getProvider(providerName);
@@ -95,7 +95,7 @@ final class DefaultMonetaryCurrenciesSingletonSpi implements MonetaryCurrenciesS
      */
     @Override
     public List<String> getDefaultProviderChain() {
-        List<String> provList = new ArrayList<String>();
+        List<String> provList = new ArrayList<>();
         for(CurrencyProviderSpi currencyProviderSpi:Bootstrap.getServices(CurrencyProviderSpi.class)){
             provList.add(currencyProviderSpi.getProviderName());
         }
@@ -109,7 +109,7 @@ final class DefaultMonetaryCurrenciesSingletonSpi implements MonetaryCurrenciesS
      */
     @Override
     public Set<String> getProviderNames() {
-        Set<String> result = new HashSet<String>();
+        Set<String> result = new HashSet<>();
         for (CurrencyProviderSpi spi : Bootstrap.getServices(CurrencyProviderSpi.class)) {
             try {
                 result.add(spi.getProviderName());

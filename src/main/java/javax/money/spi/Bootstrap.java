@@ -121,7 +121,7 @@ public final class Bootstrap {
         if(services.isEmpty()){
             return null;
         }
-        services = new ArrayList<T>(services);
+        services = new ArrayList<>(services);
         Collections.sort(services, new Comparator<T>() {
             @Override
             public int compare(T o1, T o2) {

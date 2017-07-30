@@ -69,7 +69,7 @@ public final class CurrencyQueryBuilder extends AbstractQueryBuilder<CurrencyQue
      * @return the query for chaining.
      */
     public CurrencyQueryBuilder setNumericCodes(int... codes) {
-        List<Integer> intList = new ArrayList<Integer>(codes.length);
+        List<Integer> intList = new ArrayList<>(codes.length);
         for(Integer code:codes){
             intList.add(code);
         }
