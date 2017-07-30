@@ -281,7 +281,8 @@ public class DefaultExchangeRate implements ExchangeRate, Serializable, Comparab
             DefaultExchangeRate other = (DefaultExchangeRate) obj;
             return Objects.equals(baseCurrency, other.baseCurrency) &&
                     Objects.equals(conversionContext, other.conversionContext) &&
-                    Objects.equals(factor, other.factor) && Objects.equals(termCurrency, other.termCurrency);
+                    factor.compareTo(other.factor) == 0 &&
+                    Objects.equals(termCurrency, other.termCurrency);
         }
         return false;
     }
