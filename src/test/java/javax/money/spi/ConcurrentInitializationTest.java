@@ -49,7 +49,7 @@ public class ConcurrentInitializationTest {
     public void shouldSupportConcurrentInitialization() throws ExecutionException, InterruptedException {
         final DummyAmount amount = new DummyAmountBuilder().create();
 
-        final List<Thread> threads = new ArrayList<Thread>(THREAD_COUNT);
+        final List<Thread> threads = new ArrayList<>(THREAD_COUNT);
         final List<Throwable> throwables = Collections.synchronizedList(new ArrayList<Throwable>());
         final Thread.UncaughtExceptionHandler uncaughtExceptionHandler = new Thread.UncaughtExceptionHandler() {
             @Override

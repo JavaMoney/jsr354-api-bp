@@ -92,7 +92,7 @@ public class AbstractContextBuilderTest {
         AbstractContextBuilder b = createBuilder();
         b.set("myKey", 1.5f);
         AbstractContext ctx = b.build();
-        assertEquals(ctx.getFloat("myKey").floatValue(), 1.5f, 0.0f);
+        assertEquals(ctx.getFloat("myKey"), 1.5f, 0.0f);
     }
 
     @Test
@@ -138,7 +138,7 @@ public class AbstractContextBuilderTest {
     @Test
     public void testSetCollection() throws Exception {
         AbstractContextBuilder b = createBuilder();
-        List<Number> list = new ArrayList<Number>();
+        List<Number> list = new ArrayList<>();
         list.add(BigDecimal.ONE);
         b.set("myKey", list);
         AbstractContext ctx = b.build();
@@ -148,7 +148,7 @@ public class AbstractContextBuilderTest {
     @Test
     public void testSetList() throws Exception {
         AbstractContextBuilder b = createBuilder();
-        List<Number> list = new ArrayList<Number>();
+        List<Number> list = new ArrayList<>();
         list.add(BigDecimal.ONE);
         b.set("myKey", list);
         AbstractContext ctx = b.build();
@@ -158,7 +158,7 @@ public class AbstractContextBuilderTest {
     @Test
     public void testSetMap() throws Exception {
         AbstractContextBuilder b = createBuilder();
-        List<Number> list = new ArrayList<Number>();
+        List<Number> list = new ArrayList<>();
         list.add(BigDecimal.ONE);
         b.set("myKey", list);
         AbstractContext ctx = b.build();
@@ -168,7 +168,7 @@ public class AbstractContextBuilderTest {
     @Test
     public void testSetSet() throws Exception {
         AbstractContextBuilder b = createBuilder();
-        Set<Number> set = new HashSet<Number>();
+        Set<Number> set = new HashSet<>();
         set.add(BigDecimal.ONE);
         b.set("myKey", set);
         AbstractContext ctx = b.build();
@@ -178,7 +178,7 @@ public class AbstractContextBuilderTest {
     @Test
     public void testRemoveAttributes() throws Exception {
         AbstractContextBuilder b = createBuilder();
-        Set<Number> set = new HashSet<Number>();
+        Set<Number> set = new HashSet<>();
         set.add(BigDecimal.ONE);
         b.set("myKey", "test");
         AbstractContext ctx = b.build();
@@ -193,7 +193,7 @@ public class AbstractContextBuilderTest {
     @Test
     public void testToString() throws Exception {
         AbstractContextBuilder b = createBuilder();
-        Set<Number> set = new HashSet<Number>();
+        Set<Number> set = new HashSet<>();
         set.add(BigDecimal.ONE);
         b.set("myKey", "test");
         String toString = b.toString();

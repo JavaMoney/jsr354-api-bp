@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 import static org.testng.Assert.*;
 
 /**
- * Tests for {@link org.javamoney.bp.UnknownCurrencyException}.
+ * Tests for {@link UnknownCurrencyException}.
  */
 public class UnknownCurrencyExceptionTest {
 

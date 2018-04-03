@@ -107,7 +107,7 @@ public class DefaultExchangeRate implements ExchangeRate, Serializable, Comparab
     /**
      * The full chain, at least one instance long.
      */
-    private List<ExchangeRate> chain = new ArrayList<ExchangeRate>();
+    private List<ExchangeRate> chain = new ArrayList<>();
 
 
     /**
@@ -315,7 +315,7 @@ public class DefaultExchangeRate implements ExchangeRate, Serializable, Comparab
         /**
          * The chain of invovled rates.
          */
-        private List<ExchangeRate> rateChain = new ArrayList<ExchangeRate>();
+        private List<ExchangeRate> rateChain = new ArrayList<>();
 
         /**
          * Sets the exchange rate type

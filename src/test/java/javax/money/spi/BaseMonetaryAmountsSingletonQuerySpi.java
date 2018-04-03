@@ -16,7 +16,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * SPI (core) for the backing implementation of the {@link javax.money.MonetaryAmounts} singleton, implementing
+ * SPI (core) for the backing implementation of the {@link javax.money.Monetary} singleton, implementing
  * the query functionality for amounts.
  *
  * @author Anatole Tresch
@@ -58,7 +58,7 @@ public abstract class BaseMonetaryAmountsSingletonQuerySpi implements MonetaryAm
     @SuppressWarnings("unchecked")
     public Collection<Class<? extends MonetaryAmount>> getAmountTypes(MonetaryAmountFactoryQuery query) {
         Collection<MonetaryAmountFactory<? extends MonetaryAmount>> factories = getAmountFactories(query);
-        Set<Class<? extends MonetaryAmount>> result = new HashSet<Class<? extends MonetaryAmount>>();
+        Set<Class<? extends MonetaryAmount>> result = new HashSet<>();
         for(MonetaryAmountFactory f:factories){
             result.add(f.getAmountType());
         }

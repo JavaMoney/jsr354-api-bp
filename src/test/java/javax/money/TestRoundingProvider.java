@@ -61,7 +61,7 @@ public final class TestRoundingProvider implements RoundingProviderSpi {
 
     @Override
     public Set<String> getRoundingNames() {
-        Set<String> result = new HashSet<String>();
+        Set<String> result = new HashSet<>();
         result.add("custom1");
         result.add("custom2");
         return result;

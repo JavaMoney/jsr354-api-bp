@@ -63,13 +63,13 @@ public class AbstractContextTest {
 
     @Test
     public void testHashCode() {
-        List<TestContext> contexts = new ArrayList<TestContext>();
+        List<TestContext> contexts = new ArrayList<>();
         contexts.add(new TestContext.Builder().set("Test").set(1).set((long) 2).build());
         contexts.add(new TestContext.Builder().set("Test").set(2).set((long) 1).build());
         contexts.add(new TestContext.Builder().set("Test").set(2).build());
         contexts.add(new TestContext.Builder().set("Test").set((long) 2).build());
         contexts.add(new TestContext.Builder().set("Test").set(Boolean.TRUE).set("Test").build());
-        Set<Integer> hashCodes = new HashSet<Integer>();
+        Set<Integer> hashCodes = new HashSet<>();
         for(TestContext ctx:contexts){
             hashCodes.add(ctx.hashCode());
         }
@@ -79,13 +79,13 @@ public class AbstractContextTest {
 
     @Test
     public void testEquals() {
-        List<TestContext> contexts = new ArrayList<TestContext>();
+        List<TestContext> contexts = new ArrayList<>();
         contexts.add(new TestContext.Builder().set("Test").set(11).set((long) 2).build());
         contexts.add(new TestContext.Builder().set("Test").set(2).set((long) 11).build());
         contexts.add(new TestContext.Builder().set("Test").set(2).build());
         contexts.add(new TestContext.Builder().set("Test").set((long) 2).build());
         contexts.add(new TestContext.Builder().set("Test").set(Boolean.TRUE).set("Test").build());
-        Set<TestContext> checkContexts = new HashSet<TestContext>();
+        Set<TestContext> checkContexts = new HashSet<>();
         for (TestContext ctx : contexts) {
             checkContexts.add(ctx);
             checkContexts.add(ctx);

@@ -44,7 +44,7 @@ public class MonetaryAmountsSingletonSpiTest {
 
         @Override
         public Collection<Class<? extends MonetaryAmount>> getAmountTypes() {
-            Set<Class<? extends MonetaryAmount>> result = new HashSet<Class<? extends MonetaryAmount>>();
+            Set<Class<? extends MonetaryAmount>> result = new HashSet<>();
             result.add(DummyAmount.class);
             return result;
         }

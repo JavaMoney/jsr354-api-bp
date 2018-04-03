@@ -79,6 +79,7 @@ public abstract class AbstractDynamicServiceProviderTest {
             return 0;
         }
 
+        @SuppressWarnings("unchecked")
         @Override
         public <T> List<T> getServices(Class<T> serviceType) {
             return (List<T>) services.get(serviceType);
@@ -94,6 +95,7 @@ public abstract class AbstractDynamicServiceProviderTest {
             }
         }
         
+        @SuppressWarnings("unchecked")
         public <T> void registerService(Class<T> serviceType, T service) {
             List<T> servicesOfType = (List<T>) services.get(serviceType);
             if(servicesOfType==null) {

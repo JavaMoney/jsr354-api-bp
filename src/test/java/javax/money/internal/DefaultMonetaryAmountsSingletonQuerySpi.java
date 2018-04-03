@@ -19,7 +19,7 @@ import java.util.*;
  */
 public class DefaultMonetaryAmountsSingletonQuerySpi extends BaseMonetaryAmountsSingletonQuerySpi {
 
-    private List<MonetaryAmountFactory<?>> factories = new ArrayList<MonetaryAmountFactory<?>>();
+    private List<MonetaryAmountFactory<?>> factories = new ArrayList<>();
 
     public DefaultMonetaryAmountsSingletonQuerySpi() {
         factories.add(new DummyAmountBuilder());

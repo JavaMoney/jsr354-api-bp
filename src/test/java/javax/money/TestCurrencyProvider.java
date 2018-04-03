@@ -19,7 +19,7 @@ public final class TestCurrencyProvider implements CurrencyProviderSpi {
 
     @Override
     public Set<CurrencyUnit> getCurrencies(CurrencyQuery currencyQuery) {
-        Set<CurrencyUnit> result = new HashSet<CurrencyUnit>();
+        Set<CurrencyUnit> result = new HashSet<>();
         if (!currencyQuery.getCurrencyCodes().isEmpty()) {
             for (String currencyCode : currencyQuery.getCurrencyCodes()) {
                 if ("test1".equals(currencyCode)) {

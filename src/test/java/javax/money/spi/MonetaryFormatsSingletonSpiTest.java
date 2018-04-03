@@ -33,14 +33,14 @@ public class MonetaryFormatsSingletonSpiTest {
 
         @Override
         public Set<Locale> getAvailableLocales(String... providers) {
-            Set<Locale> locales = new HashSet<Locale>();
+            Set<Locale> locales = new HashSet<>();
             locales.add(Locale.ENGLISH);
             return locales;
         }
 
         @Override
         public Collection<MonetaryAmountFormat> getAmountFormats(AmountFormatQuery formatQuery) {
-            List<MonetaryAmountFormat> formats = new ArrayList<MonetaryAmountFormat>();
+            List<MonetaryAmountFormat> formats = new ArrayList<>();
             if (Locale.ENGLISH.equals(formatQuery.getLocale())) {
                 formats.add(new PseudoFormat());
             } else if ("f1".equals(formatQuery.getFormatName())) {
@@ -51,14 +51,14 @@ public class MonetaryFormatsSingletonSpiTest {
 
         @Override
         public Set<String> getProviderNames() {
-            Set<String> names = new HashSet<String>();
+            Set<String> names = new HashSet<>();
             names.add("b");
             return names;
         }
 
         @Override
         public List<String> getDefaultProviderChain() {
-            List<String> names = new ArrayList<String>();
+            List<String> names = new ArrayList<>();
             names.add("b");
             return names;
         }

@@ -43,28 +43,28 @@ public class MonetaryRoundingsSingletonSpiTest {
 
         @Override
         public Set<String> getRoundingNames(String... providers) {
-            Set<String> roundings = new HashSet<String>();
+            Set<String> roundings = new HashSet<>();
             roundings.add("r1");
             return roundings;
         }
 
         @Override
         public Set<String> getProviderNames() {
-            Set<String> providers = new HashSet<String>();
+            Set<String> providers = new HashSet<>();
             providers.add("p");
             return providers;
         }
 
         @Override
         public List<String> getDefaultProviderChain() {
-            List<String> providers = new ArrayList<String>();
+            List<String> providers = new ArrayList<>();
             providers.add("a");
             return providers;
         }
 
         @Override
         public Collection<MonetaryRounding> getRoundings(RoundingQuery query) {
-            List<MonetaryRounding> roundings = new ArrayList<MonetaryRounding>();
+            List<MonetaryRounding> roundings = new ArrayList<>();
             if ("r1".equals(query.getRoundingName())) {
                 roundings.add(R1);
             } else if (query.getCurrency() != null && query.getCurrency().getCurrencyCode().equals("USD")) {

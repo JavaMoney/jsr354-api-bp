@@ -16,7 +16,7 @@ import javax.money.spi.MonetaryAmountFormatProviderSpi;
 
 public class TestAmountFormatProvider implements MonetaryAmountFormatProviderSpi {
 
-    private Set<Locale> testSet = new HashSet<Locale>();
+    private Set<Locale> testSet = new HashSet<>();
 
     public TestAmountFormatProvider() {
         testSet.add(Locale.ENGLISH);
@@ -37,7 +37,7 @@ public class TestAmountFormatProvider implements MonetaryAmountFormatProviderSpi
         if (loc!=null && "BAR".equals(loc.getCountry()) && "foo".equals(loc.getLanguage())) {
             return Collections.emptySet();
         }
-        List<MonetaryAmountFormat> result = new ArrayList<MonetaryAmountFormat>();
+        List<MonetaryAmountFormat> result = new ArrayList<>();
         result.add(new TestFormat(formatStyle));
         return result;
     }

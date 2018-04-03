@@ -20,6 +20,7 @@ import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -172,7 +173,7 @@ public class MonetaryDynamicServiceProviderTest extends AbstractDynamicServicePr
     public void testMonetaryRoundingsSingletonSpi() {
         assertEquals(Monetary.getRoundingNames().size(),2);
         MonetaryRoundingsSingletonSpi mock = mock(MonetaryRoundingsSingletonSpi.class);
-        doReturn(new HashSet<>(Arrays.asList("dummyRounding"))).when(mock).getRoundingNames();
+        doReturn(new HashSet<>(Collections.singletonList("dummyRounding"))).when(mock).getRoundingNames();
         registerService(MonetaryRoundingsSingletonSpi.class, mock);
         initTestServiceProvider();
         assertEquals(Monetary.getRoundingNames().size(),1);

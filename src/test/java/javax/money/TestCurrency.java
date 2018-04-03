@@ -50,7 +50,7 @@ public final class TestCurrency implements CurrencyUnit, Serializable, Comparabl
      */
     private final int defaultFractionDigits;
 
-    private static final Map<String, CurrencyUnit> CACHED = new ConcurrentHashMap<String, CurrencyUnit>();
+    private static final Map<String, CurrencyUnit> CACHED = new ConcurrentHashMap<>();
 
     /**
      * Private constructor.

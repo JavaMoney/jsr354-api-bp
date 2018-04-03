@@ -68,11 +68,11 @@ public class MonetaryContextTest {
 
     @Test
     public void testHashCode() throws Exception {
-        List<MonetaryContext> contexts = new ArrayList<MonetaryContext>();
+        List<MonetaryContext> contexts = new ArrayList<>();
         contexts.add(MonetaryContextBuilder.of(MonetaryAmount.class).setMaxScale(122).build());
         contexts.add(MonetaryContextBuilder.of(MonetaryAmount.class).setPrecision(299).build());
         contexts.add(MonetaryContextBuilder.of(MonetaryAmount.class).setFixedScale(true).build());
-        Set<Integer> hashCodes = new HashSet<Integer>();
+        Set<Integer> hashCodes = new HashSet<>();
         for(MonetaryContext ctx:contexts){
             hashCodes.add(ctx.hashCode());
         }
@@ -82,11 +82,11 @@ public class MonetaryContextTest {
 
     @Test
     public void testEquals() throws Exception {
-        List<MonetaryContext> contexts = new ArrayList<MonetaryContext>();
+        List<MonetaryContext> contexts = new ArrayList<>();
         contexts.add(MonetaryContextBuilder.of(MonetaryAmount.class).setMaxScale(122).build());
         contexts.add(MonetaryContextBuilder.of(MonetaryAmount.class).setPrecision(299).build());
         contexts.add(MonetaryContextBuilder.of(MonetaryAmount.class).setFixedScale(true).build());
-        Set<MonetaryContext> checkContexts = new HashSet<MonetaryContext>();
+        Set<MonetaryContext> checkContexts = new HashSet<>();
         for (MonetaryContext ctx : contexts) {
             checkContexts.add(ctx);
             checkContexts.add(ctx);

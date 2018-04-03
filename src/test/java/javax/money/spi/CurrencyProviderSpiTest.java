@@ -50,7 +50,7 @@ public class CurrencyProviderSpiTest {
 
         @Override
         public Set<CurrencyUnit> getCurrencies(CurrencyQuery query) {
-            Set<CurrencyUnit> result = new HashSet<CurrencyUnit>();
+            Set<CurrencyUnit> result = new HashSet<>();
             if (query.getCurrencyCodes().contains("CHF")) {
                 result.add(TestCurrency.of("CHF"));
             }

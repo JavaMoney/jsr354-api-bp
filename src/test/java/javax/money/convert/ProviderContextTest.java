@@ -55,7 +55,7 @@ public class ProviderContextTest {
 
     @Test
     public void testProviderContextBuilder() {
-        Set<RateType> types = new HashSet<RateType>();
+        Set<RateType> types = new HashSet<>();
         types.add(RateType.DEFERRED);
         types.add(RateType.HISTORIC);
         ProviderContextBuilder b = ProviderContextBuilder.of("prov", types);

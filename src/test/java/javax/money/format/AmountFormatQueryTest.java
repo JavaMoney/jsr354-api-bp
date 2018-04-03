@@ -37,10 +37,10 @@ public class AmountFormatQueryTest {
 
     @Test
     public void testHashCode(){
-        List<AmountFormatContext> contexts = new ArrayList<AmountFormatContext>();
+        List<AmountFormatContext> contexts = new ArrayList<>();
         contexts.add(AmountFormatContextBuilder.of(Locale.GERMAN).build());
         contexts.add(AmountFormatContextBuilder.of(Locale.ENGLISH).build());
-        Set<Integer> hashCodes = new HashSet<Integer>();
+        Set<Integer> hashCodes = new HashSet<>();
         for(AmountFormatContext amountFormatContext:contexts) {
             hashCodes.add(amountFormatContext.hashCode());
         }
@@ -50,10 +50,10 @@ public class AmountFormatQueryTest {
 
     @Test
     public void testEquals(){
-        List<AmountFormatContext> contexts = new ArrayList<AmountFormatContext>();
+        List<AmountFormatContext> contexts = new ArrayList<>();
         contexts.add(AmountFormatContextBuilder.of(Locale.ENGLISH).build());
         contexts.add(AmountFormatContextBuilder.of(Locale.GERMAN).build());
-        Set<AmountFormatContext> checkContexts = new HashSet<AmountFormatContext>();
+        Set<AmountFormatContext> checkContexts = new HashSet<>();
         for(AmountFormatContext amountFormatContext:contexts) {
             checkContexts.add(amountFormatContext);
         }

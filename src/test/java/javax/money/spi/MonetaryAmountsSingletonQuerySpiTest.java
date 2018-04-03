@@ -32,7 +32,7 @@ public class MonetaryAmountsSingletonQuerySpiTest {
         public Collection<MonetaryAmountFactory<? extends MonetaryAmount>> getAmountFactories(
                 MonetaryAmountFactoryQuery query) {
             List<MonetaryAmountFactory<? extends MonetaryAmount>> factories =
-                    new ArrayList<MonetaryAmountFactory<? extends MonetaryAmount>>();
+                    new ArrayList<>();
             if (query.getBoolean("select")) {
                 factories.add(new DummyAmountBuilder());
             }

@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * SPI (core) for the backing implementation of the {@link javax.money.MonetaryAmounts} singleton. It
+ * SPI (core) for the backing implementation of the {@link javax.money.Monetary} singleton. It
  * should load and manage (including contextual behavior), if needed) the different registered
  * {@link javax.money.MonetaryAmountFactory} instances.
  *
@@ -30,7 +30,7 @@ public abstract class BaseMonetaryAmountsSingletonSpi implements MonetaryAmounts
      * @throws javax.money.MonetaryException if no {@link MonetaryAmountFactoryProviderSpi} is available, or no
      *                           {@link MonetaryAmountFactoryProviderSpi} targeting the configured default
      *                           {@link javax.money.MonetaryAmount} type.
-     * @see javax.money.MonetaryAmounts#getDefaultAmountType()
+     * @see javax.money.Monetary#getDefaultAmountType()
      */
     public MonetaryAmountFactory<?> getDefaultAmountFactory(){
         return getAmountFactory(getDefaultAmountType());
@@ -43,7 +43,7 @@ public abstract class BaseMonetaryAmountsSingletonSpi implements MonetaryAmounts
      * {@code null}.
      */
     public Collection<MonetaryAmountFactory<?>> getAmountFactories(){
-        List<MonetaryAmountFactory<?>> factories = new ArrayList<MonetaryAmountFactory<?>>();
+        List<MonetaryAmountFactory<?>> factories = new ArrayList<>();
         for(Class<? extends MonetaryAmount> type : getAmountTypes()){
             factories.add(getAmountFactory(type));
         }
