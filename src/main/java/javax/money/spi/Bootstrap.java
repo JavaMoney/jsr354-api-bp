@@ -122,12 +122,6 @@ public final class Bootstrap {
             return null;
         }
         services = new ArrayList<>(services);
-        Collections.sort(services, new Comparator<T>() {
-            @Override
-            public int compare(T o1, T o2) {
-                return o1.getClass().getSimpleName().compareTo(o2.getClass().getSimpleName());
-            }
-        });
         return services.get(0);
     }
 
