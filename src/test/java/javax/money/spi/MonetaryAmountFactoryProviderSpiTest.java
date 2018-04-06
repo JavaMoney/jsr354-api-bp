@@ -10,10 +10,8 @@ package javax.money.spi;
 
 import static javax.money.spi.MonetaryAmountFactoryProviderSpi.QueryInclusionPolicy;
 import static javax.money.spi.MonetaryAmountFactoryProviderSpi.QueryInclusionPolicy.ALWAYS;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.sameInstance;
-import static org.junit.Assert.assertThat;
 
+import org.testng.AssertJUnit;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -40,7 +38,7 @@ public class MonetaryAmountFactoryProviderSpiTest {
         // when
         QueryInclusionPolicy result = sut.getQueryInclusionPolicy();
         // then
-        assertThat(result, is(ALWAYS));
+        AssertJUnit.assertEquals(result, ALWAYS);
     }
 
     @Test
@@ -49,7 +47,7 @@ public class MonetaryAmountFactoryProviderSpiTest {
         // when
         MonetaryContext result = sut.getMaximalMonetaryContext();
         // then
-        assertThat(result, sameInstance(monetaryContext));
+        AssertJUnit.assertTrue(result == monetaryContext);
     }
 
     private static final class MonetaryAmountFactoryProviderSpiTestStub extends BaseMonetaryAmountFactoryProviderSpi {
