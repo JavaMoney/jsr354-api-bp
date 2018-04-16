@@ -26,7 +26,7 @@ public final class AmountFormatQueryBuilder extends AbstractQueryBuilder<AmountF
     private static final String DEFAULT_FORMAT_NAME = "default";
 
     /**
-     * Creates a new {@link AmountFormatQueryBuilder}.
+     * Creates a new .
      *
      * @param formatQuery the base {@link AmountFormatQuery}, not {@code null}.
      */
@@ -35,7 +35,7 @@ public final class AmountFormatQueryBuilder extends AbstractQueryBuilder<AmountF
     }
 
     /**
-     * Creates a new {@link AmountFormatQueryBuilder}.
+     * Creates a new .
      *
      * @param formatName the target format's name {@link String}, not {@code null}.
      */
@@ -45,7 +45,7 @@ public final class AmountFormatQueryBuilder extends AbstractQueryBuilder<AmountF
     }
 
     /**
-     * Creates a new default {@link AmountFormatQueryBuilder} for a formatter based on the
+     * Creates a new default  for a formatter based on the
      * locale specific
      * defaults.
      *
@@ -109,7 +109,7 @@ public final class AmountFormatQueryBuilder extends AbstractQueryBuilder<AmountF
     }
 
     /**
-     * Creates a new {@link AmountFormatQueryBuilder} and initializes it with the values from {@code formatQuery.
+     * Creates a new  and initializes it with the values from {@code formatQuery}.
      *
      * @param formatQuery the base {@link AmountFormatContext}, not {@code null}.
      * @return a new {@link AmountFormatQueryBuilder } instance, never null.
@@ -119,22 +119,22 @@ public final class AmountFormatQueryBuilder extends AbstractQueryBuilder<AmountF
     }
 
     /**
-     * Creates a new {@link AmountFormatQueryBuilder}.
+     * Creates a new .
      *
      * @param formatName the target format's name {@link String}, not {@code null}.
-     * @return a new {@link AmountFormatQueryBuilder} instance, never null.
+     * @return a new  instance, never null.
      */
     public static AmountFormatQueryBuilder of(String formatName) {
         return new AmountFormatQueryBuilder(formatName);
     }
 
     /**
-     * Creates a new default {@link AmountFormatQueryBuilder} for a formatter based on the
+     * Creates a new default  for a formatter based on the
      * locale specific
      * defaults.
      *
      * @param locale the target {@link java.util.Locale}, not {@code null}.
-     * @return a new {@link AmountFormatQueryBuilder} instance, never null.
+     * @return a new  instance, never null.
      */
     public static AmountFormatQueryBuilder of(Locale locale) {
         return new AmountFormatQueryBuilder(locale);

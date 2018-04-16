@@ -41,7 +41,7 @@ public final class MonetaryAmountFactoryQueryBuilder
     /**
      * Sets the maximal scale to be supported.
      *
-     * @param maxScale the max scale, >= 0.
+     * @param maxScale the max scale, &gt;= 0.
      * @return this Builder for chaining.
      */
     public MonetaryAmountFactoryQueryBuilder setMaxScale(int maxScale){
@@ -51,7 +51,7 @@ public final class MonetaryAmountFactoryQueryBuilder
     /**
      * Sets the required precision, the value 0 models unlimited precision.
      *
-     * @param precision the precision, >= 0, 0 meaning unlimited.
+     * @param precision the precision, &gt;= 0, 0 meaning unlimited.
      * @return this Builder for chaining.
      */
     public MonetaryAmountFactoryQueryBuilder setPrecision(int precision){
@@ -94,7 +94,7 @@ public final class MonetaryAmountFactoryQueryBuilder
      *
      * @param monetaryAmountFactoryQuery {@link MonetaryAmountFactoryQuery} used for initializing this
      *                                   builder.
-     * @return a new {@link MonetaryAmountFactoryQueryBuilder} instance, never null.
+     * @return a new  instance, never null.
      */
 
     public static MonetaryAmountFactoryQueryBuilder of(MonetaryAmountFactoryQuery monetaryAmountFactoryQuery){

@@ -49,7 +49,8 @@ import java.util.List;
  * reversing a ExchangeRate one must access an {@link ExchangeRateProvider} and
  * query for the reverse rate.</li>
  * </ul>
- * <p/>
+ *
+ *
  * The class also implements {@link Comparable} to allow sorting of multiple
  * exchange rates using the following sorting order;
  * <ul>
@@ -58,7 +59,8 @@ import java.util.List;
  * <li>base currency</li>
  * <li>term currency</li>
  * </ul>
- * <p/>
+ *
+ * 
  * Finally ExchangeRate is modeled as an immutable and thread safe type. Also
  * exchange rates are {@link java.io.Serializable}, hereby serializing in the following
  * form and order:
@@ -69,9 +71,12 @@ import java.util.List;
  * <li>The {@link ConversionContext}
  * <li>The rate chain
  * </ul>
- * <p/>
- * <h3>Implementation Specification</h3>
- * <p>Implementations of this interface
+ *
+ *
+ * <b>Implementation Specification</b>
+ *
+ * Implementations of this interface
+ *
  * <ul>
  * <li>must be Comparable(with {@code ExchangeRate})</li>
  * <li>must implement equals/hashCode considering #getBaseCurrency, #getCurrency,
@@ -80,7 +85,6 @@ import java.util.List;
  * <li>should be serializable</li>
  * <li>should provide a fluent builder API for constructing new rate instances easily.</li>
  * </ul>
- * </ul></p>
  *
  * @author Werner Keil
  * @author Anatole Tresch
@@ -91,7 +95,7 @@ import java.util.List;
 public interface ExchangeRate extends CurrencySupplier {
 
     /**
-     * Access the {@link ConversionContext} of {@link ExchangeRate}.
+     * Access the {@link ConversionContext} of .
      *
      * @return the conversion context, never null.
      */
@@ -124,7 +128,7 @@ public interface ExchangeRate extends CurrencySupplier {
      *
      * @return the chain of rates, in case of a derived rate, this may be
      * several instances. For a direct exchange rate, this equals to
-     * <code>new ExchangeRate[]{this}</code>.
+     * {@code new ExchangeRate[]{this}}.
      */
     List<ExchangeRate> getExchangeRateChain();
 

@@ -10,8 +10,8 @@
  * Money and Currency format API. In more detail:
  * <ul>
  * <li>JSR 354 defines a minimal {@link javax.money.format.MonetaryAmountFormat} that adopts
- * existing formatting functionality, such as in <code>javax.text.DecimalFormat</code>.</li>
- * <li>Some of the functionalities from <code>javax.text.DecimalFormat</code> are remodeled, to be
+ * existing formatting functionality, such as in {@code javax.text.DecimalFormat}.</li>
+ * <li>Some of the functionalities from {@code javax.text.DecimalFormat} are remodeled, to be
  * platform independent. Nevertheless the reference implementation may be built on top of existing JDK
  * functionality.</li>
  * <li>Additionally it adds customizable grouping sizes and characters as well as additional

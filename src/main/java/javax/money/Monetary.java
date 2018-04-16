@@ -391,7 +391,7 @@ public final class Monetary {
     /**
      * Creates a rounding that can be added as {@link MonetaryOperator} to
      * chained calculations. The instance will lookup the concrete
-     * {@link MonetaryOperator} instance from {@link Monetary}
+     * {@link MonetaryOperator} instance from
      * based on the input {@link MonetaryAmount}'s {@link CurrencyUnit}.
      *
      * @return the (shared) default rounding instance.

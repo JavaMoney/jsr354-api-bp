@@ -21,7 +21,7 @@ import javax.money.AbstractContext;
  * <li>a unique nont localizable provider name. This provider name is also used to identify a concrete instance of
  * ExchangeRateProvider.</li>
  * <li>a set of {@link RateType} an ExchangeRateProvider supports</li>
- * <li>a time range for which an ExchangeRateProvider delivers rates.</li
+ * <li>a time range for which an ExchangeRateProvider delivers rates.</li>
  * </ul>
  * Additionally a instance of ProviderContext can have arbitrary additional attributes describing more precisely
  * the capabilities of a concrete {@link }ExchangeRateProvider} implementation.
@@ -78,7 +78,7 @@ public final class ProviderContext extends AbstractContext {
      *
      * @param provider  the provider id, not null.
      * @param rateTypes the required {@link RateType}s, not null
-     * @return a new {@link ProviderContext} instance.
+     * @return a new  instance.
      */
     public static ProviderContext of(String provider, RateType rateType, RateType... rateTypes) {
         return ProviderContextBuilder.of(provider, rateType, rateTypes).build();
@@ -88,7 +88,7 @@ public final class ProviderContext extends AbstractContext {
      * Creates a new ProviderContext based on the provider id and rate type(s).
      *
      * @param provider the provider id, not null.
-     * @return a new {@link ProviderContext} instance.
+     * @return a new  instance.
      */
     public static ProviderContext of(String provider) {
         return ProviderContextBuilder.of(provider, RateType.ANY).build();

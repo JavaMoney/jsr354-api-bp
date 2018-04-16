@@ -103,13 +103,13 @@ public final class ConversionContext extends AbstractContext {
     }
 
     /**
-     * Simple factory method for {@link ConversionContext}. For more
-     * possibilities to initialize a {@link ConversionContext}, please use a
+     * Simple factory method for . For more
+     * possibilities to initialize a , please use a
      * {@link ConversionContextBuilder},
      *
      * @param provider the provider name, not {@code null}
      * @param rateType the required rate type.
-     * @return a new instance of {@link ConversionContext}
+     * @return a new instance of
      */
     public static ConversionContext of(String provider, RateType rateType) {
         ConversionContextBuilder b = new ConversionContextBuilder();
@@ -133,11 +133,11 @@ public final class ConversionContext extends AbstractContext {
     }
 
     /**
-     * Creates a {@link ConversionContext} for accessing rates of the given
+     * Creates a  for accessing rates of the given
      * type, without specifying the rate's provider.
      *
      * @param rateType the required rate type.
-     * @return a new instance of {@link ConversionContext}
+     * @return a new instance of
      */
     public static ConversionContext of(RateType rateType) {
         switch (rateType) {
@@ -156,11 +156,11 @@ public final class ConversionContext extends AbstractContext {
     }
 
     /**
-     * Simple factory method for {@link ConversionContext}. For more
-     * possibilities to initialize a {@link ConversionContext}, please use a
+     * Simple factory method for . For more
+     * possibilities to initialize a , please use a
      * {@link ConversionContextBuilder},
      *
-     * @return a new instance of {@link ConversionContext}
+     * @return a new instance of
      */
     public static ConversionContext of() {
         return ANY_CONVERSION;

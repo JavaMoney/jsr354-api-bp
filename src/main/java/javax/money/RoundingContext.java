@@ -12,17 +12,20 @@ import java.io.Serializable;
 
 /**
  * This class models the spec/configuration for a rounding, modeled as {@link MonetaryRounding} in a
- * platform independent way. Each RoundingContext instance hereby has a <code>roundingId</code>, which links
+ * platform independent way. Each RoundingContext instance hereby has a {@code roundingId}, which links
  * to the {@link javax.money.spi.RoundingProviderSpi} that must of the according rounding instance. The
- * <i>default</i> </i><code>roundingId</code> is <code>default</code>.
- * <p>
+ * <i>default</i> {@code roundingId} is <code>default</code>.
+ *
+ *
  * A RoundingContext can take up arbitrary attributes that must be documented by the
  * {@link javax.money.spi.RoundingProviderSpi} implementations.
- * <p>
+ *
+ *
  * Examples for such additional attributes are
  * {@link java.math.RoundingMode}, {@link java.math.MathContext}, additional regional information,
  * e.g. if a given rounding is targeting cash rounding.
- * <p>
+ *
+ *
  * This class is immutable, serializable, thread-safe.
  *
  * @author Anatole Tresch

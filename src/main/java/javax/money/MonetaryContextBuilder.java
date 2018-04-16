@@ -38,7 +38,7 @@ public final class MonetaryContextBuilder extends AbstractContextBuilder<Monetar
     /**
      * Set the maximal scale to be supported.
      *
-     * @param maxScale the max scale, >= 0.
+     * @param maxScale the max scale, &gt;= 0.
      * @return this builder for chaining.
      */
     public MonetaryContextBuilder setMaxScale(int maxScale) {
@@ -48,7 +48,7 @@ public final class MonetaryContextBuilder extends AbstractContextBuilder<Monetar
     /**
      * Set the required precision.
      *
-     * @param precision the precision, >= 0, 0 meaning unlimited.
+     * @param precision the precision, &gt;= 0, 0 meaning unlimited.
      * @return this builder for chaining.
      */
     public MonetaryContextBuilder setPrecision(int precision) {
@@ -89,7 +89,7 @@ public final class MonetaryContextBuilder extends AbstractContextBuilder<Monetar
      * acquire a specific amount type and additionally configure the amount factory with the attributes in this
      * query.
      *
-     * @return a new {@link MonetaryContextBuilder} instance, never null.
+     * @return a new  instance, never null.
      */
     public static MonetaryContextBuilder of() {
         return of(MonetaryAmount.class);
@@ -98,7 +98,7 @@ public final class MonetaryContextBuilder extends AbstractContextBuilder<Monetar
     /**
      * Creates a new builder, using an existing {@link MonetaryContext} as a template.
      *
-     * @return a new {@link MonetaryContextBuilder} instance, never null.
+     * @return a new  instance, never null.
      */
     public static MonetaryContextBuilder of(MonetaryContext monetaryContext) {
         return new MonetaryContextBuilder(monetaryContext);
@@ -110,7 +110,7 @@ public final class MonetaryContextBuilder extends AbstractContextBuilder<Monetar
      * query.
      *
      * @param amountType the target amount type, not null.
-     * @return a new {@link MonetaryContextBuilder} instance, never null.
+     * @return a new  instance, never null.
      */
     public static MonetaryContextBuilder of(Class<? extends MonetaryAmount> amountType) {
         return new MonetaryContextBuilder(amountType);

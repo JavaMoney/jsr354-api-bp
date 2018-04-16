@@ -15,7 +15,7 @@ import java.math.MathContext;
  * Instances of this class allow to externalize the numeric value of a {@link MonetaryAmount}. The classs extends
  * {@link Number} for maximal compatibility with the JDK but also adds additional functionality to
  * overcome some of the pitfalls of the JDK's Number class.
- * <h3>Implementation specification</h3>
+ * <b>Implementation specification</b>
  * <p>Implementations of this interface must be
  * <ul>
  * <li>Comparable, hereby comparing the numeric value.</li>
@@ -23,7 +23,6 @@ import java.math.MathContext;
  * <li>serializable</li>
  * <li>thread-safe</li>
  * </ul>
- * </p>
  *
  * @author Anatole Tresch
  */
@@ -44,8 +43,7 @@ public abstract class NumberValue extends Number implements Comparable<NumberVal
     /**
      * Returns the <i>precision</i> of this {@code MonetaryAmount}. (The precision is the number of
      * digits in the unscaled value.)
-     * <p>
-     * <p>
+     *
      * The precision of a zero value is 1.
      *
      * @return the precision of this {@code MonetaryAmount}.
@@ -135,20 +133,20 @@ public abstract class NumberValue extends Number implements Comparable<NumberVal
 
     /**
      * This method allows to extract the numerator part of the current fraction, hereby given
-     * <code>
+     * {@code
      * w = longValue()
      * n = getFractionNominator()
      * d = getFractionDenominator()
-     * </code>
+     * }
      *
      * the following must be always true:
      *
-     * <code>
+     * {@code
      * !(w<0 && n>0)  and
      * !(w>0 && n<0)  and
      * d>0            and
      * |n| < d        // || = absolute value
-     * </code>.
+     * }.
      *
      * @return the amount's fraction numerator..
      */
@@ -156,20 +154,20 @@ public abstract class NumberValue extends Number implements Comparable<NumberVal
 
     /**
      * This method allows to extract the denominator part of the current fraction, hereby given
-     * <code>
+     * {@code
      * w = longValue()
      * n = getFractionNominator()
      * d = getFractionDenominator()
-     * </code>
+     * }
      *
      * the following must be always true:
      *
-     * <code>
+     * {@code
      * !(w<0 && n>0)  and
      * !(w>0 && n<0)  and
      * d>0            and
      * |n| < d        // || = absolute value
-     * </code>.
+     * }.
      *
      * @return the amount's fraction denominator.
      */

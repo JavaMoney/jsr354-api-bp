@@ -112,7 +112,7 @@ public final class ProviderContextBuilder extends AbstractContextBuilder<Provide
      * {@link ProviderContext} easily.
      *
      * @param context the context, not {@code null}
-     * @return a new {@link ProviderContextBuilder} instance, never null.
+     * @return a new  instance, never null.
      */
     public static ProviderContextBuilder create(ProviderContext context) {
         return new ProviderContextBuilder(context);
@@ -123,7 +123,7 @@ public final class ProviderContextBuilder extends AbstractContextBuilder<Provide
      *
      * @param provider  the provider name, not {@code null}.
      * @param rateTypes the rate types, not null and not empty.
-     * @return a new {@link ProviderContextBuilder} instance, never null.
+     * @return a new  instance, never null.
      */
     public static ProviderContextBuilder of(String provider, RateType rateType, RateType... rateTypes) {
         return new ProviderContextBuilder(provider, rateType, rateTypes);
@@ -134,7 +134,7 @@ public final class ProviderContextBuilder extends AbstractContextBuilder<Provide
      *
      * @param provider  the provider name, not {@code null}.
      * @param rateTypes the rate types, not null and not empty.
-     * @return a new {@link ProviderContextBuilder} instance, never null.
+     * @return a new  instance, never null.
      */
     public static ProviderContextBuilder of(String provider, Collection<RateType> rateTypes) {
         return new ProviderContextBuilder(provider, rateTypes);

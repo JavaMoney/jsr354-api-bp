@@ -33,7 +33,7 @@ public interface MonetaryAmountFormatProviderSpi {
 	 * @param formatQuery
 	 *            The {@link javax.money.format.AmountFormatContext} to be used.
 	 * @return An according {@link MonetaryAmountFormat} instance, or {@code null}, which delegates
-	 *         the request to subsequent {@link MonetaryAmountFormatProviderSpi} instances
+	 *         the request to subsequent  instances
 	 *         registered.
 	 */
     Collection<MonetaryAmountFormat> getAmountFormats(AmountFormatQuery formatQuery);

@@ -37,6 +37,7 @@ public interface ServiceProvider {
      *
      * @param serviceType
      *            the service type.
+     * @param <T> the type
      * @return The instance to be used, never {@code null}
      */
     <T> List<T> getServices(Class<T> serviceType);
@@ -48,6 +49,7 @@ public interface ServiceProvider {
      * returned.
      *
      * @param serviceType the service type.
+     * @param <T> the type
      * @return The instance, (with highest precedence) or {@code null}, if no such service is available.
      */
     <T> T getService(Class<T> serviceType);

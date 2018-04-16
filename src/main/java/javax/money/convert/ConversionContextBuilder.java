@@ -74,18 +74,18 @@ public final class ConversionContextBuilder extends AbstractContextBuilder<Conve
     }
 
     /**
-     * Creates a new {@link ConversionContextBuilder} instance.
+     * Creates a new  instance.
      *
-     * @return a new {@link ConversionContextBuilder} instance, never null.
+     * @return a new  instance, never null.
      */
     public static ConversionContextBuilder of(ConversionContext conversionContext) {
         return new ConversionContextBuilder(conversionContext);
     }
 
     /**
-     * Creates a new {@link ConversionContextBuilder} instance.
+     * Creates a new  instance.
      *
-     * @return a new {@link ConversionContextBuilder} instance, never null.
+     * @return a new  instance, never null.
      */
     public static ConversionContextBuilder of() {
         return new ConversionContextBuilder();
@@ -98,7 +98,7 @@ public final class ConversionContextBuilder extends AbstractContextBuilder<Conve
      *
      * @param context  the provider context, not {@code null}
      * @param rateType the rate type, not null.
-     * @return a new {@link ConversionContextBuilder} instance, never null.
+     * @return a new  instance, never null.
      */
     public static ConversionContextBuilder create(ProviderContext context, RateType rateType) {
         return new ConversionContextBuilder(context, rateType);

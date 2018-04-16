@@ -33,7 +33,7 @@ public class CurrencyConversionException extends MonetaryException {
 	private ConversionContext conversionContext;
 
 	/**
-	 * Constructs an <code>CurrencyConversionException</code> with the specified
+	 * Constructs an {@code CurrencyConversionException} with the specified
 	 * detail message, timestamp, source and target currency.
 	 * 
 	 * @param base
@@ -55,7 +55,7 @@ public class CurrencyConversionException extends MonetaryException {
 	}
 
 	/**
-	 * Constructs an <code>CurrencyConversionException</code> with the specified
+	 * Constructs an {@code CurrencyConversionException} with the specified
 	 * source and target currency.
 	 * 
 	 * @param base
@@ -78,7 +78,7 @@ public class CurrencyConversionException extends MonetaryException {
 	 * detail message and cause.
 	 * 
 	 * <p>
-	 * Note that the detail message associated with <code>cause</code> is
+	 * Note that the detail message associated with {@code cause} is
 	 * <i>not</i> automatically incorporated in this exception's detail message.
 	 * 
 	 * @param base

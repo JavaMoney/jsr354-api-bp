@@ -101,19 +101,19 @@ public final class ConversionQueryBuilder extends AbstractQueryBuilder<Conversio
     }
 
     /**
-     * Creates a new {@link ConversionQueryBuilder} instance.
+     * Creates a new  instance.
      *
-     * @return a new {@link ConversionQueryBuilder} instance, never null.
+     * @return a new  instance, never null.
      */
     public static ConversionQueryBuilder of() {
         return new ConversionQueryBuilder();
     }
 
     /**
-     * Creates a new {@link ConversionQueryBuilder} instance.
+     * Creates a new  instance.
      *
      * @param query the {@link ConversionQuery} instance to be used as a template.
-     * @return a new {@link ConversionQueryBuilder} instance, never null.
+     * @return a new  instance, never null.
      */
     public static ConversionQueryBuilder of(ConversionQuery query) {
         return new ConversionQueryBuilder().importContext(query);

@@ -32,7 +32,7 @@ package javax.money;
  * It is recommended to use the second approach, {@code with(MonetaryOperator)},
  * as it is a lot clearer to read in code.
  * 
- * <h4>Implementation specification</h4>
+ * <b>Implementation specification</b>
  * The implementation must take the input object and apply it. The
  * implementation defines the logic of the operator and is responsible for
  * documenting that logic. It may use any method on {@code MonetaryAmount} to

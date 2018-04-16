@@ -12,6 +12,7 @@ Release Notes
 
 - *1.0*    API as defined by JSR 354 Spec.
 - *1.0.1*  API as defined by JSR 354 Spec (Fix: building Java 7 API with Java 7)
+- *1.0.3*  API as defined by JSR 354 Spec (Fix: smaller fixes in ServiceContext and conversion internals).
 
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/javax.money/money-api-bp/badge.svg)](https://maven-badges.herokuapp.com/maven-central/javax.money/money-api-bp)

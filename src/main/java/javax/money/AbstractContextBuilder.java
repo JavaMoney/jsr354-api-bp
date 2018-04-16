@@ -17,8 +17,7 @@ import java.util.TreeMap;
  * This interface defines the common generic parts of a query. Queries are used to pass complex parameters sets
  * to lookup monetary artifacts, e.g. {@link MonetaryAmountFactory},
  * {@link MonetaryRounding},
- * {@link CurrencyUnit}, {@link javax.money.convert.ExchangeRateProvider} and {@link org.javamoney.bp.api.convert
- * .CurrencyConversion}.
+ * {@link CurrencyUnit}, {@link javax.money.convert.ExchangeRateProvider} and {@link javax.money.convert.CurrencyConversion}.
  * <p>
  * Instances of this class are not thread-safe and not serializable.
  */

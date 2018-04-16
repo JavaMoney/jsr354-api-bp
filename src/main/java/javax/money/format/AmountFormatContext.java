@@ -28,7 +28,7 @@ public final class AmountFormatContext extends AbstractContext {
     static final String KEY_FORMAT_NAME = "formatName";
 
     /**
-     * Creates a new instance of {@link AmountFormatContext}.
+     * Creates a new instance of .
      *
      * @param builder the corresponding builder.
      */

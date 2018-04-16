@@ -67,7 +67,7 @@ public interface MonetaryRoundingsSingletonSpi {
     /**
      * Creates a {@link MonetaryRounding} that can be added as {@link javax.money.MonetaryOperator} to
      * chained calculations. The instance must lookup the concrete
-     * {@link javax.money.MonetaryRounding} instance from the {@link MonetaryRoundingsSingletonSpi}
+     * {@link javax.money.MonetaryRounding} instance from the
      * based on the input {@link javax.money.MonetaryAmount}'s {@link javax.money.CurrencyUnit}.
      *
      * @return the (shared) default rounding instance.

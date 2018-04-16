@@ -13,54 +13,45 @@ import javax.money.MonetaryQuery;
 import java.io.IOException;
 
 /**
- * <p>
  * Formats instances of {@code MonetaryAmount} to a {@link String} or an {@link Appendable}.
- * </p>
- * <p>
- * To obtain a <code>MonetaryAmountFormat</code> for a specific locale, including the default
+ *
+ *
+ * To obtain a {@code MonetaryAmountFormat} for a specific locale, including the default
  * locale, call {@link MonetaryFormats#getAmountFormat(java.util.Locale, String...)}.
  *
  * More complex formatting scenarios can be implemented by registering instances of {@link javax.money.spi
  * .MonetaryAmountFormatProviderSpi}.
  * The spi implementation creates new instances of {@link MonetaryAmountFormat} based on the
  * <i>styleId</i> and <i> (arbitrary) attributes</i> passed within the {@link AmountFormatContext}.
- * </p>
- * <p>In general, do prefer
- * accessing <code>MonetaryAmountFormat</code> instances from the {@link MonetaryFormats} singleton,
- * instead of instantiating implementations directly, since the <code>MonetaryFormats</code> factory
+ *
+ *
+ * In general, do prefer accessing {@code MonetaryAmountFormat} instances from the {@link MonetaryFormats} singleton,
+ * instead of instantiating implementations directly, since the {@code MonetaryFormats} factory
  * method may return different subclasses or may implement contextual behaviour (in a EE context).
  * If you need to customize the format object, do something like this:
- * <p>
- * <blockquote>
- * <p>
- * <pre>
+ * {@code
  * MonetaryAmountFormat f = MonetaryFormats.getInstance(loc);
  * f.setStyle(f.getStyle().toBuilder().setPattern(&quot;###.##;(###.##)&quot;).build());
- * </pre>
- * <p>
- * </blockquote>
- * <p>
- * <h4>Special Values</h4>
- * <p>
- * <p>
- * Negative zero (<code>"-0"</code>) should always parse to
+ * }
+ *
+ * <b>Special Values</b>
+ *
+ * Negative zero ({@code "-0"}) should always parse to
  * <ul>
- * <li><code>0</code></li>
+ * <li>{@code 0}</li>
  * </ul>
- * <p>
- * <h4><a name="synchronization">Synchronization</a></h4>
- * <p>
- * <p>
+ *
+ *
+ * <b><a name="synchronization">Synchronization</a></b>
+ *
  * Instances of this class are not required to be thread-safe. It is recommended to of separate
  * format instances for each thread. If multiple threads access a format concurrently, it must be
  * synchronized externally.
- * <p>
- * <h4>Example</h4>
- * <p>
- * <blockquote>
- * <p>
- * <pre>
- * <strong>// Print out a number using the localized number, currency,
+ *
+ *
+ * <b>Example</b>
+ * {@code
+ * // Print out a number using the localized number, currency,
  * // for each locale</strong>
  * Locale[] locales = MonetaryFormats.getAvailableLocales();
  * MonetaryAmount amount = ...;
@@ -80,9 +71,7 @@ import java.io.IOException;
  *         } catch (ParseException e) {}
  *     }
  * }
- * </pre>
- * <p>
- * </blockquote>
+ * }
  */
 public interface MonetaryAmountFormat extends MonetaryQuery<String> {
 
@@ -127,7 +116,7 @@ public interface MonetaryAmountFormat extends MonetaryQuery<String> {
      * during parsing, an exception is thrown.
      * <p>
      * Additionally the effective implementation type returned can be determined by the
-     * {@link javax.money.MonetaryContext} applied to the {@link MonetaryAmountFormat}.
+     * {@link javax.money.MonetaryContext} applied to the .
      * This formatter will call
      * {@link javax.money.Monetary#getDefaultAmountType()} and will use the result returned
      * to access a corresponding {@link javax.money.MonetaryAmountFactory} to of the instance

@@ -33,7 +33,7 @@ public final class CurrencyQueryBuilder extends AbstractQueryBuilder<CurrencyQue
     }
 
     /**
-     * Creates a new instance of {@link CurrencyQueryBuilder}.
+     * Creates a new instance of .
      *
      * @param currencyQuery {@link CurrencyQuery} used for initializing this builder.
      */
@@ -86,19 +86,19 @@ public final class CurrencyQueryBuilder extends AbstractQueryBuilder<CurrencyQue
     }
 
     /**
-     * Creates a new instance of {@link CurrencyQueryBuilder}.
+     * Creates a new instance of .
      *
-     * @return a new {@link CurrencyQueryBuilder} instance, never null.
+     * @return a new  instance, never null.
      */
     public static CurrencyQueryBuilder of() {
         return new CurrencyQueryBuilder();
     }
 
     /**
-     * Creates a new instance of {@link CurrencyQueryBuilder}.
+     * Creates a new instance of .
      *
      * @param currencyQuery {@link CurrencyQuery} used for initializing this builder.
-     * @return a new {@link CurrencyQueryBuilder} instance, never null.
+     * @return a new  instance, never null.
      */
     public static CurrencyQueryBuilder of(CurrencyQuery currencyQuery) {
         return new CurrencyQueryBuilder(currencyQuery);

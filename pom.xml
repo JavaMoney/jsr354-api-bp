@@ -13,8 +13,8 @@
     <groupId>javax.money</groupId>
     <artifactId>money-api-bp</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.2-SNAPSHOT</version>
-    <name>Money and Currency API (JSR 354) - Java 6/7 Compatible Version</name>
+    <version>1.0.3</version>
+    <name>Money and Currency API (JSR 354) - Java 7 Compatible Version</name>
     <url>http://java.net/projects/javamoney</url>
     <inceptionYear>2012</inceptionYear>
     <description>JSR 354 provides an API for representing, transporting, and performing comprehensive calculations with
@@ -313,7 +313,7 @@
                         <artifactId>maven-gpg-plugin</artifactId>
                         <configuration>
                             <defaultKeyring>false</defaultKeyring>
-                            <keyname>0E3BCC9A</keyname>
+                            <keyname>11A1E4D6</keyname>
                         </configuration>
                         <executions>
                             <execution>

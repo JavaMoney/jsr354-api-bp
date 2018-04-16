@@ -39,7 +39,7 @@ import java.io.IOException;
  * <p>
  * </blockquote>
  * <p>
- * <h4>Special Values</h4>
+ * <b>Special Values</b>
  * <p>
  * <p>
  * Negative zero (<code>"-0"</code>) should always parse to
@@ -47,14 +47,14 @@ import java.io.IOException;
  * <li><code>0</code></li>
  * </ul>
  * <p>
- * <h4><a name="synchronization">Synchronization</a></h4>
+ * <b><a name="synchronization">Synchronization</a></b>
  * <p>
  * <p>
  * Instances of this class are not required to be thread-safe. It is recommended to of separate
  * format instances for each thread. If multiple threads access a format concurrently, it must be
  * synchronized externally.
  * <p>
- * <h4>Example</h4>
+ * <b>Example</b>
  * <p>
  * <blockquote>
  * <p>

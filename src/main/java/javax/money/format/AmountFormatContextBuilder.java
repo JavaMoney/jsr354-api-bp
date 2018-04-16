@@ -30,7 +30,7 @@ public final class AmountFormatContextBuilder
     private static final String DEFAULT_FORMAT_NAME = "default";
 
     /**
-     * Creates a new {@link AmountFormatContextBuilder}.
+     * Creates a new .
      *
      * @param formatQuery the base {@link AmountFormatQuery}, not {@code null}.
      */
@@ -39,7 +39,7 @@ public final class AmountFormatContextBuilder
     }
 
     /**
-     * Creates a new {@link AmountFormatContextBuilder}.
+     * Creates a new .
      *
      * @param context the base {@link AmountFormatContext}, not {@code null}.
      */
@@ -49,7 +49,7 @@ public final class AmountFormatContextBuilder
     }
 
     /**
-     * Creates a new {@link AmountFormatContextBuilder}.
+     * Creates a new .
      *
      * @param formatName the target formatName {@link String}, not {@code null}.
      */
@@ -59,7 +59,7 @@ public final class AmountFormatContextBuilder
     }
 
     /**
-     * Creates a new default {@link AmountFormatContextBuilder} for a formatter based on the locale specific
+     * Creates a new default  for a formatter based on the locale specific
      * defaults.
      *
      * @param locale the target {@link java.util.Locale}, not {@code null}.
@@ -114,41 +114,41 @@ public final class AmountFormatContextBuilder
     }
 
     /**
-     * Creates a new {@link AmountFormatContextBuilder}.
+     * Creates a new .
      *
      * @param formatQuery the base {@link AmountFormatContext}, not {@code null}.
-     * @return a new {@link AmountFormatContextBuilder} instance, never null.
+     * @return a new  instance, never null.
      */
     public static AmountFormatContextBuilder create(AmountFormatQuery formatQuery) {
         return new AmountFormatContextBuilder(formatQuery);
     }
 
     /**
-     * Creates a new {@link AmountFormatContextBuilder}.
+     * Creates a new .
      *
      * @param context the {@link  AmountFormatContext}
-     * @return a new {@link AmountFormatContextBuilder} instance, never null.
+     * @return a new  instance, never null.
      */
     public static AmountFormatContextBuilder of(AmountFormatContext context) {
         return new AmountFormatContextBuilder(context);
     }
 
     /**
-     * Creates a new {@link AmountFormatContextBuilder}.
+     * Creates a new .
      *
      * @param formatName the target formatName {@link String}, not {@code null}.
-     * @return a new {@link AmountFormatContextBuilder} instance, never null.
+     * @return a new  instance, never null.
      */
     public static AmountFormatContextBuilder of(String formatName) {
         return new AmountFormatContextBuilder(formatName);
     }
 
     /**
-     * Creates a new default {@link AmountFormatContextBuilder} for a formatter based on the locale specific
+     * Creates a new default  for a formatter based on the locale specific
      * defaults.
      *
      * @param locale the target {@link java.util.Locale}, not {@code null}.
-     * @return a new {@link AmountFormatContextBuilder} instance, never null.
+     * @return a new  instance, never null.
      */
     public static AmountFormatContextBuilder of(Locale locale) {
         return new AmountFormatContextBuilder(locale);

@@ -19,7 +19,9 @@ package javax.money;
  * <p>
  * Currencies can be distinguished by separate {@link #getCurrencyCode()} codes,
  * similar to {@link java.util.Currency}.
- * <h4>Implementation specification</h4>
+ *
+ * <b>Implementation specification</b>
+ *
  * Implementation of this class
  * <ul>
  * <li>are required to implement {@code equals/hashCode} considering the
@@ -45,7 +47,7 @@ public interface CurrencyUnit extends Comparable<CurrencyUnit>{
 	 * currency.
 	 * <p>
 	 * Since each currency is identified by this code, the currency code is
-	 * required to be defined for every {@link CurrencyUnit} and not
+	 * required to be defined for every  and not
 	 * {@code null} or empty.
 	 * <p>
 	 * For ISO codes the 3-letter ISO code should be returned. For non ISO
