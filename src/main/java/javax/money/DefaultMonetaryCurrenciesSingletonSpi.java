@@ -32,7 +32,7 @@ import java.util.logging.Logger;
  * This class is thread safe.
  *
  * @author Anatole Tresch
- * @version 0.8
+ * @version 0.9
  */
 final class DefaultMonetaryCurrenciesSingletonSpi implements MonetaryCurrenciesSingletonSpi {
 
@@ -58,7 +58,7 @@ final class DefaultMonetaryCurrenciesSingletonSpi implements MonetaryCurrenciesS
             for (String providerName : query.getProviderNames()) {
                 CurrencyProviderSpi provider = getProvider(providerName);
                 if (provider == null) {
-                    Logger.getLogger(DefaultMonetaryCurrenciesSingletonSpi.class.getName()).warning("No such currenvcy " +
+                    Logger.getLogger(DefaultMonetaryCurrenciesSingletonSpi.class.getName()).warning("No such currency " +
                             "provider found, ignoring: " + providerName);
                 } else {
                     result.add(provider);
@@ -69,7 +69,7 @@ final class DefaultMonetaryCurrenciesSingletonSpi implements MonetaryCurrenciesS
             for(String providerName:getDefaultProviderChain()){
                 CurrencyProviderSpi provider = getProvider(providerName);
                 if (provider == null) {
-                    Logger.getLogger(DefaultMonetaryCurrenciesSingletonSpi.class.getName()).warning("No such currenvcy " +
+                    Logger.getLogger(DefaultMonetaryCurrenciesSingletonSpi.class.getName()).warning("No such currency " +
                             "provider found, ignoring: " + providerName);
                 } else {
                     result.add(provider);
