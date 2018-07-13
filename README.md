@@ -18,4 +18,6 @@ Release Notes
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/javax.money/money-api-bp/badge.svg)](https://maven-badges.herokuapp.com/maven-central/javax.money/money-api-bp)
 [![Build Status](https://api.travis-ci.org/JavaMoney/jsr354-api-bp.png?branch=master)](https://travis-ci.org/JavaMoney/jsr354-api-bp)
 [![Stability: Maintenance](https://masterminds.github.io/stability/maintenance.svg)](https://masterminds.github.io/stability/maintenance.html)
+
+
 [![Built with Maven](http://maven.apache.org/images/logos/maven-feather.png)](http://maven.org/)
