@@ -27,6 +27,7 @@
 		<!-- Dependency versions -->
 		<testng.version>6.8.5</testng.version>
 		<mockito.version>1.10.19</mockito.version>
+		<thisYear>2020</thisYear>
 	</properties>
 
 	<organization>
@@ -205,8 +206,8 @@
 	</mailingLists>
 
 	<issueManagement>
-		<system>JIRA</system>
-		<url>http://java.net/jira/browse/JAVAMONEY</url>
+		<system>Github</system>
+		<url>https://github.com/JavaMoney/jsr354-api-bp/issues</url>
 	</issueManagement>
 
 	<licenses>
