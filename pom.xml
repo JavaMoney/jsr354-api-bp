@@ -25,8 +25,8 @@
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 		<basedir>.</basedir>
 		<!-- Dependency versions -->
-		<testng.version>6.14.3</testng.version>
-		<mockito.version>1.10.19</mockito.version>
+		<testng.version>7.1.0</testng.version>
+		<mockito.version>3.3.3</mockito.version>
 		<thisYear>2020</thisYear>
 	</properties>
 
@@ -242,7 +242,7 @@
 			</dependency>
 			<dependency>
 				<groupId>org.mockito</groupId>
-				<artifactId>mockito-all</artifactId>
+				<artifactId>mockito-core</artifactId>
 				<version>${mockito.version}</version>
 				<scope>test</scope>
 			</dependency>
@@ -257,7 +257,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
+			<artifactId>mockito-core</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
