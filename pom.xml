@@ -7,7 +7,7 @@
 	<groupId>javax.money</groupId>
 	<artifactId>money-api-bp</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.4</version>
+	<version>1.0.5-SNAPSHOT</version>
 	<name>Money and Currency API (JSR 354) - Java 7 Compatible Version</name>
 	<url>https://javamoney.github.io/</url>
 	<inceptionYear>2012</inceptionYear>
