@@ -42,7 +42,7 @@ package javax.money;
  * @author Stephen Colebourne
  * @author Anatole Tresch
  * 
- * @version 0.7
+ * @version 1.0
  * 
  * @see <a href="https://en.wikipedia.org/wiki/Currency">Wikipedia: Currency</a>
  */

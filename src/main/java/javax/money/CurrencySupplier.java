@@ -35,7 +35,7 @@ package javax.money;
  * </p>
  *
  * @author Werner Keil
- * @version 0.5
+ * @version 1.0
  * @since 0.8
  */
 //@FunctionalInterface
