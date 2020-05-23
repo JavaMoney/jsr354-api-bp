@@ -144,7 +144,7 @@ public class AbstractContextTest {
 //    @Test
 //    public void testGetTimestamp() {
 //        LocalDateTime now = LocalDateTime.now();
-//        TestContext ctx = new TestContext.Builder().setTimestamp(now).build();
+//        TestContext ctx = new TestContext.Builder().set(now).build();
 //        assertEquals(now, ctx.getTimestamp());
 //    }
 

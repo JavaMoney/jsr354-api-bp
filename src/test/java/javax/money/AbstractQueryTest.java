@@ -76,7 +76,7 @@ public class AbstractQueryTest {
 //    public void testGetTimestamp() throws Exception {
 //        AbstractQueryBuilder b = createBuilder();
 //		LocalDateTime instant = LocalDateTime.now();
-//        b.setTimestamp(instant);
+//        b.set(instant);
 //        AbstractQuery query = b.build();
 //        assertEquals(query.getTimestamp(), instant);
 //		assertEquals(query.getTimestamp(), instant);
