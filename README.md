@@ -3,6 +3,7 @@ jsr354-api-bp
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/javax.money/money-api-bp/badge.svg)](https://maven-badges.herokuapp.com/maven-central/javax.money/money-api-bp)
 [![Build Status](https://travis-ci.com/JavaMoney/jsr354-api-bp.svg?branch=master)](https://travis-ci.com/JavaMoney/jsr354-api-bp)
 [![Stability: Unsupported](https://masterminds.github.io/stability/unsupported.svg)](https://masterminds.github.io/stability/unsupported.html)
+[![License](https://img.shields.io/badge/license-Apache2-red.svg)](http://opensource.org/licenses/apache-2.0)
 
 JSR 354 forward compatible backport for JDK 6/7 or other platforms (e.g. Android).
 
