@@ -185,7 +185,7 @@
 
 	<ciManagement>
 		<system>Travis CI</system>
-		<url>https://travis-ci.org/JavaMoney/javamoney-api-bp</url>
+		<url>https://travis-ci.com/JavaMoney/javamoney-api-bp</url>
 	</ciManagement>
 
 	<mailingLists>
